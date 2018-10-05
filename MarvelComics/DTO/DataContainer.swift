@@ -9,13 +9,13 @@
 import Foundation
 import ObjectMapper
 
-class CharacterDataContainer: Mappable {
+class DataContainer<DataType: Mappable>: Mappable {
    
     var offset: Int?
     var limit: Int?
     var total: Int?
     var count: Int?
-    var results: [Character]?
+    var results: [DataType]?
     
     required init?(map: Map) {
         

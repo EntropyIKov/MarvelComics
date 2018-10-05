@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Pl3-Ns-Yuu">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,107 +12,219 @@
         <!--Authorisation View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <viewController id="BYZ-38-t0r" customClass="AuthorisationViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="AuthorisationViewController" customModule="MarvelComics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter email..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lqk-NK-JeF">
-                                <rect key="frame" x="110" y="270" width="166" height="30"/>
+                                <rect key="frame" x="122.5" y="158" width="130" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="X6W-I7-AIx"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter password..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ot-mG-Xgy">
-                                <rect key="frame" x="110" y="308" width="166" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" textContentType="email"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4wV-H6-Luj">
-                                <rect key="frame" x="164" y="346" width="47" height="30"/>
+                                <rect key="frame" x="164" y="243" width="47" height="30"/>
                                 <state key="normal" title="Sign In"/>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter password..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ot-mG-Xgy">
+                                <rect key="frame" x="122.5" y="205" width="130" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="4wV-H6-Luj" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="1Q4-RV-jPk"/>
-                            <constraint firstItem="1ot-mG-Xgy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="110" id="INn-7O-KDS"/>
-                            <constraint firstItem="lqk-NK-JeF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="110" id="Uvl-Ke-4Pm"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1ot-mG-Xgy" secondAttribute="trailing" constant="99" id="W3b-yN-Vy9"/>
-                            <constraint firstItem="4wV-H6-Luj" firstAttribute="top" secondItem="1ot-mG-Xgy" secondAttribute="bottom" constant="8" id="YTd-WU-1yW"/>
-                            <constraint firstItem="1ot-mG-Xgy" firstAttribute="width" secondItem="lqk-NK-JeF" secondAttribute="width" id="bil-YG-yQg"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lqk-NK-JeF" secondAttribute="trailing" constant="99" id="l2G-RZ-d5R"/>
-                            <constraint firstItem="1ot-mG-Xgy" firstAttribute="top" secondItem="lqk-NK-JeF" secondAttribute="bottom" constant="8" id="nhr-rc-gtV"/>
-                            <constraint firstItem="lqk-NK-JeF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="250" id="t87-OP-Pzn"/>
-                            <constraint firstItem="lqk-NK-JeF" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="5.5" id="xE8-Oa-rHk"/>
-                            <constraint firstItem="1ot-mG-Xgy" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="5.5" id="yGt-EH-PP4"/>
+                            <constraint firstItem="4wV-H6-Luj" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="6xv-vr-YHp"/>
+                            <constraint firstItem="1ot-mG-Xgy" firstAttribute="top" secondItem="lqk-NK-JeF" secondAttribute="bottom" constant="17" id="KEb-YW-UrN"/>
+                            <constraint firstItem="1ot-mG-Xgy" firstAttribute="width" secondItem="lqk-NK-JeF" secondAttribute="width" id="O96-3x-hhZ"/>
+                            <constraint firstItem="1ot-mG-Xgy" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="OXS-5N-dkQ"/>
+                            <constraint firstItem="lqk-NK-JeF" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="RHb-Ix-IY9"/>
+                            <constraint firstItem="4wV-H6-Luj" firstAttribute="top" secondItem="1ot-mG-Xgy" secondAttribute="bottom" constant="8" id="fVt-vN-5f7"/>
+                            <constraint firstItem="lqk-NK-JeF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="138" id="pyT-qQ-i1W"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="ehY-bO-MSB"/>
                     <connections>
-                        <outlet property="loginTextField" destination="lqk-NK-JeF" id="tAE-mS-JDA"/>
-                        <outlet property="passwordTextField" destination="1ot-mG-Xgy" id="8gB-9e-9wy"/>
-                        <outlet property="signInButton" destination="4wV-H6-Luj" id="l1T-tQ-EYd"/>
+                        <outlet property="emailTextField" destination="lqk-NK-JeF" id="qDC-VW-PGG"/>
+                        <outlet property="passwordTextField" destination="1ot-mG-Xgy" id="G0E-3M-1Sx"/>
+                        <outlet property="signInButton" destination="4wV-H6-Luj" id="PFB-e6-8MS"/>
+                        <segue destination="ObN-zC-9Tr" kind="show" identifier="AuthSegue" id="7yd-gL-aez"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="100" y="18.440779610194905"/>
+            <point key="canvasLocation" x="1039.2" y="18.440779610194905"/>
         </scene>
-        <!--Item 2-->
+        <!--About-->
         <scene sceneID="D7E-CF-hf3">
             <objects>
-                <viewController id="XNT-dX-QAa" sceneMemberID="viewController">
+                <viewController title="About" id="XNT-dX-QAa" customClass="AboutAppViewController" customModule="MarvelComics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cvk-jr-PAp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pM7-Kw-ZPe">
-                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="87" id="38r-zP-omH">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="87"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="38r-zP-omH" id="A3o-hq-NpU">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="86.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
+                            <navigationBar clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3aL-cm-afw" customClass="LogOutNavigationBar" customModule="MarvelComics" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <items>
+                                    <navigationItem id="1sP-bz-Ecb">
+                                        <barButtonItem key="rightBarButtonItem" title="Log out" id="3U5-mw-FDa">
+                                            <connections>
+                                                <action selector="logOutButtonPressed:" destination="3aL-cm-afw" id="f9c-j0-C2i"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="Psd-50-FLk"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="XwS-x3-Ck7"/>
+                    <tabBarItem key="tabBarItem" title="About" id="XwS-x3-Ck7"/>
+                    <connections>
+                        <outlet property="logOutNavigationBar" destination="3aL-cm-afw" id="ePi-EQ-5rF"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="LogOutSegue" id="4L0-3q-TRY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gud-il-upM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1820" y="-276.61169415292358"/>
+            <point key="canvasLocation" x="3055" y="60"/>
         </scene>
-        <!--Item 1-->
+        <!--Characters-->
         <scene sceneID="aKP-MW-75d">
             <objects>
-                <viewController id="5N6-jj-zIl" sceneMemberID="viewController">
+                <viewController title="Characters" id="5N6-jj-zIl" customClass="CharactersListViewController" customModule="MarvelComics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ary-8U-zFQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MgT-cL-Vv6" customClass="LogOutNavigationBar" customModule="MarvelComics" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <items>
+                                    <navigationItem id="jg8-mM-szh">
+                                        <barButtonItem key="rightBarButtonItem" title="Log out" id="U06-Ja-Bdw">
+                                            <connections>
+                                                <action selector="logOutButtonPressed:" destination="MgT-cL-Vv6" id="qfY-kT-VBe"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ELh-Pf-Sjr">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cFa-dF-iPq">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CharacterImageIdentifier" id="fSJ-Ra-HK0" customClass="ImageCollectionViewCell" customModule="MarvelComics" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="59" height="67"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="59" height="67"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eus-n3-edF">
+                                                    <rect key="frame" x="0.0" y="0.0" width="59" height="67"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="eus-n3-edF" firstAttribute="height" secondItem="fSJ-Ra-HK0" secondAttribute="height" id="VuE-Ms-DOv"/>
+                                            <constraint firstItem="eus-n3-edF" firstAttribute="centerY" secondItem="fSJ-Ra-HK0" secondAttribute="centerY" id="ax6-lf-2y8"/>
+                                            <constraint firstItem="eus-n3-edF" firstAttribute="centerX" secondItem="fSJ-Ra-HK0" secondAttribute="centerX" id="ctP-nZ-qPU"/>
+                                            <constraint firstItem="eus-n3-edF" firstAttribute="width" secondItem="fSJ-Ra-HK0" secondAttribute="width" id="q08-38-a37"/>
+                                        </constraints>
+                                        <size key="customSize" width="59" height="67"/>
+                                        <connections>
+                                            <outlet property="characterImageView" destination="eus-n3-edF" id="oQK-f0-Dv7"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CharacterNameIdentifier" id="HXh-OP-BMG" customClass="NameCollectionViewCell" customModule="MarvelComics" customModuleProvider="target">
+                                        <rect key="frame" x="69" y="7.5" width="298" height="52"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="298" height="52"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yqf-Ds-kCk">
+                                                    <rect key="frame" x="0.0" y="0.0" width="298" height="52"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="Yqf-Ds-kCk" firstAttribute="centerX" secondItem="HXh-OP-BMG" secondAttribute="centerX" id="FZW-gj-Z0M"/>
+                                            <constraint firstItem="Yqf-Ds-kCk" firstAttribute="centerY" secondItem="HXh-OP-BMG" secondAttribute="centerY" id="JEI-8j-Mn5"/>
+                                            <constraint firstItem="Yqf-Ds-kCk" firstAttribute="width" secondItem="HXh-OP-BMG" secondAttribute="width" id="Pli-Rn-Cws"/>
+                                            <constraint firstItem="Yqf-Ds-kCk" firstAttribute="height" secondItem="HXh-OP-BMG" secondAttribute="height" id="okA-c0-ZAD"/>
+                                        </constraints>
+                                        <size key="customSize" width="298" height="52"/>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="Yqf-Ds-kCk" id="0UY-mq-z2I"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ELh-Pf-Sjr" firstAttribute="leading" secondItem="MHX-Po-Bd5" secondAttribute="leading" id="5pD-3M-pkq"/>
+                            <constraint firstItem="MHX-Po-Bd5" firstAttribute="bottom" secondItem="ELh-Pf-Sjr" secondAttribute="bottom" id="Efx-Az-rFP"/>
+                            <constraint firstItem="MgT-cL-Vv6" firstAttribute="top" secondItem="MHX-Po-Bd5" secondAttribute="top" id="K2s-l1-ml6"/>
+                            <constraint firstItem="MgT-cL-Vv6" firstAttribute="leading" secondItem="MHX-Po-Bd5" secondAttribute="leading" id="XeA-mm-Meb"/>
+                            <constraint firstItem="MHX-Po-Bd5" firstAttribute="trailing" secondItem="MgT-cL-Vv6" secondAttribute="trailing" id="YxI-YT-IL5"/>
+                            <constraint firstItem="ELh-Pf-Sjr" firstAttribute="top" secondItem="MgT-cL-Vv6" secondAttribute="bottom" id="a2x-lz-dFX"/>
+                            <constraint firstItem="ELh-Pf-Sjr" firstAttribute="width" secondItem="ary-8U-zFQ" secondAttribute="width" id="bDw-gA-hxQ"/>
+                            <constraint firstItem="MgT-cL-Vv6" firstAttribute="width" secondItem="ary-8U-zFQ" secondAttribute="width" id="e3N-0r-t6Q"/>
+                            <constraint firstItem="ELh-Pf-Sjr" firstAttribute="centerX" secondItem="MHX-Po-Bd5" secondAttribute="centerX" id="zlQ-4A-7kT"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="MHX-Po-Bd5"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="j4T-Va-SnC"/>
+                    <tabBarItem key="tabBarItem" title="Characters" id="j4T-Va-SnC"/>
+                    <connections>
+                        <outlet property="charactersCollectionView" destination="ELh-Pf-Sjr" id="Eep-Rv-7Mo"/>
+                        <outlet property="logOutNavigationBar" destination="MgT-cL-Vv6" id="goi-U9-T34"/>
+                        <segue destination="Dty-v5-lor" kind="show" identifier="ShowCharactersDetailsSegue" id="OFU-ce-R6Q"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="LogOutSegue" id="b8I-kX-eFG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="00y-fD-jbc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1820" y="491"/>
+            <point key="canvasLocation" x="3055" y="-732"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--View Controller-->
+        <scene sceneID="1Ej-Af-KOd">
+            <objects>
+                <viewController id="Dty-v5-lor" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Cj8-CB-3zO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="md3-eE-zvg"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XLg-p4-Oyc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3839" y="-732"/>
+        </scene>
+        <!--Main Screen Tab Bar Controller-->
         <scene sceneID="L9e-dK-7th">
             <objects>
-                <tabBarController id="ObN-zC-9Tr" sceneMemberID="viewController">
+                <tabBarController id="ObN-zC-9Tr" customClass="MainScreenTabBarController" customModule="MarvelComics" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uZ7-Cv-VjM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -125,7 +237,30 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RpJ-al-zC3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="921" y="18"/>
+            <point key="canvasLocation" x="2244" y="-732"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="05B-6K-3JS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Pl3-Ns-Yuu" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sro-7t-GT4">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mvk-3G-r9U">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Afd-5K-lSm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ick-Kk-fSK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="100" y="18.440779610194905"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="b8I-kX-eFG"/>
+    </inferredMetricsTieBreakers>
 </document>

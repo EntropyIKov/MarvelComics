@@ -16,8 +16,8 @@ class Character: Mappable {
     var description: String?
     var modified: Date?
     var resourceURI: String?
-    var urls: [(String, String)]?
-    var thumbnail: (String, String)?
+    var urls: [(type: String, url: String)]?
+    var thumbnail: (path: String, `extension`: String)?
     
     required init?(map: Map) {
         
@@ -33,3 +33,5 @@ class Character: Mappable {
         thumbnail   <- map["thumbnail"]
     }
 }
+
+
