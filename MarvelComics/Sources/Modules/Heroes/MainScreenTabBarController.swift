@@ -9,14 +9,21 @@
 import UIKit
 
 class MainScreenTabBarController: UITabBarController {
+    
+    static var storyboardInstance: MainScreenTabBarController? {
+        let storyboard = UIStoryboard(name: "Heroes", bundle: nil)
+        return storyboard.instantiateInitialViewController() as? MainScreenTabBarController
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate = self
+        
     }
 
 }
 
+// UITabBarControllerDelegate
 extension MainScreenTabBarController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         guard let fromView = selectedViewController?.view, let toView = viewController.view else {

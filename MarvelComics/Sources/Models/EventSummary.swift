@@ -9,14 +9,18 @@
 import Foundation
 import ObjectMapper
 
-class Event: Mappable {
+class EventSummary: SummaryProtocol, Mappable {
+    
+    var name: String?
+    var resourceURI: String?
     
     required init?(map: Map) {
         
     }
     
     func mapping(map: Map) {
-        
+        name        <- map["name"]
+        resourceURI <- map["resourceURI"]
     }
     
 }

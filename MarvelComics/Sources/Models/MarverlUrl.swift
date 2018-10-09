@@ -1,5 +1,5 @@
 //
-//  Comics.swift
+//  MarverlUrl.swift
 //  MarvelComics
 //
 //  Created by Kovalenko Ilia on 05/10/2018.
@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-class Comics: Mappable {
+class MarverlUrl: Mappable {
     
     required init?(map: Map) {
         

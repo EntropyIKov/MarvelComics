@@ -8,7 +8,8 @@
 
 import UIKit
 
-class AuthorisationViewController: UIViewController {
+class AuthorizationViewController: UIViewController {
+    
     
     //MARK: - Outlets
     @IBOutlet weak var emailTextField: UITextField!
@@ -16,6 +17,10 @@ class AuthorisationViewController: UIViewController {
     @IBOutlet weak var signInButton: UIButton!
     
     //MARK: - Variables
+    static var storyboardInstance: AuthorizationViewController? {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        return storyboard.instantiateInitialViewController() as? AuthorizationViewController
+    }
     private var isEmailValid = false
     private var isPasswordValid = false
     
@@ -27,14 +32,15 @@ class AuthorisationViewController: UIViewController {
     
     func setupViews() {
         signInButton.isEnabled = false
-        signInButton.addTarget(self, action: #selector(buttonAction(sender: )), for: .touchUpInside)
         
         emailTextField.addTarget(self, action: #selector(checkEmail(sender: )), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(checkPassword(sender: )), for: .editingChanged)
     }
     
-    @objc private func buttonAction(sender: UIButton) {
-        performSegue(withIdentifier: "AuthSegue", sender: nil)
+    @IBAction func signInButtonDidTaped(_ sender: UIButton) {
+        if let mainScreenTabBarViewController = MainScreenTabBarController.storyboardInstance {
+            UIApplication.shared.keyWindow?.rootViewController = mainScreenTabBarViewController
+        }
     }
     
     @objc private func checkEmail(sender: UITextField) {
