@@ -4,6 +4,7 @@ use_frameworks!
 
 target 'MarvelComics' do
   pod 'Alamofire', '~> 4.7'
+  pod 'XLPagerTabStrip', '~> 8.0'
   pod 'ObjectMapper', '~> 3.3'
   pod 'SwiftHash'
   pod 'Kingfisher', '~> 4.0'

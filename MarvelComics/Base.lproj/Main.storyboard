@@ -18,9 +18,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter email..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lqk-NK-JeF">
-                                <rect key="frame" x="122.5" y="158" width="130" height="30"/>
+                                <rect key="frame" x="102.5" y="158" width="170" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="130" id="X6W-I7-AIx"/>
+                                    <constraint firstAttribute="width" constant="170" id="X6W-I7-AIx"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -31,7 +31,7 @@
                                 <state key="normal" title="Sign In"/>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter password..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ot-mG-Xgy">
-                                <rect key="frame" x="122.5" y="205" width="130" height="30"/>
+                                <rect key="frame" x="102.5" y="205" width="170" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
@@ -69,10 +69,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3aL-cm-afw" customClass="LogOutNavigationBar" customModule="MarvelComics" customModuleProvider="target">
+                            <navigationBar clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3aL-cm-afw" customClass="LogOutNavigationBar" customModule="MarvelComics" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="barTintColor" red="0.91280009390000005" green="0.91280009390000005" blue="0.91280009390000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <items>
                                     <navigationItem id="1sP-bz-Ecb">
                                         <barButtonItem key="rightBarButtonItem" title="Log out" id="3U5-mw-FDa">
@@ -83,11 +82,36 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iU9-nv-cJT">
+                                <rect key="frame" x="0.0" y="268" width="375" height="129"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">//
+//  AboutAppViewController.swift
+//  MarvelComics
+//
+//  Created by Kovalenko Ilia on 05/10/2018.
+//  Copyright © 2018 Kovalenko Ilia. All rights reserved.
+//</string>
+                                <color key="textColor" red="0.42676401138305664" green="0.73926323652267456" blue="0.38816595077514648" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="iU9-nv-cJT" firstAttribute="width" secondItem="Cvk-jr-PAp" secondAttribute="width" id="45x-Ur-yVX"/>
+                            <constraint firstItem="3aL-cm-afw" firstAttribute="top" secondItem="Psd-50-FLk" secondAttribute="top" id="9Y0-a9-REe"/>
+                            <constraint firstItem="iU9-nv-cJT" firstAttribute="centerY" secondItem="Psd-50-FLk" secondAttribute="centerY" constant="13.5" id="C6E-EF-fy0"/>
+                            <constraint firstItem="iU9-nv-cJT" firstAttribute="top" secondItem="Psd-50-FLk" secondAttribute="top" constant="248" id="aaZ-Te-2js"/>
+                            <constraint firstItem="3aL-cm-afw" firstAttribute="centerX" secondItem="Psd-50-FLk" secondAttribute="centerX" id="ev7-G5-GUk"/>
+                            <constraint firstItem="3aL-cm-afw" firstAttribute="width" secondItem="Cvk-jr-PAp" secondAttribute="width" id="o8H-Fs-si0"/>
+                            <constraint firstItem="iU9-nv-cJT" firstAttribute="centerY" secondItem="Psd-50-FLk" secondAttribute="centerY" constant="13.5" id="tsA-Zw-s6S"/>
+                            <constraint firstItem="iU9-nv-cJT" firstAttribute="centerX" secondItem="Psd-50-FLk" secondAttribute="centerX" id="u0k-oM-ihX"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Psd-50-FLk"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="About" id="XwS-x3-Ck7"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="logOutNavigationBar" destination="3aL-cm-afw" id="ePi-EQ-5rF"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="LogOutSegue" id="4L0-3q-TRY"/>
@@ -95,7 +119,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gud-il-upM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3055" y="60"/>
+            <point key="canvasLocation" x="3053.5999999999999" y="59.820089955022496"/>
         </scene>
         <!--Characters-->
         <scene sceneID="aKP-MW-75d">
@@ -107,7 +131,7 @@
                         <subviews>
                             <navigationBar clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MgT-cL-Vv6" customClass="LogOutNavigationBar" customModule="MarvelComics" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="barTintColor" red="0.91280009389528771" green="0.91280009389528771" blue="0.91280009389528771" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <items>
                                     <navigationItem id="jg8-mM-szh">
                                         <barButtonItem key="rightBarButtonItem" title="Log out" id="U06-Ja-Bdw">
@@ -129,37 +153,38 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CharacterImageIdentifier" id="fSJ-Ra-HK0" customClass="ImageCollectionViewCell" customModule="MarvelComics" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="59" height="67"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="69" height="69"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="59" height="67"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="69" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eus-n3-edF">
-                                                    <rect key="frame" x="0.0" y="0.0" width="59" height="67"/>
+                                                    <rect key="frame" x="8" y="8" width="53" height="53"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="eus-n3-edF" firstAttribute="height" secondItem="fSJ-Ra-HK0" secondAttribute="height" id="VuE-Ms-DOv"/>
+                                            <constraint firstItem="eus-n3-edF" firstAttribute="top" secondItem="fSJ-Ra-HK0" secondAttribute="top" constant="8" id="L2Y-Xf-CNo"/>
+                                            <constraint firstItem="eus-n3-edF" firstAttribute="leading" secondItem="fSJ-Ra-HK0" secondAttribute="leading" constant="8" id="N68-QP-c3Q"/>
                                             <constraint firstItem="eus-n3-edF" firstAttribute="centerY" secondItem="fSJ-Ra-HK0" secondAttribute="centerY" id="ax6-lf-2y8"/>
                                             <constraint firstItem="eus-n3-edF" firstAttribute="centerX" secondItem="fSJ-Ra-HK0" secondAttribute="centerX" id="ctP-nZ-qPU"/>
-                                            <constraint firstItem="eus-n3-edF" firstAttribute="width" secondItem="fSJ-Ra-HK0" secondAttribute="width" id="q08-38-a37"/>
                                         </constraints>
-                                        <size key="customSize" width="59" height="67"/>
+                                        <size key="customSize" width="69" height="69"/>
                                         <connections>
                                             <outlet property="characterImageView" destination="eus-n3-edF" id="oQK-f0-Dv7"/>
+                                            <segue destination="Dty-v5-lor" kind="show" identifier="ShowCharactersDetailsSegue" id="S0d-Z8-GdT"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CharacterNameIdentifier" id="HXh-OP-BMG" customClass="NameCollectionViewCell" customModule="MarvelComics" customModuleProvider="target">
-                                        <rect key="frame" x="69" y="7.5" width="298" height="52"/>
+                                        <rect key="frame" x="79" y="2" width="291" height="65"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="298" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="291" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yqf-Ds-kCk">
-                                                    <rect key="frame" x="0.0" y="0.0" width="298" height="52"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="291" height="65"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -172,15 +197,17 @@
                                             <constraint firstItem="Yqf-Ds-kCk" firstAttribute="width" secondItem="HXh-OP-BMG" secondAttribute="width" id="Pli-Rn-Cws"/>
                                             <constraint firstItem="Yqf-Ds-kCk" firstAttribute="height" secondItem="HXh-OP-BMG" secondAttribute="height" id="okA-c0-ZAD"/>
                                         </constraints>
-                                        <size key="customSize" width="298" height="52"/>
+                                        <size key="customSize" width="291" height="65"/>
                                         <connections>
                                             <outlet property="nameLabel" destination="Yqf-Ds-kCk" id="0UY-mq-z2I"/>
+                                            <segue destination="Dty-v5-lor" kind="show" identifier="ShowCharactersDetailsSegue" id="nNl-rx-nx8"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="ELh-Pf-Sjr" firstAttribute="leading" secondItem="MHX-Po-Bd5" secondAttribute="leading" id="5pD-3M-pkq"/>
                             <constraint firstItem="MHX-Po-Bd5" firstAttribute="bottom" secondItem="ELh-Pf-Sjr" secondAttribute="bottom" id="Efx-Az-rFP"/>
@@ -195,36 +222,326 @@
                         <viewLayoutGuide key="safeArea" id="MHX-Po-Bd5"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Characters" id="j4T-Va-SnC"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="charactersCollectionView" destination="ELh-Pf-Sjr" id="Eep-Rv-7Mo"/>
                         <outlet property="logOutNavigationBar" destination="MgT-cL-Vv6" id="goi-U9-T34"/>
-                        <segue destination="Dty-v5-lor" kind="show" identifier="ShowCharactersDetailsSegue" id="OFU-ce-R6Q"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="LogOutSegue" id="b8I-kX-eFG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="00y-fD-jbc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3055" y="-732"/>
+            <point key="canvasLocation" x="3053.5999999999999" y="-732.68365817091455"/>
         </scene>
-        <!--View Controller-->
+        <!--Character Details View Controller-->
         <scene sceneID="1Ej-Af-KOd">
             <objects>
-                <viewController id="Dty-v5-lor" sceneMemberID="viewController">
+                <viewController id="Dty-v5-lor" customClass="CharacterDetailsViewController" customModule="MarvelComics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cj8-CB-3zO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dM0-5I-uHm">
+                                <rect key="frame" x="123.5" y="79" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="7xv-46-AfM"/>
+                                    <constraint firstAttribute="width" constant="128" id="nWd-tk-ScG"/>
+                                </constraints>
+                            </imageView>
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bT3-Lr-Adv">
+                                <rect key="frame" x="0.0" y="270" width="375" height="397"/>
+                                <connections>
+                                    <segue destination="ibP-de-dLm" kind="embed" identifier="DataSegue" id="3Hh-yu-8b0"/>
+                                </connections>
+                            </containerView>
+                            <navigationBar clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JlR-Ka-UTY" customClass="LogOutNavigationBar" customModule="MarvelComics" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <color key="barTintColor" red="0.91280009390000005" green="0.91280009390000005" blue="0.91280009390000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <items>
+                                    <navigationItem id="zzk-eY-Jgi">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="QYC-Tp-jZC">
+                                            <connections>
+                                                <action selector="backButtonPressed:" destination="JlR-Ka-UTY" id="po8-5b-yvi"/>
+                                                <segue destination="5N6-jj-zIl" kind="show" identifier="backToListSegue" id="l4h-DS-TsM"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Log out" id="NHs-5p-YHS">
+                                            <connections>
+                                                <action selector="logOutButtonPressed:" destination="JlR-Ka-UTY" id="GdL-0v-PFn"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Hero name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="91G-39-4Zr">
+                                <rect key="frame" x="126" y="215" width="122.5" height="31.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dM0-5I-uHm" firstAttribute="top" secondItem="JlR-Ka-UTY" secondAttribute="bottom" constant="15" id="Adb-AQ-nON"/>
+                            <constraint firstItem="dM0-5I-uHm" firstAttribute="centerX" secondItem="md3-eE-zvg" secondAttribute="centerX" id="Hoi-pB-fCi"/>
+                            <constraint firstItem="bT3-Lr-Adv" firstAttribute="centerX" secondItem="md3-eE-zvg" secondAttribute="centerX" id="NAj-sU-L0C"/>
+                            <constraint firstItem="bT3-Lr-Adv" firstAttribute="width" secondItem="Cj8-CB-3zO" secondAttribute="width" id="NLh-eJ-0hV"/>
+                            <constraint firstItem="JlR-Ka-UTY" firstAttribute="centerX" secondItem="md3-eE-zvg" secondAttribute="centerX" id="O8I-Hm-oCB"/>
+                            <constraint firstItem="bT3-Lr-Adv" firstAttribute="bottom" secondItem="md3-eE-zvg" secondAttribute="bottom" id="PIQ-es-mU6"/>
+                            <constraint firstItem="91G-39-4Zr" firstAttribute="top" secondItem="dM0-5I-uHm" secondAttribute="bottom" constant="31" id="RMy-GR-Nqs"/>
+                            <constraint firstItem="91G-39-4Zr" firstAttribute="centerX" secondItem="md3-eE-zvg" secondAttribute="centerX" id="TCq-lK-WS6"/>
+                            <constraint firstItem="JlR-Ka-UTY" firstAttribute="top" secondItem="md3-eE-zvg" secondAttribute="top" id="kNr-vg-8hv"/>
+                            <constraint firstItem="bT3-Lr-Adv" firstAttribute="top" secondItem="91G-39-4Zr" secondAttribute="bottom" constant="44.5" id="qky-9o-eI7"/>
+                            <constraint firstItem="JlR-Ka-UTY" firstAttribute="width" secondItem="Cj8-CB-3zO" secondAttribute="width" id="z6e-Cc-3Z2"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="md3-eE-zvg"/>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="additionalsContainer" destination="bT3-Lr-Adv" id="fjN-Ri-YOe"/>
+                        <outlet property="characterImageView" destination="dM0-5I-uHm" id="VKj-KH-LP6"/>
+                        <outlet property="characterNameLabel" destination="91G-39-4Zr" id="Cbc-cZ-hdZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XLg-p4-Oyc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3839" y="-732"/>
+            <point key="canvasLocation" x="3837.5999999999999" y="-732.68365817091455"/>
+        </scene>
+        <!--Stories-->
+        <scene sceneID="6pd-CA-DzF">
+            <objects>
+                <viewController id="pY1-YM-GOn" customClass="SummaryListViewController" customModule="MarvelComics" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="37N-cL-Zvc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="397"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Y0b-dS-0wJ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="363"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ComicsCellIdentifier" id="nUB-oJ-K7b" customClass="AdditionalDetailsTableViewCell" customModule="MarvelComics" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nUB-oJ-K7b" id="PEl-33-koo">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Rl-NK-Ugd">
+                                                    <rect key="frame" x="15" y="11.5" width="352" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="0Rl-NK-Ugd" firstAttribute="leading" secondItem="PEl-33-koo" secondAttribute="leading" constant="15" id="Knu-FU-Yfq"/>
+                                                <constraint firstItem="0Rl-NK-Ugd" firstAttribute="centerY" secondItem="PEl-33-koo" secondAttribute="centerY" id="WLE-bz-L5g"/>
+                                                <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="0Rl-NK-Ugd" secondAttribute="trailing" constant="8" id="sGX-Hl-9Ht"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="0Rl-NK-Ugd" id="mhj-9d-Dl5"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Z4Z-wM-p9d"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Stories" id="ail-Ng-XEz"/>
+                    <connections>
+                        <outlet property="summaryListTable" destination="Y0b-dS-0wJ" id="i7i-d4-v8c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jW1-6H-KRw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5524" y="-614"/>
+        </scene>
+        <!--Series-->
+        <scene sceneID="Kga-n3-qnl">
+            <objects>
+                <viewController id="g39-ht-CNI" customClass="SummaryListViewController" customModule="MarvelComics" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JXk-GG-bn7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="397"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wOx-Q9-zfE">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="363"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ComicsCellIdentifier" id="wam-zF-XAp" customClass="AdditionalDetailsTableViewCell" customModule="MarvelComics" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wam-zF-XAp" id="Rt0-3o-u6j">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C9V-9T-U8E">
+                                                    <rect key="frame" x="15" y="11.5" width="352" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="C9V-9T-U8E" secondAttribute="trailing" constant="8" id="cYt-pp-tnS"/>
+                                                <constraint firstItem="C9V-9T-U8E" firstAttribute="centerY" secondItem="Rt0-3o-u6j" secondAttribute="centerY" id="h5Z-tg-NLs"/>
+                                                <constraint firstItem="C9V-9T-U8E" firstAttribute="leading" secondItem="Rt0-3o-u6j" secondAttribute="leading" constant="15" id="jes-14-8pI"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="C9V-9T-U8E" id="idl-bb-XoT"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="cNW-Hp-I8C"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Series" id="1Sx-w6-M8j"/>
+                    <connections>
+                        <outlet property="summaryListTable" destination="wOx-Q9-zfE" id="RIz-QK-8pk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9dR-st-dxv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4615" y="-124"/>
+        </scene>
+        <!--Events-->
+        <scene sceneID="wug-hg-JNB">
+            <objects>
+                <viewController id="0lj-sH-ZCe" customClass="SummaryListViewController" customModule="MarvelComics" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1AC-Fa-yKx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="397"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Ve-tq-yWT">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="363"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ComicsCellIdentifier" id="1ze-Ch-OHE" customClass="AdditionalDetailsTableViewCell" customModule="MarvelComics" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1ze-Ch-OHE" id="F5H-Xa-mbq">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amv-Eb-S5D">
+                                                    <rect key="frame" x="15" y="11.5" width="352" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="amv-Eb-S5D" firstAttribute="leading" secondItem="F5H-Xa-mbq" secondAttribute="leading" constant="15" id="cf1-to-0dD"/>
+                                                <constraint firstItem="amv-Eb-S5D" firstAttribute="centerY" secondItem="F5H-Xa-mbq" secondAttribute="centerY" id="cpw-HD-JaI"/>
+                                                <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="amv-Eb-S5D" secondAttribute="trailing" constant="8" id="fVb-sF-o1c"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="amv-Eb-S5D" id="3ez-wN-JED"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="xZa-DD-FaQ"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Events" id="TxR-zF-ssR"/>
+                    <connections>
+                        <outlet property="summaryListTable" destination="0Ve-tq-yWT" id="mRk-Wf-O9h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hSX-KK-3Mp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5524" y="-124.13793103448276"/>
+        </scene>
+        <!--Comics-->
+        <scene sceneID="s3r-Wm-SHo">
+            <objects>
+                <viewController id="s6u-mT-AFN" customClass="SummaryListViewController" customModule="MarvelComics" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c6A-iB-coR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="397"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xwY-mB-hjd">
+                                <rect key="frame" x="-1" y="0.0" width="375" height="363"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ComicsCellIdentifier" id="qPC-jf-uCb" customClass="AdditionalDetailsTableViewCell" customModule="MarvelComics" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qPC-jf-uCb" id="900-ze-Jae">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4aG-VZ-oBD">
+                                                    <rect key="frame" x="15" y="11.5" width="352" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="4aG-VZ-oBD" secondAttribute="trailing" constant="8" id="OOo-Ri-3Hn"/>
+                                                <constraint firstItem="4aG-VZ-oBD" firstAttribute="centerY" secondItem="900-ze-Jae" secondAttribute="centerY" id="TJu-Mz-CVj"/>
+                                                <constraint firstItem="4aG-VZ-oBD" firstAttribute="leading" secondItem="900-ze-Jae" secondAttribute="leading" constant="15" id="mbU-KH-TTd"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="4aG-VZ-oBD" id="8Pg-kU-Zxj"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="fMJ-ba-n50"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Comics" id="3ZU-Zq-G7U"/>
+                    <connections>
+                        <outlet property="summaryListTable" destination="xwY-mB-hjd" id="naI-d3-0aH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5ap-ts-8zf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5524" y="-1070.4647676161919"/>
+        </scene>
+        <!--Additional Details View Controller-->
+        <scene sceneID="DRw-Ie-gWp">
+            <objects>
+                <tabBarController id="ibP-de-dLm" customClass="AdditionalDetailsViewController" customModule="MarvelComics" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3MS-Za-Ram">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="s6u-mT-AFN" kind="relationship" relationship="viewControllers" id="3Oy-UA-ZyH"/>
+                        <segue destination="pY1-YM-GOn" kind="relationship" relationship="viewControllers" id="6K6-6d-jkR"/>
+                        <segue destination="0lj-sH-ZCe" kind="relationship" relationship="viewControllers" id="h8a-0j-2kB"/>
+                        <segue destination="g39-ht-CNI" kind="relationship" relationship="viewControllers" id="Zoo-4c-wKI"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F7C-jc-prv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4614" y="-768"/>
         </scene>
         <!--Main Screen Tab Bar Controller-->
         <scene sceneID="L9e-dK-7th">
             <objects>
                 <tabBarController id="ObN-zC-9Tr" customClass="MainScreenTabBarController" customModule="MarvelComics" customModuleProvider="target" sceneMemberID="viewController">
+                    <nil key="simulatedTopBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uZ7-Cv-VjM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -261,6 +578,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="nNl-rx-nx8"/>
+        <segue reference="l4h-DS-TsM"/>
         <segue reference="b8I-kX-eFG"/>
     </inferredMetricsTieBreakers>
 </document>
