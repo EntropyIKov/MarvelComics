@@ -9,17 +9,31 @@
 import Foundation
 import ObjectMapper
 
-class Comic: Mappable, EntityWithTitleAndMarvelImageProtocol {
+class Comic: Mappable, EntityWithTitleAndMarvelImageProtocol {    
     var id: Int?
     var title: String?
     var description: String?
     var format: String?
     var pageCount: Int?
     var thumbnail: MarverlImage?
-    var images: [MarverlImage]?
+    lazy var pathToImage: String? = {
+        return thumbnail?.fullPath
+    }()
+    var heroes: [Hero]?
+    static let type = RequestManager.EntityType.comic
     
-    required init?(map: Map) {
-        
+    required init?(map: Map) {}
+    
+    init(by model: ComicCDObject) {
+        id = Int(model.id)
+        title = model.title
+        description = model.comicDescription
+        pathToImage = model.pathToImage
+        format = model.format
+        pageCount = Int(model.pageCount)
+        if let modelHeroes = model.heroes {
+            heroes = Array(modelHeroes) as? [Hero]
+        }
     }
     
     func mapping(map: Map) {
@@ -29,6 +43,5 @@ class Comic: Mappable, EntityWithTitleAndMarvelImageProtocol {
         format      <- map["format"]
         pageCount   <- map["pageCount"]
         thumbnail   <- map["thumbnail"]
-        images      <- map["images"]
     }
 }

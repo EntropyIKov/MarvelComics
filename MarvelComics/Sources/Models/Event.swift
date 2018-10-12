@@ -10,12 +10,27 @@ import Foundation
 import ObjectMapper
 
 class Event: Mappable, EntityWithTitleAndMarvelImageProtocol {
+    
+    static var type = RequestManager.EntityType.event
     var id: Int?
     var title: String?
     var description: String?
     var thumbnail: MarverlImage?
-    required init?(map: Map) {
-        
+    lazy var pathToImage: String? = {
+        return thumbnail?.fullPath
+    }()
+    var heroes: [Hero]?
+    
+    required init?(map: Map) {}
+
+    init(by model: EventCDObject) {
+        id = Int(model.id)
+        title = model.title
+        description = model.eventDescription
+        pathToImage = model.pathToImage
+        if let modelHeroes = model.heroes {
+            heroes = Array(modelHeroes) as? [Hero]
+        }
     }
     
     func mapping(map: Map) {

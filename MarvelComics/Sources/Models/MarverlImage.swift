@@ -13,13 +13,13 @@ class MarverlImage: Mappable {
     
     var path: String?
     var imageExtension: String?
-    var fullPath: String? {
+    lazy var fullPath: String? = {
         if let path = path, let imageExtension = imageExtension {
             return "\(path).\(imageExtension)"
         } else {
             return nil
         }
-    }
+    }()
     
     required init?(map: Map) {
         

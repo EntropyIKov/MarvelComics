@@ -1,4 +1,82 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14315.18" systemVersion="18A391" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+    <entity name="ComicCDObject" representedClassName="ComicCDObject" syncable="YES" codeGenerationType="class">
+        <attribute name="comicDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="format" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="pageCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="pathToImage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="heroes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HeroCDObject" inverseName="comics" inverseEntity="HeroCDObject" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="EventCDObject" representedClassName="EventCDObject" syncable="YES" codeGenerationType="class">
+        <attribute name="eventDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="pathToImage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="heroes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HeroCDObject" inverseName="events" inverseEntity="HeroCDObject" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="HeroCDObject" representedClassName="HeroCDObject" syncable="YES" codeGenerationType="class">
+        <attribute name="heroDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES">
+            <userInfo>
+                <entry key="key" value="id"/>
+            </userInfo>
+        </attribute>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pathToImage" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="comics" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ComicCDObject" inverseName="heroes" inverseEntity="ComicCDObject" syncable="YES"/>
+        <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EventCDObject" inverseName="heroes" inverseEntity="EventCDObject" syncable="YES"/>
+        <relationship name="series" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SeriesCDObject" inverseName="heroes" inverseEntity="SeriesCDObject" syncable="YES"/>
+        <relationship name="stories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StoryCDObject" inverseName="heroes" inverseEntity="StoryCDObject" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+        <userInfo>
+            <entry key="key" value="id"/>
+        </userInfo>
+    </entity>
+    <entity name="SeriesCDObject" representedClassName="SeriesCDObject" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="pathToImage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="seriesDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="heroes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HeroCDObject" inverseName="series" inverseEntity="HeroCDObject" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="StoryCDObject" representedClassName="StoryCDObject" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="pathToImage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="storyDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="heroes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HeroCDObject" inverseName="stories" inverseEntity="HeroCDObject" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <elements>
+        <element name="ComicCDObject" positionX="-882.60546875" positionY="-82.89453125" width="128" height="148"/>
+        <element name="EventCDObject" positionX="-756" positionY="72" width="128" height="118"/>
+        <element name="HeroCDObject" positionX="-309.08984375" positionY="16.23046875" width="128" height="163"/>
+        <element name="SeriesCDObject" positionX="-169.93359375" positionY="233.45703125" width="128" height="118"/>
+        <element name="StoryCDObject" positionX="-100.890625" positionY="6.7578125" width="128" height="118"/>
+    </elements>
 </model>

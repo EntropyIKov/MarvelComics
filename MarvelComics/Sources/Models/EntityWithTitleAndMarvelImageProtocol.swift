@@ -9,7 +9,8 @@
 import Foundation
 import ObjectMapper
 
-protocol EntityWithTitleAndMarvelImageProtocol {
+protocol EntityWithTitleAndMarvelImageProtocol: Mappable {
     var title: String? { get set }
     var thumbnail: MarverlImage? { get set }
+    static var type: RequestManager.EntityType { get }
 }

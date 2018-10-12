@@ -60,7 +60,7 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsq-fq-dnG">
                                                     <rect key="frame" x="8" y="98" width="164" height="30"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -78,28 +78,29 @@
                                         <connections>
                                             <outlet property="heroImageView" destination="Dfq-iZ-a7b" id="bf9-zq-twG"/>
                                             <outlet property="heroNameLabel" destination="lsq-fq-dnG" id="vgX-mo-2ks"/>
-                                            <segue destination="1fH-F0-GCB" kind="push" identifier="ShowHeroDetails" id="lif-m6-QYi"/>
+                                            <segue destination="1fH-F0-GCB" kind="show" identifier="ShowHeroDetails" id="lif-m6-QYi"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="3jT-Op-02O">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="QEe-rF-w5J">
+                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="QEe-rF-w5J" firstAttribute="centerX" secondItem="D2m-vX-VZU" secondAttribute="centerX" id="CdN-2E-20N"/>
                             <constraint firstItem="F99-lP-qOT" firstAttribute="centerX" secondItem="OJ5-0h-DQ0" secondAttribute="centerX" id="O8m-jG-vzF"/>
                             <constraint firstItem="F99-lP-qOT" firstAttribute="centerY" secondItem="OJ5-0h-DQ0" secondAttribute="centerY" constant="28.5" id="eis-9r-PCg"/>
                             <constraint firstItem="F99-lP-qOT" firstAttribute="height" secondItem="D2m-vX-VZU" secondAttribute="height" constant="-56" id="guz-BC-TTe"/>
+                            <constraint firstItem="QEe-rF-w5J" firstAttribute="centerY" secondItem="D2m-vX-VZU" secondAttribute="centerY" id="lRC-51-K7N"/>
                             <constraint firstItem="F99-lP-qOT" firstAttribute="width" secondItem="D2m-vX-VZU" secondAttribute="width" id="leB-Id-iYS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OJ5-0h-DQ0"/>
                     </view>
                     <navigationItem key="navigationItem" id="F5N-0o-jQQ"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="3jT-Op-02O" id="yRA-co-2qt"/>
+                        <outlet property="activityIndicator" destination="QEe-rF-w5J" id="2XY-gT-dRe"/>
                         <outlet property="charactersCollectionView" destination="F99-lP-qOT" id="gLY-gI-fae"/>
                     </connections>
                 </viewController>

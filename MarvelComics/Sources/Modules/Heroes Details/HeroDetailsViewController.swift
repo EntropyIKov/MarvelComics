@@ -12,26 +12,24 @@ import Kingfisher
 class HeroDetailsViewController: UIViewController {
     
     //MARK: - Outlets
-    @IBOutlet weak var heroImageView: UIImageView!
-    @IBOutlet weak var heroNameLabel: UILabel!
-    @IBOutlet weak var viewContainer: UIView!
-    @IBOutlet weak var pagesSegmentControl: UISegmentedControl!
+    @IBOutlet private weak var heroImageView: UIImageView!
+    @IBOutlet private weak var heroNameLabel: UILabel!
+    @IBOutlet private weak var viewContainer: UIView!
+    @IBOutlet private weak var pagesSegmentControl: UISegmentedControl!
     
     //MAKR: - Variables
     var hero: Hero!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupViews()
-        
     }
     
     func setupViews() {
         
-        if let fullpath = hero?.thumbnail?.fullPath {
-            let url = URL(string: fullpath)
-            heroImageView.kf.setImage(with: url)
+        if let pathToImage = hero.pathToImage, let url = URL(string: pathToImage) {
+            let resource = ImageResource(downloadURL: url, cacheKey: "\(pathToImage.hashValue)\(pathToImage)")
+            heroImageView.kf.setImage(with: resource)
         } else {
             heroImageView.image = UIImage(named: "no_image")
         }
@@ -51,11 +49,11 @@ class HeroDetailsViewController: UIViewController {
     
     @IBAction func segmentControlValueChanged(_ sender: UISegmentedControl) {
         let pageVC = children[0] as! AdditionalDetailsPageViewController
-        let pageTables = pageVC.additionalDetailsTableViewControllers
+        let pageTables = pageVC.childrenTableViewsContollers
         let newPage = sender.selectedSegmentIndex
         let oldPage = pageVC.currentPage
         let direction = newPage > oldPage ? UIPageViewController.NavigationDirection.forward : .reverse
-        pageVC.setViewControllers([pageTables[newPage]!], direction: direction, animated: true, completion: nil)
+        pageVC.setViewControllers([pageTables[newPage]], direction: direction, animated: true, completion: nil)
         pageVC.currentPage = newPage
     }
     
@@ -63,7 +61,7 @@ class HeroDetailsViewController: UIViewController {
         if segue.identifier == "AdditionDetailsListSegue" {
             let vc = segue.destination as! AdditionalDetailsPageViewController
             vc.hero = hero
-            vc.didFinishAnimationHandler = { index in
+            vc.didFinishAnimationHandler = { [unowned self] index in
                 self.pagesSegmentControl.selectedSegmentIndex = index
             }
             vc.currentPage = pagesSegmentControl.selectedSegmentIndex

@@ -12,15 +12,15 @@ class AuthorizationViewController: UIViewController {
     
     
     //MARK: - Outlets
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet private weak var emailTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
+    @IBOutlet private weak var signInButton: UIButton!
     
     //MARK: - Variables
-    static var storyboardInstance: AuthorizationViewController? {
+    static var storyboardInstance: AuthorizationViewController? = {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         return storyboard.instantiateInitialViewController() as? AuthorizationViewController
-    }
+    }()
     private var isEmailValid = false
     private var isPasswordValid = false
     
@@ -42,15 +42,17 @@ class AuthorizationViewController: UIViewController {
             UIApplication.shared.keyWindow?.rootViewController = mainScreenTabBarViewController
         }
     }
+}
+
+private extension AuthorizationViewController {
     
     @objc private func checkEmail(sender: UITextField) {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let email = sender.text
         
-        // idk how it works(
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         isEmailValid = emailTest.evaluate(with: email)
-        changeButtonState()
+        changeSignInButtonState()
     }
     
     @objc private func checkPassword(sender: UITextField) {
@@ -59,15 +61,10 @@ class AuthorizationViewController: UIViewController {
         } else {
             isPasswordValid = false
         }
-        changeButtonState()
+        changeSignInButtonState()
     }
     
-    private func changeButtonState() {
-        if isEmailValid && isPasswordValid {
-            signInButton.isEnabled = true
-        } else {
-            signInButton.isEnabled = false
-        }
+    private func changeSignInButtonState() {
+        signInButton.isEnabled = isEmailValid && isPasswordValid
     }
-    
 }
