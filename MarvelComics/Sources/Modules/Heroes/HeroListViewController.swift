@@ -6,10 +6,6 @@
 //  Copyright © 2018 Kovalenko Ilia. All rights reserved.
 //
 
-// Какое поведение при refresh? : clear base
-// Как проверять, существует ли запись в core data? predicate
-// Загрузку постранично делать с помощью fetchLimit или fetchOffset? : Как хранить загруженные строки? : FRC
-
 import UIKit
 import CoreData
 
@@ -146,8 +142,13 @@ class HeroListViewController: UIViewController {
     
 }
 
-// UICollectionViewDelegate, UICollectionViewDataSource
-extension HeroListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+// UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
+extension HeroListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let cellSize = CGSize(width: view.frame.width / 2 - 5, height: 132)
+        return cellSize
+    }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1

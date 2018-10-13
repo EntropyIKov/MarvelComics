@@ -95,7 +95,7 @@ extension AdditionalDetailsPageViewController: UIPageViewControllerDelegate, UIP
     }
     
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return titles.count
+        return 0
     }
     
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {

@@ -30,7 +30,7 @@ class SeriesTableViewController: UITableViewController {
     }()
     
     lazy var parentsHeroesFetchedResultController: NSFetchedResultsController<HeroCDObject>? = {
-        let fetchedResultController = (parent as! AdditionalDetailsPageViewController).heroFetchedResultsController
+        let fetchedResultController = (parent as? AdditionalDetailsPageViewController)?.heroFetchedResultsController
         return fetchedResultController
     }()
     

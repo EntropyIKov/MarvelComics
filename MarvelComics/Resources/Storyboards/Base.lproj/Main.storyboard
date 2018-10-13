@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -14,24 +14,24 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="AuthorizationViewController" customModule="MarvelComics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter email..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lqk-NK-JeF">
-                                <rect key="frame" x="102.5" y="158" width="170" height="30"/>
+                                <rect key="frame" x="80" y="158" width="160" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="email"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4wV-H6-Luj">
-                                <rect key="frame" x="164" y="243" width="47" height="30"/>
+                                <rect key="frame" x="136.5" y="243" width="47" height="30"/>
                                 <state key="normal" title="Sign In"/>
                                 <connections>
                                     <action selector="signInButtonDidTaped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nbx-ia-dHo"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter password..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ot-mG-Xgy">
-                                <rect key="frame" x="102.5" y="205" width="170" height="30"/>
+                                <rect key="frame" x="80" y="205" width="160" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
@@ -40,8 +40,9 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="4wV-H6-Luj" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="6xv-vr-YHp"/>
+                            <constraint firstItem="lqk-NK-JeF" firstAttribute="leading" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="80" id="GbN-hC-CAm"/>
                             <constraint firstItem="1ot-mG-Xgy" firstAttribute="top" secondItem="lqk-NK-JeF" secondAttribute="bottom" constant="17" id="KEb-YW-UrN"/>
-                            <constraint firstItem="lqk-NK-JeF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="102.5" id="KcU-FH-UI9"/>
+                            <constraint firstItem="lqk-NK-JeF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="55" id="KcU-FH-UI9"/>
                             <constraint firstItem="1ot-mG-Xgy" firstAttribute="width" secondItem="lqk-NK-JeF" secondAttribute="width" id="O96-3x-hhZ"/>
                             <constraint firstItem="1ot-mG-Xgy" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="OXS-5N-dkQ"/>
                             <constraint firstItem="lqk-NK-JeF" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="RHb-Ix-IY9"/>
