@@ -44,7 +44,6 @@
 		99C8D83121661CD100592F5E /* DataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C8D83021661CD100592F5E /* DataContainer.swift */; };
 		99EEF5F12173608C009F91C9 /* EmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EEF5F02173608C009F91C9 /* EmailValidator.swift */; };
 		99EEF5F3217360EF009F91C9 /* PasswordValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EEF5F2217360EF009F91C9 /* PasswordValidator.swift */; };
-		99EEF5FB21736279009F91C9 /* MarvelComicsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EEF5FA21736279009F91C9 /* MarvelComicsTests.swift */; };
 		99EEF60321736436009F91C9 /* ValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EEF60221736436009F91C9 /* ValidatorTests.swift */; };
 		99F11604216F375300FED80F /* ValidatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F11603216F375300FED80F /* ValidatorProtocol.swift */; };
 		99F11606216F37DF00FED80F /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F11605216F37DF00FED80F /* StorageManager.swift */; };
@@ -103,7 +102,6 @@
 		99EEF5F02173608C009F91C9 /* EmailValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidator.swift; sourceTree = "<group>"; };
 		99EEF5F2217360EF009F91C9 /* PasswordValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordValidator.swift; sourceTree = "<group>"; };
 		99EEF5F821736279009F91C9 /* MarvelComicsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelComicsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		99EEF5FA21736279009F91C9 /* MarvelComicsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelComicsTests.swift; sourceTree = "<group>"; };
 		99EEF5FC21736279009F91C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99EEF60221736436009F91C9 /* ValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorTests.swift; sourceTree = "<group>"; };
 		99F11603216F375300FED80F /* ValidatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorProtocol.swift; sourceTree = "<group>"; };
@@ -265,7 +263,6 @@
 			isa = PBXGroup;
 			children = (
 				99EEF60221736436009F91C9 /* ValidatorTests.swift */,
-				99EEF5FA21736279009F91C9 /* MarvelComicsTests.swift */,
 				99EEF5FC21736279009F91C9 /* Info.plist */,
 			);
 			path = MarvelComicsTests;
@@ -521,7 +518,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				99EEF60321736436009F91C9 /* ValidatorTests.swift in Sources */,
-				99EEF5FB21736279009F91C9 /* MarvelComicsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
