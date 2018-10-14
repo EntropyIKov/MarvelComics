@@ -208,7 +208,6 @@
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N9m-Py-tmM">
                                 <rect key="frame" x="0.0" y="302.5" width="375" height="315.5"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <segue destination="iTG-m5-Y4K" kind="embed" identifier="AdditionDetailsListSegue" id="J29-Jj-ALK"/>
                                 </connections>
