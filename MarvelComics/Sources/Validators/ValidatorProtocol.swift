@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol ValidatorProtocol {
-    static func validate(string: String) -> Bool
+protocol ValidatorProtocol {    
+    static func validate(string: String?) -> Bool
 }
