@@ -36,7 +36,9 @@ class AuthorizationViewController: UIViewController {
     
     @IBAction func signInButtonDidTaped(_ sender: UIButton) {
         if let mainScreenTabBarViewController = MainScreenTabBarController.storyboardInstance {
-            UIApplication.shared.keyWindow?.rootViewController = mainScreenTabBarViewController
+            self.present(mainScreenTabBarViewController, animated: true) {
+                UIApplication.shared.keyWindow?.rootViewController = mainScreenTabBarViewController
+            }
         }
     }
     

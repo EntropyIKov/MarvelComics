@@ -132,6 +132,10 @@ class RequestManager {
         return (parameters, headers)
     }
     
+    static func getLimit() -> Int {
+        return Constants.limit
+    }
+    
 }
 
 extension RequestManager {
@@ -145,7 +149,6 @@ extension RequestManager {
         static let privateKey       = "4c90a84675c7471745f0bfcfc4bde57aed0ebb25"
         static let publicKey        = "0940fb6dba2c551b623c38d678417d25"
         static let limit = 20
-        
     }
     
     private enum RequestParamName {

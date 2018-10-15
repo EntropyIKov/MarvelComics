@@ -17,10 +17,22 @@ class MainScreenTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate = self
-        
+        setupView()
     }
-
+    
+    func setupView() {
+        delegate = self
+        let storyboard = UIStoryboard(name: "Heroes", bundle: nil)
+        let listVC = storyboard.instantiateViewController(withIdentifier: "HeroesListVC") as! HeroListViewController
+        let aboutAppVC = storyboard.instantiateViewController(withIdentifier: "AboutAppVC") as! AboutAppViewController
+        let firstViewController = UINavigationController(rootViewController: listVC)
+        let secondViewController = UINavigationController(rootViewController: aboutAppVC)
+        firstViewController.tabBarItem = UITabBarItem(title: "Heroes", image: nil, tag: 0)
+        secondViewController.tabBarItem = UITabBarItem(title: "About App", image: nil, tag: 1)
+        let tabBarList = [firstViewController, secondViewController]
+        viewControllers = tabBarList
+    }
+    
 }
 
 // UITabBarControllerDelegate

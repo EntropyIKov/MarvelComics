@@ -10,32 +10,15 @@
     </dependencies>
     <scenes>
         <!--Heroes-->
-        <scene sceneID="uWl-k2-q3Q">
-            <objects>
-                <navigationController id="nio-mw-2ax" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Heroes" id="iB5-0R-xrD"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dkR-jU-QWq">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="KeC-G5-aPU" kind="relationship" relationship="rootViewController" id="jbs-V0-kOd"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vfQ-A8-izV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-468" y="-717"/>
-        </scene>
-        <!--Heroes-->
         <scene sceneID="n97-gC-dvl">
             <objects>
-                <viewController title="Heroes" id="KeC-G5-aPU" customClass="HeroListViewController" customModule="MarvelComics" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HeroesListVC" title="Heroes" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KeC-G5-aPU" customClass="HeroListViewController" customModule="MarvelComics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D2m-vX-VZU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="F99-lP-qOT">
-                                <rect key="frame" x="0.0" y="64" width="375" height="611"/>
+                                <rect key="frame" x="0.0" y="66.5" width="375" height="611"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ceA-qg-TFd">
                                     <size key="itemSize" width="117" height="132"/>
@@ -79,7 +62,6 @@
                                         <connections>
                                             <outlet property="heroImageView" destination="Dfq-iZ-a7b" id="bf9-zq-twG"/>
                                             <outlet property="heroNameLabel" destination="lsq-fq-dnG" id="vgX-mo-2ks"/>
-                                            <segue destination="1fH-F0-GCB" kind="show" identifier="ShowHeroDetails" id="lif-m6-QYi"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -107,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nef-Ob-HsF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="384.375" y="-711.97183098591552"/>
+            <point key="canvasLocation" x="-594" y="-724"/>
         </scene>
         <!--Main Screen Tab Bar Controller-->
         <scene sceneID="P53-2R-wQr">
@@ -118,42 +100,21 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
-                    <connections>
-                        <segue destination="nio-mw-2ax" kind="relationship" relationship="viewControllers" id="9V0-0u-Dev"/>
-                        <segue destination="KO6-Ah-vWx" kind="relationship" relationship="viewControllers" id="OdM-uj-mpt"/>
-                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LPL-K5-ULG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1504" y="-379"/>
         </scene>
-        <!--About app-->
-        <scene sceneID="HOV-Ys-Mcb">
-            <objects>
-                <navigationController id="KO6-Ah-vWx" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="About app" id="USw-9G-FMB"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Fyw-kQ-SMb">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="BVF-KG-oFB" kind="relationship" relationship="rootViewController" id="sGV-6M-v6o"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Hc1-O6-71B" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-468" y="-45"/>
-        </scene>
-        <!--View Controller-->
+        <!--About App View Controller-->
         <scene sceneID="kid-JE-HEQ">
             <objects>
-                <viewController id="BVF-KG-oFB" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AboutAppVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BVF-KG-oFB" customClass="AboutAppViewController" customModule="MarvelComics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="01x-23-dwy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7vf-0L-Aad">
-                                <rect key="frame" x="0.0" y="262.5" width="375" height="157"/>
+                                <rect key="frame" x="0.0" y="265" width="375" height="157"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="157" id="PQC-Pj-f7a"/>
@@ -182,25 +143,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TFP-me-yaI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="384.375" y="-46.478873239436624"/>
+            <point key="canvasLocation" x="-594" y="-54"/>
         </scene>
         <!--Hero Details View Controller-->
         <scene sceneID="hqE-dB-Zmc">
             <objects>
-                <viewController id="1fH-F0-GCB" customClass="HeroDetailsViewController" customModule="MarvelComics" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HeroDetailsVCID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1fH-F0-GCB" customClass="HeroDetailsViewController" customModule="MarvelComics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NP1-RS-2LE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image=" " translatesAutoresizingMaskIntoConstraints="NO" id="SZe-aL-41d">
-                                <rect key="frame" x="123.5" y="72" width="128" height="128"/>
+                                <rect key="frame" x="123.5" y="28" width="128" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="128" id="WSh-ha-1LS"/>
                                     <constraint firstAttribute="height" constant="128" id="wwY-Qd-VUf"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="isI-UJ-eRG">
-                                <rect key="frame" x="16" y="216" width="343" height="27"/>
+                                <rect key="frame" x="16" y="172" width="343" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="2DK-CY-qTX"/>
                                 </constraints>
@@ -209,13 +170,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N9m-Py-tmM">
-                                <rect key="frame" x="0.0" y="302.5" width="375" height="315.5"/>
+                                <rect key="frame" x="0.0" y="258.5" width="375" height="408.5"/>
                                 <connections>
                                     <segue destination="iTG-m5-Y4K" kind="embed" identifier="AdditionDetailsListSegue" id="J29-Jj-ALK"/>
                                 </connections>
                             </containerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="YxW-X3-9IV">
-                                <rect key="frame" x="16" y="258.5" width="343" height="29"/>
+                                <rect key="frame" x="16" y="214.5" width="343" height="29"/>
                                 <segments>
                                     <segment title="Comics"/>
                                     <segment title="Stories"/>
@@ -254,15 +215,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eND-YK-RPM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1196" y="-711.09445277361328"/>
+            <point key="canvasLocation" x="218" y="-725"/>
         </scene>
         <!--Additional Details Page View Controller-->
         <scene sceneID="vHs-3K-4W6">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="flipHorizontal" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="iTG-m5-Y4K" customClass="AdditionalDetailsPageViewController" customModule="MarvelComics" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="AdditionalDetailsPageVC" autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="flipHorizontal" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="iTG-m5-Y4K" customClass="AdditionalDetailsPageViewController" customModule="MarvelComics" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HnR-1W-mkG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2102" y="-628"/>
+            <point key="canvasLocation" x="1038" y="-609"/>
         </scene>
     </scenes>
     <resources>

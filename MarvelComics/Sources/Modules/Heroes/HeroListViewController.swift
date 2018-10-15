@@ -129,18 +129,6 @@ class HeroListViewController: UIViewController {
         }
     }
     
-    //MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowHeroDetails" {
-            let selectedHeroCell = sender as! HeroCollectionViewCell
-            if let indexPath = charactersCollectionView.indexPath(for: selectedHeroCell) {
-                let selectedHero = Hero(by: fetchedResultsController.object(at: indexPath))
-                let detailVC = segue.destination as! HeroDetailsViewController
-                detailVC.hero = selectedHero
-            }
-        }
-    }
-    
 }
 
 // UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
@@ -184,6 +172,14 @@ extension HeroListViewController: UICollectionViewDelegate, UICollectionViewData
         if maxOffset > 0, maxOffset - currentOffset < maxScrollDiff {
             getListOfHeroes(from: nextPage)
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Heroes", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "HeroDetailsVCID") as! HeroDetailsViewController
+        let selectedHero = Hero(by: fetchedResultsController.object(at: indexPath))
+        vc.hero = selectedHero
+        self.show(vc, sender: self)
     }
 }
 
