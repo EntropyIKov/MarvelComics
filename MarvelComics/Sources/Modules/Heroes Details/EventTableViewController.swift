@@ -18,6 +18,7 @@ class EventTableViewController: UITableViewController {
     var nextPage = 0
     let backgroundContext = StorageManager.sharedInstance.backgroundContext
     let storageManagerInstance = StorageManager.sharedInstance
+    let myDataSource = AdditionalDetailsTableDataSource()
     
     lazy var fetchedResultsController: NSFetchedResultsController<EventCDObject> = {
         let fetchRequest: NSFetchRequest<EventCDObject> = EventCDObject.fetchRequest()
@@ -25,7 +26,7 @@ class EventTableViewController: UITableViewController {
         fetchRequest.predicate = NSPredicate(format: "ANY heroes.id = %@", argumentArray: [self.heroId])
         let context = storageManagerInstance.persistentContainer.viewContext
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultsController.delegate = self
+        fetchedResultsController.delegate = myDataSource
         return fetchedResultsController
     }()
     
@@ -107,6 +108,11 @@ class EventTableViewController: UITableViewController {
     
     // MARK: - Methods
     func setupView() {
+        tableView.dataSource = myDataSource
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellWithImageAndLabel")
+        myDataSource.tableView = tableView
+        myDataSource.fetchedResultsController = (fetchedResultsController as! NSFetchedResultsController<AdditionalDetailsCDObject>)
+        
         view.addSubview(activityIndicator)
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refreshListOfEvent), for: .valueChanged)
@@ -184,68 +190,6 @@ class EventTableViewController: UITableViewController {
         }
         if !isAnimated {
             refreshControl?.endRefreshing()
-        }
-    }
-    
-    // MARK: - Table view data source
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let events = fetchedResultsController.fetchedObjects else { return 0 }
-        return events.count
-    }
-    
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let reuseIdentifier = "cellWithImageAndLabel"
-        var cell: UITableViewCell
-        
-        let eventCDObject = fetchedResultsController.object(at: indexPath)
-        let event = Event(by: eventCDObject)
-        
-        if let oldCell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) {
-            cell = oldCell
-        } else {
-            let newCell = UITableViewCell(style: .default, reuseIdentifier: reuseIdentifier)
-            cell = newCell
-        }
-        
-        cell.textLabel?.text = event.title
-        if let pathToImage = event.pathToImage, let url = URL(string: pathToImage) {
-            let resource = ImageResource(downloadURL: url, cacheKey: "\(pathToImage.hashValue)\(pathToImage)")
-            cell.imageView?.kf.setImage(with: resource)
-        }
-        
-        return cell
-    }
-    
-}
-
-extension EventTableViewController: NSFetchedResultsControllerDelegate {
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates()
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-        case .insert:
-            if let indexPath = newIndexPath {
-                tableView.insertRows(at: [indexPath], with: .automatic)
-            }
-        case .delete:
-            if let indexPath = indexPath {
-                tableView.deleteRows(at: [indexPath], with: .automatic)
-            }
-        case .update: break
-        case .move: break
         }
     }
 }

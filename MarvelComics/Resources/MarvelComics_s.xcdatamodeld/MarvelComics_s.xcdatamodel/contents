@@ -51,11 +51,11 @@
         <relationship name="heroes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HeroCDObject" inverseName="stories" inverseEntity="HeroCDObject" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ComicCDObject" positionX="-944.06640625" positionY="19.80859375" width="128" height="103"/>
-        <element name="EventCDObject" positionX="-630.18359375" positionY="-0.34765625" width="128" height="73"/>
-        <element name="HeroCDObject" positionX="-428.62890625" positionY="99.625" width="128" height="163"/>
-        <element name="SeriesCDObject" positionX="-230.74609375" positionY="-165.0625" width="128" height="73"/>
-        <element name="StoryCDObject" positionX="-80.44140625" positionY="58.6953125" width="128" height="73"/>
-        <element name="AdditionalDetailsCDObject" positionX="-512.88671875" positionY="-166.59375" width="128" height="88"/>
+        <element name="AdditionalDetailsCDObject" positionX="-45" positionY="0" width="128" height="90"/>
+        <element name="ComicCDObject" positionX="-18" positionY="54" width="128" height="105"/>
+        <element name="HeroCDObject" positionX="9" positionY="63" width="128" height="165"/>
+        <element name="EventCDObject" positionX="27" positionY="81" width="128" height="75"/>
+        <element name="SeriesCDObject" positionX="45" positionY="99" width="128" height="75"/>
+        <element name="StoryCDObject" positionX="0" positionY="54" width="128" height="75"/>
     </elements>
 </model>
