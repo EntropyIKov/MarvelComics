@@ -65,11 +65,8 @@ class HeroListViewController: UIViewController {
                 storageManagerInstance.saveContext()
             }
         }
-        if canLoadNextData {
-            canLoadNextData = false
-            nextPage = 0
-            
-        }
+        nextPage = 0
+        getListOfHeroes(from: nextPage)
     }
     
     // Methods
@@ -97,7 +94,6 @@ class HeroListViewController: UIViewController {
                 case .success(let heroes):
                     self.nextPage += 1
                     self.canLoadNextData = true
-                    self.isWorkIndicator(isAnimated: false)
                     for hero in heroes {
                         let heroCD = HeroCDObject(context: self.backgroundContext)
                         guard let id = hero.id else {
@@ -112,14 +108,15 @@ class HeroListViewController: UIViewController {
                 case .failure(let error):
                     print(error)
                 }
-                
+                self.canLoadNextData = true
+                self.refreshControl.endRefreshing()
             }
         }
     }
     
     func isWorkIndicator(isAnimated: Bool) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = isAnimated
-        if let fetchedObjects = fetchedResultsController.fetchedObjects, fetchedObjects.isEmpty && isAnimated {
+        if let fetchedObjects = fetchedResultsController.fetchedObjects, fetchedObjects.isEmpty && isAnimated && !refreshControl.isRefreshing {
             activityIndicator.startAnimating()
             activityIndicator.isHidden = false
         } else {
