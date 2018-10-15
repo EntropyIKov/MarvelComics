@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Kingfisher
 
 class HeroListViewController: UIViewController {
     
@@ -26,10 +27,13 @@ class HeroListViewController: UIViewController {
     
     lazy var fetchedResultsController: NSFetchedResultsController<HeroCDObject> = {
         let context = storageManagerInstance.persistentContainer.viewContext
+        
         let fetchRequest: NSFetchRequest<HeroCDObject> = HeroCDObject.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
+        
         return fetchedResultsController
     }()
     
@@ -77,7 +81,7 @@ class HeroListViewController: UIViewController {
                 if fetchedObjects.isEmpty {
                     getListOfHeroes(from: nextPage)
                 } else {
-                    nextPage = fetchedObjects.count / 20
+                    nextPage = fetchedObjects.count / RequestManager.getLimit()
                 }
             }
         } catch {
@@ -143,7 +147,9 @@ class HeroListViewController: UIViewController {
 extension HeroListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellSize = CGSize(width: view.frame.width / 2 - 5, height: 132)
+        let cellHeigh: CGFloat = 132
+        let cellWidth: CGFloat = view.frame.width / 2 - 5
+        let cellSize = CGSize(width: cellWidth, height: cellHeigh)
         return cellSize
     }
     
@@ -192,5 +198,12 @@ extension HeroListViewController: NSFetchedResultsControllerDelegate {
         case .update: break
         case .move: break
         }
+    }
+}
+
+extension HeroListViewController {
+    override func didReceiveMemoryWarning() {
+        print("warning")
+        ImageCache.default.clearMemoryCache()
     }
 }

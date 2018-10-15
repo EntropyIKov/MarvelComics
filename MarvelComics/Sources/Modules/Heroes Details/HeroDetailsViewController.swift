@@ -33,6 +33,7 @@ class HeroDetailsViewController: UIViewController {
         } else {
             heroImageView.image = UIImage(named: "no_image")
         }
+        
         heroImageView.layer.cornerRadius = heroImageView.frame.height/2
         heroImageView.clipsToBounds = true
         heroNameLabel.text = hero.name

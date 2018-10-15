@@ -24,9 +24,12 @@ class SeriesTableViewController: UITableViewController {
         let fetchRequest: NSFetchRequest<SeriesCDObject> = SeriesCDObject.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         fetchRequest.predicate = NSPredicate(format: "ANY heroes.id = %@", argumentArray: [self.heroId])
+        
         let context = storageManagerInstance.persistentContainer.viewContext
+        
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = myDataSource
+        
         return fetchedResultsController
     }()
     
@@ -36,9 +39,10 @@ class SeriesTableViewController: UITableViewController {
     }()
     
     lazy var activityIndicator: UIActivityIndicatorView = {
+        let topOffset: CGFloat = 140
         let activityIndicator = UIActivityIndicatorView(style: .gray)
         activityIndicator.alpha = 1.0
-        activityIndicator.center = CGPoint(x: view.frame.width / 2, y: 140)
+        activityIndicator.center = CGPoint(x: view.frame.width / 2, y: topOffset)
         return activityIndicator
     }()
     
@@ -59,57 +63,28 @@ class SeriesTableViewController: UITableViewController {
     }
     
     @objc func refreshListOfSeries(_ refreshControl: UIRefreshControl) {
+        
         if let fetchedObjects = fetchedResultsController.fetchedObjects {
             for series in fetchedObjects {
                 fetchedResultsController.managedObjectContext.delete(series)
                 storageManagerInstance.saveContext()
             }
         }
+        
         if canLoadNextData {
-            canLoadNextData = false
             nextPage = 0
-            RequestManager.sharedInstance.getSeriesDetails(for: heroId, from: nextPage) { [weak self] result in
-                switch result {
-                case .success(let seriesStack):
-                    if let self = self {
-                        self.parentsHeroesFetchedResultController?.fetchRequest.predicate = NSPredicate(format: "id = %@", argumentArray: [self.heroId])
-                        do {
-                            try self.parentsHeroesFetchedResultController?.performFetch()
-                            let hero = self.parentsHeroesFetchedResultController?.fetchedObjects?.first
-                            for series in seriesStack {
-                                let seriesCD = SeriesCDObject(context: self.backgroundContext)
-                                if let id = series.id {
-                                    seriesCD.id = Int32(id)
-                                }
-                                if let hero = hero {
-                                    seriesCD.addToHeroes(hero)
-                                }
-                                seriesCD.pathToImage = series.pathToImage
-                                seriesCD.title = series.title
-                                hero?.addToSeries(seriesCD)
-                                self.storageManagerInstance.saveContext()
-                            }
-                        } catch {
-                            print(error)
-                        }
-                    }
-                case .failure(let error):
-                    print(error)
-                }
-                if let self = self {
-                    self.canLoadNextData = true
-                    self.isWorkIndicator(isAnimated: false)
-                }
-            }
+            getListOfSeries(from: nextPage)
         } else {
-            self.isWorkIndicator(isAnimated: false)
+            self.setWorkIndicator(isAnimated: false)
         }
+        
     }
     
     // MARK: - Methods
     func setupView() {
         tableView.dataSource = myDataSource
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellWithImageAndLabel")
+        
         myDataSource.tableView = tableView
         myDataSource.fetchedResultsController = (fetchedResultsController as! NSFetchedResultsController<AdditionalDetailsCDObject>)
         
@@ -118,60 +93,67 @@ class SeriesTableViewController: UITableViewController {
         refreshControl?.addTarget(self, action: #selector(refreshListOfSeries), for: .valueChanged)
         refreshControl?.tintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         refreshControl?.backgroundColor = .clear
-        if let refreshControl = refreshControl {
-            tableView.addSubview(refreshControl)
-        }
+        
+        tableView.addSubview(refreshControl!)
     }
     
     func getListOfSeries(from page: Int) {
         if canLoadNextData {
             canLoadNextData = false
-            isWorkIndicator(isAnimated: true)
+            setWorkIndicator(isAnimated: true)
             
             RequestManager.sharedInstance.getSeriesDetails(for: heroId, from: nextPage) { [weak self] result in
+                guard let self = self else { return }
                 switch result {
                 case .success(let seriesStack):
-                    if let self = self {
-                        self.parentsHeroesFetchedResultController?.fetchRequest.predicate = NSPredicate(format: "id = %@", argumentArray: [self.heroId])
-                        do {
-                            try self.parentsHeroesFetchedResultController?.performFetch()
-                            let hero = self.parentsHeroesFetchedResultController?.fetchedObjects?.first
-                            for series in seriesStack {
-                                let seriesCD = SeriesCDObject(context: self.backgroundContext)
-                                if let id = series.id {
-                                    seriesCD.id = Int32(id)
-                                }
-                                if let hero = hero {
-                                    seriesCD.addToHeroes(hero)
-                                }
-                                seriesCD.pathToImage = series.pathToImage
-                                seriesCD.title = series.title
-                                hero?.addToSeries(seriesCD)
-                                self.storageManagerInstance.saveContext()
+                    self.parentsHeroesFetchedResultController?.fetchRequest.predicate = NSPredicate(format: "id = %@", argumentArray: [self.heroId])
+                    do {
+                        
+                        try self.parentsHeroesFetchedResultController?.performFetch()
+                        let hero = self.parentsHeroesFetchedResultController?.fetchedObjects?.first
+                        
+                        for series in seriesStack {
+                            let seriesCD = SeriesCDObject(context: self.backgroundContext)
+                            
+                            if let id = series.id {
+                                seriesCD.id = Int32(id)
                             }
-                        } catch {
-                            print(error)
+                            
+                            if let hero = hero {
+                                seriesCD.addToHeroes(hero)
+                            }
+                            
+                            seriesCD.pathToImage = series.pathToImage
+                            seriesCD.title = series.title
+                            
+                            hero?.addToSeries(seriesCD)
+                            
+                            self.storageManagerInstance.saveContext()
                         }
+                    } catch {
+                        print(error)
                     }
+                    
                 case .failure(let error):
                     print(error)
                 }
-                if let self = self {
-                    self.canLoadNextData = true
-                    self.isWorkIndicator(isAnimated: false)
-                }
+                
+                self.canLoadNextData = true
+                self.setWorkIndicator(isAnimated: false)
             }
+            
         }
     }
     
     func getListOfSeriesFromCoreData() {
         do {
             try fetchedResultsController.performFetch()
+            
             if let fetchedObjects = fetchedResultsController.fetchedObjects {
                 if fetchedObjects.isEmpty {
                     getListOfSeries(from: nextPage)
                 } else {
-                    nextPage = fetchedObjects.count / 20
+                    nextPage = fetchedObjects.count / RequestManager.getLimit()
                 }
             }
         } catch {
@@ -179,15 +161,17 @@ class SeriesTableViewController: UITableViewController {
         }
     }
     
-    func isWorkIndicator(isAnimated: Bool) {
+    func setWorkIndicator(isAnimated: Bool) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = isAnimated
-        if let fetchedObjects = fetchedResultsController.fetchedObjects, fetchedObjects.isEmpty && isAnimated {
+        
+        if let fetchedObjects = fetchedResultsController.fetchedObjects, fetchedObjects.isEmpty && isAnimated && !refreshControl!.isRefreshing {
             activityIndicator.startAnimating()
             activityIndicator.isHidden = false
         } else {
             activityIndicator.stopAnimating()
             activityIndicator.isHidden = true
         }
+        
         if !isAnimated {
             refreshControl?.endRefreshing()
         }

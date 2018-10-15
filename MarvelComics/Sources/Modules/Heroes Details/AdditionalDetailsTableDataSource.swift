@@ -13,7 +13,7 @@ import CoreData
 class AdditionalDetailsTableDataSource: NSObject, UITableViewDataSource {
     
     var fetchedResultsController: NSFetchedResultsController<AdditionalDetailsCDObject>!
-    var tableView: UITableView!
+    weak var tableView: UITableView!
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -25,13 +25,10 @@ class AdditionalDetailsTableDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let reuseIdentifier = "cellWithImageAndLabel"
-        var cell: UITableViewCell
-        
         let comicCDObject = fetchedResultsController.object(at: indexPath)
         
-        cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         
         cell.textLabel?.text = comicCDObject.title
         if let pathToImage = comicCDObject.pathToImage, let url = URL(string: pathToImage) {

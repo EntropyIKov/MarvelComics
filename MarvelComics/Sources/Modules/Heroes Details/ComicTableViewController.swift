@@ -24,9 +24,12 @@ class ComicTableViewController: UITableViewController {
         let fetchRequest: NSFetchRequest<ComicCDObject> = ComicCDObject.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         fetchRequest.predicate = NSPredicate(format: "ANY heroes.id = %@", argumentArray: [self.heroId])
+        
         let context = storageManagerInstance.persistentContainer.viewContext
+        
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = myDataSource
+        
         return fetchedResultsController
     }()
     
@@ -36,9 +39,11 @@ class ComicTableViewController: UITableViewController {
     }()
     
     lazy var activityIndicator: UIActivityIndicatorView = {
+        let topOffset: CGFloat = 140
         let activityIndicator = UIActivityIndicatorView(style: .gray)
         activityIndicator.alpha = 1.0
-        activityIndicator.center = CGPoint(x: view.frame.width / 2, y: 140)
+        activityIndicator.center = CGPoint(x: view.frame.width / 2, y: topOffset)
+        
         return activityIndicator
     }()
     
@@ -59,61 +64,28 @@ class ComicTableViewController: UITableViewController {
     }
     
     @objc func refreshListOfComics(_ refreshControl: UIRefreshControl) {
+        
         if let fetchedObjects = fetchedResultsController.fetchedObjects {
             for comic in fetchedObjects {
                 fetchedResultsController.managedObjectContext.delete(comic)
                 storageManagerInstance.saveContext()
             }
         }
+        
         if canLoadNextData {
-            canLoadNextData = false
             nextPage = 0
-            RequestManager.sharedInstance.getComicsDetails(for: heroId, from: nextPage) { [weak self] result in
-                switch result {
-                case .success(let comics):
-                    if let self = self {
-                        self.parentsHeroesFetchedResultController?.fetchRequest.predicate = NSPredicate(format: "id = %@", argumentArray: [self.heroId])
-                        do {
-                            try self.parentsHeroesFetchedResultController?.performFetch()
-                            let hero = self.parentsHeroesFetchedResultController?.fetchedObjects?.first
-                            for comic in comics {
-                                let comicCD = ComicCDObject(context: self.backgroundContext)
-                                if let id = comic.id {
-                                    comicCD.id = Int32(id)
-                                }
-                                if let hero = hero {
-                                    comicCD.addToHeroes(hero)
-                                }
-                                if let pageCount = comic.pageCount {
-                                    comicCD.pageCount = Int32(pageCount)
-                                }
-                                comicCD.pathToImage = comic.pathToImage
-                                comicCD.format = comic.format
-                                comicCD.title = comic.title
-                                hero?.addToComics(comicCD)
-                                self.storageManagerInstance.saveContext()
-                            }
-                        } catch {
-                            print(error)
-                        }
-                    }
-                case .failure(let error):
-                    print(error)
-                }
-                if let self = self {
-                    self.canLoadNextData = true
-                    self.isWorkIndicator(isAnimated: false)
-                }
-            }
+            getListOfComics(from: nextPage)
         } else {
-            isWorkIndicator(isAnimated: false)
+            setWorkIndicator(isAnimated: false)
         }
+        
     }
     
     // MARK: - Methods
     func setupView() {
         tableView.dataSource = myDataSource
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellWithImageAndLabel")
+        
         myDataSource.tableView = tableView
         myDataSource.fetchedResultsController = (fetchedResultsController as! NSFetchedResultsController<AdditionalDetailsCDObject>)
         
@@ -122,64 +94,72 @@ class ComicTableViewController: UITableViewController {
         refreshControl?.addTarget(self, action: #selector(refreshListOfComics), for: .valueChanged)
         refreshControl?.tintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         refreshControl?.backgroundColor = .clear
-        if let refreshControl = refreshControl {
-            tableView.addSubview(refreshControl)
-        }
+        
+        tableView.addSubview(refreshControl!)
     }
     
     func getListOfComics(from page: Int) {
         if canLoadNextData {
             canLoadNextData = false
-            isWorkIndicator(isAnimated: true)
+            setWorkIndicator(isAnimated: true)
             
             RequestManager.sharedInstance.getComicsDetails(for: heroId, from: nextPage) { [weak self] result in
+                guard let self = self else { return }
                 switch result {
                 case .success(let comics):
-                    if let self = self {
-                        self.parentsHeroesFetchedResultController?.fetchRequest.predicate = NSPredicate(format: "id = %@", argumentArray: [self.heroId])
-                        do {
-                            try self.parentsHeroesFetchedResultController?.performFetch()
-                            let hero = self.parentsHeroesFetchedResultController?.fetchedObjects?.first
-                            for comic in comics {
-                                let comicCD = ComicCDObject(context: self.backgroundContext)
-                                if let id = comic.id {
-                                    comicCD.id = Int32(id)
-                                }
-                                if let hero = hero {
-                                    comicCD.addToHeroes(hero)
-                                }
-                                if let pageCount = comic.pageCount {
-                                    comicCD.pageCount = Int32(pageCount)
-                                }
-                                comicCD.pathToImage = comic.pathToImage
-                                comicCD.format = comic.format
-                                comicCD.title = comic.title
-                                hero?.addToComics(comicCD)
-                                self.storageManagerInstance.saveContext()
+                    self.parentsHeroesFetchedResultController?.fetchRequest.predicate = NSPredicate(format: "id = %@", argumentArray: [self.heroId])
+                    do {
+                        
+                        try self.parentsHeroesFetchedResultController?.performFetch()
+                        let hero = self.parentsHeroesFetchedResultController?.fetchedObjects?.first
+                        
+                        for comic in comics {
+                            let comicCD = ComicCDObject(context: self.backgroundContext)
+                            
+                            if let id = comic.id {
+                                comicCD.id = Int32(id)
                             }
-                        } catch {
-                            print(error)
+                            
+                            if let hero = hero {
+                                comicCD.addToHeroes(hero)
+                            }
+                            
+                            if let pageCount = comic.pageCount {
+                                comicCD.pageCount = Int32(pageCount)
+                            }
+                            
+                            comicCD.pathToImage = comic.pathToImage
+                            comicCD.format = comic.format
+                            comicCD.title = comic.title
+                            
+                            hero?.addToComics(comicCD)
+                            
+                            self.storageManagerInstance.saveContext()
                         }
+                    } catch {
+                        print(error)
                     }
+                    
                 case .failure(let error):
                     print(error)
                 }
-                if let self = self {
-                    self.canLoadNextData = true
-                    self.isWorkIndicator(isAnimated: false)
-                }
+                
+                self.canLoadNextData = true
+                self.setWorkIndicator(isAnimated: false)
             }
+            
         }
     }
     
     func getComicsFromCoreData() {
         do {
             try fetchedResultsController.performFetch()
+            
             if let fetchedObjects = fetchedResultsController.fetchedObjects {
                 if fetchedObjects.isEmpty {
                     getListOfComics(from: nextPage)
                 } else {
-                    nextPage = fetchedObjects.count / 20
+                    nextPage = fetchedObjects.count / RequestManager.getLimit()
                 }
             }
         } catch {
@@ -187,15 +167,17 @@ class ComicTableViewController: UITableViewController {
         }
     }
     
-    func isWorkIndicator(isAnimated: Bool) {
+    func setWorkIndicator(isAnimated: Bool) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = isAnimated
-        if let fetchedObjects = fetchedResultsController.fetchedObjects, fetchedObjects.isEmpty && isAnimated {
+        
+        if let fetchedObjects = fetchedResultsController.fetchedObjects, fetchedObjects.isEmpty && isAnimated && !refreshControl!.isRefreshing {
             activityIndicator.startAnimating()
             activityIndicator.isHidden = false
         } else {
             activityIndicator.stopAnimating()
             activityIndicator.isHidden = true
         }
+        
         if !isAnimated {
             refreshControl?.endRefreshing()
         }
