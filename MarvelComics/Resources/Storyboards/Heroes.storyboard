@@ -59,9 +59,9 @@
                                                         <constraint firstAttribute="height" constant="90" id="tFU-c0-RSF"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsq-fq-dnG">
-                                                    <rect key="frame" x="42" y="98" width="33" height="30"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sdfdsffsdfsfsdfsdfdsfsdfsdfsdf" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsq-fq-dnG">
+                                                    <rect key="frame" x="0.0" y="98" width="117" height="30"/>
+                                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -70,8 +70,10 @@
                                         <constraints>
                                             <constraint firstItem="Dfq-iZ-a7b" firstAttribute="centerX" secondItem="ZCc-pt-jIe" secondAttribute="centerX" id="8hR-lE-PwI"/>
                                             <constraint firstItem="Dfq-iZ-a7b" firstAttribute="top" secondItem="ZCc-pt-jIe" secondAttribute="top" constant="4" id="Aqk-Oe-DTg"/>
+                                            <constraint firstItem="lsq-fq-dnG" firstAttribute="leading" secondItem="ZCc-pt-jIe" secondAttribute="leading" id="CVf-iE-1jm"/>
                                             <constraint firstItem="lsq-fq-dnG" firstAttribute="top" secondItem="Dfq-iZ-a7b" secondAttribute="bottom" constant="4" id="OEn-n9-ahS"/>
                                             <constraint firstAttribute="bottom" secondItem="lsq-fq-dnG" secondAttribute="bottom" constant="4" id="YCJ-wi-TiI"/>
+                                            <constraint firstAttribute="trailing" secondItem="lsq-fq-dnG" secondAttribute="trailing" id="nT3-bR-UZ9"/>
                                             <constraint firstItem="lsq-fq-dnG" firstAttribute="centerX" secondItem="ZCc-pt-jIe" secondAttribute="centerX" id="pWp-pR-DD4"/>
                                         </constraints>
                                         <connections>
