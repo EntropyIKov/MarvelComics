@@ -95,12 +95,17 @@ class ComicTableViewController: UITableViewController {
                         } catch {
                             print(error)
                         }
-                        self.isWorkIndicator(isAnimated: false)
                     }
                 case .failure(let error):
                     print(error)
                 }
+                if let self = self {
+                    self.canLoadNextData = true
+                    self.isWorkIndicator(isAnimated: false)
+                }
             }
+        } else {
+            isWorkIndicator(isAnimated: false)
         }
     }
     
@@ -149,10 +154,13 @@ class ComicTableViewController: UITableViewController {
                         } catch {
                             print(error)
                         }
-                        self.isWorkIndicator(isAnimated: false)
                     }
                 case .failure(let error):
                     print(error)
+                }
+                if let self = self {
+                    self.canLoadNextData = true
+                    self.isWorkIndicator(isAnimated: false)
                 }
             }
         }
@@ -181,6 +189,9 @@ class ComicTableViewController: UITableViewController {
         } else {
             activityIndicator.stopAnimating()
             activityIndicator.isHidden = true
+        }
+        if !isAnimated {
+            refreshControl?.endRefreshing()
         }
     }
 
