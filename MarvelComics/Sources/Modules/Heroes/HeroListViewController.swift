@@ -62,6 +62,10 @@ class HeroListViewController: UIViewController {
         charactersCollectionView.addSubview(refreshControl)
     }
     
+    @objc func myDismiss() {
+        navigationController?.popViewController(animated: true)
+    }
+    
     @objc func refreshListOfCharacters(_ refreshControl: UIRefreshControl) {
         if let fetchedObjects = fetchedResultsController.fetchedObjects {
             for hero in fetchedObjects {
@@ -162,7 +166,6 @@ extension HeroListViewController: UICollectionViewDelegate, UICollectionViewData
             fatalError("The dequeued cell is not an instance of \(heroCellIdentifier)")
         }
         
-        
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -179,7 +182,11 @@ extension HeroListViewController: UICollectionViewDelegate, UICollectionViewData
         let vc = storyboard.instantiateViewController(withIdentifier: "HeroDetailsVCID") as! HeroDetailsViewController
         let selectedHero = Hero(by: fetchedResultsController.object(at: indexPath))
         vc.hero = selectedHero
-        self.show(vc, sender: self)
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back"
+        navigationController?.navigationItem.backBarButtonItem = backItem
+        navigationItem.backBarButtonItem = backItem
+        navigationController?.show(vc, sender: self)
     }
 }
 

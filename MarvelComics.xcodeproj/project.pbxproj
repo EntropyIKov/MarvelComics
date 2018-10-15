@@ -261,7 +261,6 @@
 			isa = PBXGroup;
 			children = (
 				996347AE216B463D00716ED6 /* Heroes.storyboard */,
-				99EEF6132174BE0B009F91C9 /* AboutAppViewController.swift */,
 				99293685216614340008DD48 /* Main.storyboard */,
 				9929368A216614360008DD48 /* LaunchScreen.storyboard */,
 			);
@@ -272,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				9926831F21668C3000E8CE04 /* MainScreenTabBarController.swift */,
+				99EEF6132174BE0B009F91C9 /* AboutAppViewController.swift */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";

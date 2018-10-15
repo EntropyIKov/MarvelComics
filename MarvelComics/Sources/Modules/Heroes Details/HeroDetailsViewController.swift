@@ -16,6 +16,7 @@ class HeroDetailsViewController: UIViewController {
     @IBOutlet private weak var heroNameLabel: UILabel!
     @IBOutlet private weak var viewContainer: UIView!
     @IBOutlet private weak var pagesSegmentControl: UISegmentedControl!
+    var pagesVC: AdditionalDetailsPageViewController!
     
     //MAKR: - Variables
     var hero: Hero!
@@ -26,7 +27,6 @@ class HeroDetailsViewController: UIViewController {
     }
     
     func setupViews() {
-        
         if let pathToImage = hero.pathToImage, let url = URL(string: pathToImage) {
             let resource = ImageResource(downloadURL: url, cacheKey: "\(pathToImage.hashValue)\(pathToImage)")
             heroImageView.kf.setImage(with: resource)
@@ -40,7 +40,22 @@ class HeroDetailsViewController: UIViewController {
         
         let tableView = craeteTableView(frame: viewContainer.frame)
         viewContainer.addSubview(tableView)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log out", style: .plain, target: LogOutService.self, action: #selector(LogOutService.logOut))
+        
+        let storyboard = UIStoryboard(name: "Heroes", bundle: nil)
+        pagesVC = storyboard.instantiateViewController(withIdentifier: "AdditionalDetailsPageVC") as? AdditionalDetailsPageViewController
+
+        pagesVC.willMove(toParent: self)
+        
+        pagesVC.hero = hero
+        pagesVC.didFinishAnimationHandler = { [unowned self] index in
+            self.pagesSegmentControl.selectedSegmentIndex = index
+        }
+        pagesVC.currentPage = pagesSegmentControl.selectedSegmentIndex
+        
+        viewContainer.addSubview(pagesVC.view)
+        addChild(pagesVC)
+        
+        pagesVC.didMove(toParent: self)
     }
     
     func craeteTableView(frame: CGRect) -> UITableView {
@@ -58,14 +73,14 @@ class HeroDetailsViewController: UIViewController {
         pageVC.currentPage = newPage
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AdditionDetailsListSegue" {
-            let vc = segue.destination as! AdditionalDetailsPageViewController
-            vc.hero = hero
-            vc.didFinishAnimationHandler = { [unowned self] index in
-                self.pagesSegmentControl.selectedSegmentIndex = index
-            }
-            vc.currentPage = pagesSegmentControl.selectedSegmentIndex
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "AdditionDetailsListSegue" {
+//            let vc = segue.destination as! AdditionalDetailsPageViewController
+//            vc.hero = hero
+//            vc.didFinishAnimationHandler = { [unowned self] index in
+//                self.pagesSegmentControl.selectedSegmentIndex = index
+//            }
+//            vc.currentPage = pagesSegmentControl.selectedSegmentIndex
+//        }
+//    }
 }

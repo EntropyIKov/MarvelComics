@@ -98,6 +98,7 @@ extension AdditionalDetailsPageViewController: UIPageViewControllerDelegate, UIP
         let index = childrenTableViewsContollers.index(of: pageViewController.viewControllers![0] as! UITableViewController)!
         currentPage = index
         didFinishAnimationHandler(index)
+        pageViewController.viewControllers![0].view.frame = parent!.view.frame
     }
     
 }

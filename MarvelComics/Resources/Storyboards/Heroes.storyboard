@@ -169,11 +169,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N9m-Py-tmM">
+                            <containerView autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N9m-Py-tmM">
                                 <rect key="frame" x="0.0" y="258.5" width="375" height="408.5"/>
-                                <connections>
-                                    <segue destination="iTG-m5-Y4K" kind="embed" identifier="AdditionDetailsListSegue" id="J29-Jj-ALK"/>
-                                </connections>
                             </containerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="YxW-X3-9IV">
                                 <rect key="frame" x="16" y="214.5" width="343" height="29"/>
@@ -215,7 +212,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eND-YK-RPM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="218" y="-725"/>
+            <point key="canvasLocation" x="154" y="-725"/>
         </scene>
         <!--Additional Details Page View Controller-->
         <scene sceneID="vHs-3K-4W6">
@@ -223,7 +220,7 @@
                 <pageViewController storyboardIdentifier="AdditionalDetailsPageVC" autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="flipHorizontal" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="iTG-m5-Y4K" customClass="AdditionalDetailsPageViewController" customModule="MarvelComics" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HnR-1W-mkG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1038" y="-609"/>
+            <point key="canvasLocation" x="945" y="-725"/>
         </scene>
     </scenes>
     <resources>
