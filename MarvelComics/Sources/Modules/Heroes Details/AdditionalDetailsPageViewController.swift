@@ -16,9 +16,9 @@ class AdditionalDetailsPageViewController: UIPageViewController {
     var currentPage = 0
     let titles = ["Comics", "Stories", "Events", "Series"]
     
-    static var storyboardInstance: AdditionalDetailsPageViewController = {
+    static weak var storyboardInstance: AdditionalDetailsPageViewController? = {
         let storyboard = UIStoryboard(name: "Heroes", bundle: nil)
-        return storyboard.instantiateViewController(withIdentifier: "AdditionalDetailsPageViewController") as! AdditionalDetailsPageViewController
+        return storyboard.instantiateViewController(withIdentifier: "AdditionalDetailsPageViewController") as? AdditionalDetailsPageViewController
     }()
     
     lazy var heroFetchedResultsController: NSFetchedResultsController<HeroCDObject> = {
@@ -41,6 +41,23 @@ class AdditionalDetailsPageViewController: UIPageViewController {
     
     
     lazy var childrenTableViewsContollers: [UITableViewController] = {
+        return generateNewArrayOfViewController()
+    }()
+    
+    //MARK: - Actions
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        delegate = self
+        dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        childrenTableViewsContollers = generateNewArrayOfViewController()
+        setViewControllers([childrenTableViewsContollers[currentPage]], direction: .forward, animated: true, completion: nil)
+    }
+    
+    //MARK: - Methods
+    func generateNewArrayOfViewController() -> [UITableViewController] {
         var array: [UITableViewController] = []
         
         let comicTableViewController = ComicTableViewController()
@@ -61,13 +78,6 @@ class AdditionalDetailsPageViewController: UIPageViewController {
                  seriesTableViewController]
         
         return array
-    }()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        delegate = self
-        dataSource = self
-        setViewControllers([childrenTableViewsContollers[currentPage]], direction: .forward, animated: true, completion: nil)
     }
 }
 

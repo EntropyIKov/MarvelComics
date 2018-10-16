@@ -183,7 +183,7 @@ extension HeroListViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedHero = Hero(by: fetchedResultsController.object(at: indexPath))
-        let heroDetailsViewController = HeroDetailsViewController.storyboardInstance
+        let heroDetailsViewController = HeroDetailsViewController.storyboardInstance 
         heroDetailsViewController.hero = selectedHero
         navigationController?.show(heroDetailsViewController, sender: self)
     }

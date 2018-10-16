@@ -16,7 +16,7 @@ class HeroDetailsViewController: UIViewController {
     @IBOutlet private weak var heroNameLabel: UILabel!
     @IBOutlet private weak var viewContainer: UIView!
     @IBOutlet private weak var pagesSegmentControl: UISegmentedControl!
-    var additionalDetailsPageViewController: AdditionalDetailsPageViewController!
+    weak var additionalDetailsPageViewController: AdditionalDetailsPageViewController?
     
     //MAKR: - Variables
     var hero: Hero!
@@ -28,6 +28,9 @@ class HeroDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         setupViews()
     }
     
@@ -51,20 +54,22 @@ class HeroDetailsViewController: UIViewController {
     
     func setChildViewController() {
         additionalDetailsPageViewController = AdditionalDetailsPageViewController.storyboardInstance
-        
-        additionalDetailsPageViewController.hero = hero
-        additionalDetailsPageViewController.currentPage = pagesSegmentControl.selectedSegmentIndex
-        additionalDetailsPageViewController.didFinishAnimationHandler = { [unowned self] index in
-            self.pagesSegmentControl.selectedSegmentIndex = index
+        if let additionalDetailsPageViewController = additionalDetailsPageViewController {
+            additionalDetailsPageViewController.hero = hero
+            additionalDetailsPageViewController.currentPage = pagesSegmentControl.selectedSegmentIndex
+            additionalDetailsPageViewController.didFinishAnimationHandler = { [unowned self] index in
+                self.pagesSegmentControl.selectedSegmentIndex = index
+            }
+            
+            addChild(additionalDetailsPageViewController)
+            additionalDetailsPageViewController.willMove(toParent: self)
+            additionalDetailsPageViewController.view.frame = viewContainer.bounds
+            additionalDetailsPageViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            additionalDetailsPageViewController.didMove(toParent: self)
+            
+            viewContainer.addSubview(additionalDetailsPageViewController.view)
         }
         
-        addChild(additionalDetailsPageViewController)
-        additionalDetailsPageViewController.willMove(toParent: self)
-        additionalDetailsPageViewController.view.frame = viewContainer.bounds
-        additionalDetailsPageViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        additionalDetailsPageViewController.didMove(toParent: self)
-        
-        viewContainer.addSubview(additionalDetailsPageViewController.view)
     }
     
     func craeteTableView(frame: CGRect) -> UITableView {
