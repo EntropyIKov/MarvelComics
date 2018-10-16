@@ -23,24 +23,17 @@ class MainScreenTabBarController: UITabBarController {
     func setupView() {
         delegate = self
         
-        
-//        let listViewController = storyboard.instantiateViewController(withIdentifier: "HeroesListVC") as! HeroListViewController
-//        let listNavigationController = UINavigationController(rootViewController: listViewController)
-//        listNavigationController.tabBarItem = UITabBarItem(title: "Heroes", image: nil, tag: 0)
-
-//        viewControllers = [listNavigationController]
-        
-        
-        
-        let storyboard = UIStoryboard(name: "Heroes", bundle: nil)
-        let listVC = storyboard.instantiateViewController(withIdentifier: "HeroListViewController") as! HeroListViewController
-        let aboutAppVC = storyboard.instantiateViewController(withIdentifier: "AboutAppViewController") as! AboutAppViewController
-        let firstNavigationController = UINavigationController(rootViewController: listVC)
-        let secondNavigationController = UINavigationController(rootViewController: aboutAppVC)
+        let heroListViewController = HeroListViewController.storyboardInstance
+        heroListViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log out", style: .plain, target: LogOutService.self, action: #selector(LogOutService.logOut))
+        let firstNavigationController = UINavigationController(rootViewController: heroListViewController)
         firstNavigationController.tabBarItem = UITabBarItem(title: "Heroes", image: nil, tag: 0)
+        
+        let aboutAppViewController = AboutAppViewController.storyboardInstance
+        aboutAppViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log out", style: .plain, target: LogOutService.self, action: #selector(LogOutService.logOut))
+        let secondNavigationController = UINavigationController(rootViewController: aboutAppViewController)
         secondNavigationController.tabBarItem = UITabBarItem(title: "About App", image: nil, tag: 1)
-        listVC.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log out", style: .plain, target: LogOutService.self, action: #selector(LogOutService.logOut))
-        aboutAppVC.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log out", style: .plain, target: LogOutService.self, action: #selector(LogOutService.logOut))
+        
+        
         let tabBarList = [firstNavigationController, secondNavigationController]
         viewControllers = tabBarList
     }

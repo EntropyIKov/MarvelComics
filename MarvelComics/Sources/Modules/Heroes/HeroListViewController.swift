@@ -17,6 +17,11 @@ class HeroListViewController: UIViewController {
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
     //MARK: - Variables
+    static var storyboardInstance: HeroListViewController {
+        let storyboard = UIStoryboard(name: "Heroes", bundle: nil)
+        return storyboard.instantiateViewController(withIdentifier: "HeroListViewController") as! HeroListViewController
+    }
+    
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshListOfCharacters), for: .valueChanged)

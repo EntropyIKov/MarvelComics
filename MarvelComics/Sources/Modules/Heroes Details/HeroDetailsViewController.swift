@@ -16,7 +16,7 @@ class HeroDetailsViewController: UIViewController {
     @IBOutlet private weak var heroNameLabel: UILabel!
     @IBOutlet private weak var viewContainer: UIView!
     @IBOutlet private weak var pagesSegmentControl: UISegmentedControl!
-    var pagesVC: AdditionalDetailsPageViewController!
+    var additionalDetailsPageViewController: AdditionalDetailsPageViewController!
     
     //MAKR: - Variables
     var hero: Hero!
@@ -32,36 +32,39 @@ class HeroDetailsViewController: UIViewController {
     }
     
     func setupViews() {
+        heroNameLabel.text = hero.name
+        setImageView()
+        setChildViewController()
+    }
+    
+    func setImageView() {
+        heroImageView.layer.cornerRadius = heroImageView.frame.height/2
+        heroImageView.clipsToBounds = true
+        
         if let pathToImage = hero.pathToImage, let url = URL(string: pathToImage) {
             let resource = ImageResource(downloadURL: url, cacheKey: "\(pathToImage.hashValue)\(pathToImage)")
             heroImageView.kf.setImage(with: resource)
         } else {
             heroImageView.image = UIImage(named: "no_image")
         }
+    }
+    
+    func setChildViewController() {
+        additionalDetailsPageViewController = AdditionalDetailsPageViewController.storyboardInstance
         
-        heroImageView.layer.cornerRadius = heroImageView.frame.height/2
-        heroImageView.clipsToBounds = true
-        heroNameLabel.text = hero.name
-        
-        let tableView = craeteTableView(frame: viewContainer.frame)
-        viewContainer.addSubview(tableView)
-        
-        pagesVC = AdditionalDetailsPageViewController.storyboardInstance
-        
-        pagesVC.hero = hero
-        pagesVC.didFinishAnimationHandler = { [unowned self] index in
+        additionalDetailsPageViewController.hero = hero
+        additionalDetailsPageViewController.currentPage = pagesSegmentControl.selectedSegmentIndex
+        additionalDetailsPageViewController.didFinishAnimationHandler = { [unowned self] index in
             self.pagesSegmentControl.selectedSegmentIndex = index
         }
-        pagesVC.currentPage = pagesSegmentControl.selectedSegmentIndex
         
-        addChild(pagesVC)
-        pagesVC.willMove(toParent: self)
-        pagesVC.view.frame = viewContainer.bounds
-        pagesVC.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        pagesVC.didMove(toParent: self)
+        addChild(additionalDetailsPageViewController)
+        additionalDetailsPageViewController.willMove(toParent: self)
+        additionalDetailsPageViewController.view.frame = viewContainer.bounds
+        additionalDetailsPageViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        additionalDetailsPageViewController.didMove(toParent: self)
         
-        viewContainer.addSubview(pagesVC.view)
-        
+        viewContainer.addSubview(additionalDetailsPageViewController.view)
     }
     
     func craeteTableView(frame: CGRect) -> UITableView {

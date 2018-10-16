@@ -37,6 +37,7 @@ class HeroCollectionViewCell: UICollectionViewCell {
         } else {
             heroImageView.image = UIImage(named: "no_image")
         }
+        
         heroImageView.layer.masksToBounds = false
         heroImageView.layer.cornerRadius = heroImageView.frame.height / 2
         heroImageView.clipsToBounds = true

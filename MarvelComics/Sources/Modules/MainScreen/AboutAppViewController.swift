@@ -10,7 +10,10 @@ import UIKit
 
 class AboutAppViewController: UIViewController {
     
-    
+    static var storyboardInstance: AboutAppViewController {
+        let storyboard = UIStoryboard(name: "Heroes", bundle: nil)
+        return storyboard.instantiateViewController(withIdentifier: "AboutAppViewController") as! AboutAppViewController
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

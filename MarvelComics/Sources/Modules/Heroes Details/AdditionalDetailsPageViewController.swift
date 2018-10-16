@@ -55,10 +55,10 @@ class AdditionalDetailsPageViewController: UIPageViewController {
         let seriesTableViewController = SeriesTableViewController()
         seriesTableViewController.heroId = hero.id!
         
-        array.append(comicTableViewController)
-        array.append(storyTableViewController)
-        array.append(eventTableViewController)
-        array.append(seriesTableViewController)
+        array = [comicTableViewController,
+                 storyTableViewController,
+                 eventTableViewController,
+                 seriesTableViewController]
         
         return array
     }()
