@@ -39,7 +39,6 @@ class AuthorizationViewController: UIViewController {
         UIApplication.shared.keyWindow?.rootViewController = mainScreenTabBarViewController
         UIApplication.shared.keyWindow?.makeKeyAndVisible()
         
-        
 //        if let mainScreenTabBarViewController = MainScreenTabBarController.storyboardInstance {
 //
 //            self.present(mainScreenTabBarViewController, animated: true) {

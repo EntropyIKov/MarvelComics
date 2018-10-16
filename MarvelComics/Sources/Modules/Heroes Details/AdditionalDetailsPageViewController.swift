@@ -16,6 +16,11 @@ class AdditionalDetailsPageViewController: UIPageViewController {
     var currentPage = 0
     let titles = ["Comics", "Stories", "Events", "Series"]
     
+    static var storyboardInstance: AdditionalDetailsPageViewController = {
+        let storyboard = UIStoryboard(name: "Heroes", bundle: nil)
+        return storyboard.instantiateViewController(withIdentifier: "AdditionalDetailsPageViewController") as! AdditionalDetailsPageViewController
+    }()
+    
     lazy var heroFetchedResultsController: NSFetchedResultsController<HeroCDObject> = {
         let context = storageManagerInstance.backgroundContext
         
@@ -98,7 +103,6 @@ extension AdditionalDetailsPageViewController: UIPageViewControllerDelegate, UIP
         let index = childrenTableViewsContollers.index(of: pageViewController.viewControllers![0] as! UITableViewController)!
         currentPage = index
         didFinishAnimationHandler(index)
-        pageViewController.viewControllers![0].view.frame = parent!.view.frame
     }
     
 }

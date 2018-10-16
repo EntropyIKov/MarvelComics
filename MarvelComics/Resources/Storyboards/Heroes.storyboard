@@ -94,7 +94,7 @@
         <!--Main Screen Tab Bar Controller-->
         <scene sceneID="P53-2R-wQr">
             <objects>
-                <tabBarController id="zmK-fw-Ldh" customClass="MainScreenTabBarController" customModule="MarvelComics" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainScreenTabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zmK-fw-Ldh" customClass="MainScreenTabBarController" customModule="MarvelComics" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Yb0-2c-3vq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

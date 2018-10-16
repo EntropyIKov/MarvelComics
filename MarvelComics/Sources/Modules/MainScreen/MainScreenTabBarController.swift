@@ -12,7 +12,7 @@ class MainScreenTabBarController: UITabBarController {
     
     static var storyboardInstance: MainScreenTabBarController {
         let storyboard = UIStoryboard(name: "Heroes", bundle: nil)
-        return storyboard.instantiateInitialViewController() as! MainScreenTabBarController
+        return storyboard.instantiateViewController(withIdentifier: "MainScreenTabBarController") as! MainScreenTabBarController
     }
 
     override func viewDidLoad() {

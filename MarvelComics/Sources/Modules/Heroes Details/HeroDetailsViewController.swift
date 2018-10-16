@@ -21,6 +21,11 @@ class HeroDetailsViewController: UIViewController {
     //MAKR: - Variables
     var hero: Hero!
     
+    static var storyboardInstance: HeroDetailsViewController = {
+        let storyboard = UIStoryboard(name: "Heroes", bundle: nil)
+        return storyboard.instantiateViewController(withIdentifier: "HeroDetailsViewController") as! HeroDetailsViewController
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -41,11 +46,7 @@ class HeroDetailsViewController: UIViewController {
         let tableView = craeteTableView(frame: viewContainer.frame)
         viewContainer.addSubview(tableView)
         
-        
-        let storyboard = UIStoryboard(name: "Heroes", bundle: nil)
-        pagesVC = storyboard.instantiateViewController(withIdentifier: "AdditionalDetailsPageViewController") as? AdditionalDetailsPageViewController
-
-        pagesVC.willMove(toParent: self)
+        pagesVC = AdditionalDetailsPageViewController.storyboardInstance
         
         pagesVC.hero = hero
         pagesVC.didFinishAnimationHandler = { [unowned self] index in
@@ -53,10 +54,14 @@ class HeroDetailsViewController: UIViewController {
         }
         pagesVC.currentPage = pagesSegmentControl.selectedSegmentIndex
         
-        viewContainer.addSubview(pagesVC.view)
         addChild(pagesVC)
-        
+        pagesVC.willMove(toParent: self)
+        pagesVC.view.frame = viewContainer.bounds
+        pagesVC.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         pagesVC.didMove(toParent: self)
+        
+        viewContainer.addSubview(pagesVC.view)
+        
     }
     
     func craeteTableView(frame: CGRect) -> UITableView {
@@ -73,15 +78,4 @@ class HeroDetailsViewController: UIViewController {
         pageVC.setViewControllers([pageTables[newPage]], direction: direction, animated: true, completion: nil)
         pageVC.currentPage = newPage
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "AdditionDetailsListSegue" {
-//            let vc = segue.destination as! AdditionalDetailsPageViewController
-//            vc.hero = hero
-//            vc.didFinishAnimationHandler = { [unowned self] index in
-//                self.pagesSegmentControl.selectedSegmentIndex = index
-//            }
-//            vc.currentPage = pagesSegmentControl.selectedSegmentIndex
-//        }
-//    }
 }
