@@ -45,10 +45,12 @@ class HeroDetailsViewController: UIViewController {
         heroImageView.clipsToBounds = true
         
         if let pathToImage = hero.pathToImage, let url = URL(string: pathToImage) {
-            let resource = ImageResource(downloadURL: url, cacheKey: "\(pathToImage.hashValue)\(pathToImage)")
-            heroImageView.kf.setImage(with: resource)
-        } else {
-            heroImageView.image = UIImage(named: "no_image")
+            heroImageView.kf.setImage(with: url, completionHandler: { [weak self] (image, error, cacheType, imageUrl) in
+                guard let _ = image else {
+                    self?.heroImageView.image = UIImage(named: "no_image")
+                    return 
+                }
+            })
         }
     }
     

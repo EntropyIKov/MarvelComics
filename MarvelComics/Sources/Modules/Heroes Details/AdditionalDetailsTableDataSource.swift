@@ -34,8 +34,7 @@ class AdditionalDetailsTableDataSource: NSObject, UITableViewDataSource {
         cell.textLabel?.isOpaque = false
         cell.textLabel?.text = comicCDObject.title
         if let pathToImage = comicCDObject.pathToImage, let url = URL(string: pathToImage) {
-            let resource = ImageResource(downloadURL: url, cacheKey: "\(pathToImage.hashValue)\(pathToImage)")
-            cell.imageView?.kf.setImage(with: resource)
+            cell.imageView?.kf.setImage(with: url)
         }
         
         return cell
