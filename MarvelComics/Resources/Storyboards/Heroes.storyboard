@@ -12,7 +12,7 @@
         <!--Heroes-->
         <scene sceneID="n97-gC-dvl">
             <objects>
-                <viewController storyboardIdentifier="HeroesListVC" title="Heroes" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KeC-G5-aPU" customClass="HeroListViewController" customModule="MarvelComics" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HeroListViewController" title="Heroes" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KeC-G5-aPU" customClass="HeroListViewController" customModule="MarvelComics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D2m-vX-VZU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -108,7 +108,7 @@
         <!--About App View Controller-->
         <scene sceneID="kid-JE-HEQ">
             <objects>
-                <viewController storyboardIdentifier="AboutAppVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BVF-KG-oFB" customClass="AboutAppViewController" customModule="MarvelComics" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AboutAppViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BVF-KG-oFB" customClass="AboutAppViewController" customModule="MarvelComics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="01x-23-dwy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -148,7 +148,7 @@
         <!--Hero Details View Controller-->
         <scene sceneID="hqE-dB-Zmc">
             <objects>
-                <viewController storyboardIdentifier="HeroDetailsVCID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1fH-F0-GCB" customClass="HeroDetailsViewController" customModule="MarvelComics" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HeroDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1fH-F0-GCB" customClass="HeroDetailsViewController" customModule="MarvelComics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NP1-RS-2LE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -169,7 +169,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <containerView autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N9m-Py-tmM">
+                            <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N9m-Py-tmM">
                                 <rect key="frame" x="0.0" y="258.5" width="375" height="408.5"/>
                             </containerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="YxW-X3-9IV">
@@ -217,7 +217,7 @@
         <!--Additional Details Page View Controller-->
         <scene sceneID="vHs-3K-4W6">
             <objects>
-                <pageViewController storyboardIdentifier="AdditionalDetailsPageVC" autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="flipHorizontal" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="iTG-m5-Y4K" customClass="AdditionalDetailsPageViewController" customModule="MarvelComics" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="AdditionalDetailsPageViewController" autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="flipHorizontal" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="iTG-m5-Y4K" customClass="AdditionalDetailsPageViewController" customModule="MarvelComics" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HnR-1W-mkG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="945" y="-725"/>

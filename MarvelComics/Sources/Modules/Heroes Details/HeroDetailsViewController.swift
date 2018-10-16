@@ -41,8 +41,9 @@ class HeroDetailsViewController: UIViewController {
         let tableView = craeteTableView(frame: viewContainer.frame)
         viewContainer.addSubview(tableView)
         
+        
         let storyboard = UIStoryboard(name: "Heroes", bundle: nil)
-        pagesVC = storyboard.instantiateViewController(withIdentifier: "AdditionalDetailsPageVC") as? AdditionalDetailsPageViewController
+        pagesVC = storyboard.instantiateViewController(withIdentifier: "AdditionalDetailsPageViewController") as? AdditionalDetailsPageViewController
 
         pagesVC.willMove(toParent: self)
         

@@ -19,9 +19,9 @@ class AuthorizationViewController: UIViewController {
     //MARK: - Variables
     private var isEmailValid = false
     private var isPasswordValid = false
-    static var storyboardInstance: AuthorizationViewController? = {
+    static var storyboardInstance: AuthorizationViewController = {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        return storyboard.instantiateInitialViewController() as? AuthorizationViewController
+        return storyboard.instantiateInitialViewController() as! AuthorizationViewController
     }()
     
     //MARK: - Actions
@@ -35,11 +35,17 @@ class AuthorizationViewController: UIViewController {
     }
     
     @IBAction func signInButtonDidTaped(_ sender: UIButton) {
-        if let mainScreenTabBarViewController = MainScreenTabBarController.storyboardInstance {
-            self.present(mainScreenTabBarViewController, animated: true) {
-                UIApplication.shared.keyWindow?.rootViewController = mainScreenTabBarViewController
-            }
-        }
+        let mainScreenTabBarViewController = MainScreenTabBarController.storyboardInstance
+        UIApplication.shared.keyWindow?.rootViewController = mainScreenTabBarViewController
+        UIApplication.shared.keyWindow?.makeKeyAndVisible()
+        
+        
+//        if let mainScreenTabBarViewController = MainScreenTabBarController.storyboardInstance {
+//
+//            self.present(mainScreenTabBarViewController, animated: true) {
+//                UIApplication.shared.keyWindow?.rootViewController = mainScreenTabBarViewController
+//            }
+//        }
     }
     
     @IBAction func emailTextFieldEditingChangedHandler(_ sender: UITextField) {

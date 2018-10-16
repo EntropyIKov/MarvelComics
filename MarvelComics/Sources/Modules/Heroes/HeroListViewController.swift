@@ -58,7 +58,6 @@ class HeroListViewController: UIViewController {
         isWorkIndicator(isAnimated: false)
         charactersCollectionView.delegate = self
         charactersCollectionView.dataSource = self
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log out", style: .plain, target: LogOutService.self, action: #selector(LogOutService.logOut))
         charactersCollectionView.addSubview(refreshControl)
     }
     
@@ -179,13 +178,9 @@ extension HeroListViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Heroes", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "HeroDetailsVCID") as! HeroDetailsViewController
         let selectedHero = Hero(by: fetchedResultsController.object(at: indexPath))
+        let vc = storyboard.instantiateViewController(withIdentifier: "HeroDetailsViewController") as! HeroDetailsViewController
         vc.hero = selectedHero
-        let backItem = UIBarButtonItem()
-        backItem.title = "Back"
-        navigationController?.navigationItem.backBarButtonItem = backItem
-        navigationItem.backBarButtonItem = backItem
         navigationController?.show(vc, sender: self)
     }
 }

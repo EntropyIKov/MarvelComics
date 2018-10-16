@@ -11,8 +11,7 @@ import UIKit
 
 class LogOutService {
     @objc static func logOut() {
-        if let authorizationViewController = AuthorizationViewController.storyboardInstance {
-            UIApplication.shared.keyWindow?.rootViewController = authorizationViewController
-        }
+        let authorizationViewController = AuthorizationViewController.storyboardInstance
+        UIApplication.shared.keyWindow?.rootViewController = authorizationViewController
     }
 }
