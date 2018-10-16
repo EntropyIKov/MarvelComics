@@ -18,22 +18,13 @@ class HeroCollectionViewCell: UICollectionViewCell {
     //MARK: - Actions
     func populate(by hero: Hero) {
         if let pathToImage = hero.pathToImage, let url = URL(string: pathToImage) {
-            let cacheKey = "\(pathToImage.hashValue)\(pathToImage)"
-            
             heroImageView.kf.indicatorType = .activity
-            ImageCache.default.retrieveImage(forKey: cacheKey, options: nil) { [weak self] image, cacheType in
-                if let image = image {
-                    self?.heroImageView.image = image
-                } else {
-                    let resource = ImageResource(downloadURL: url, cacheKey: cacheKey)
-                    self?.heroImageView.kf.setImage(with: resource) {
-                        (image, error, cacheType, imageUrl) in
-                        if let image = image, cacheType == .none{
-                            ImageCache.default.store(image, forKey: cacheKey, toDisk: true)
-                        }
-                    }
+            heroImageView.kf.setImage(with: url, completionHandler: { [weak self] (image, error, cacheType, imageUrl) in
+                guard let _ = image else {
+                    self?.heroImageView.image = UIImage(named: "no_image")
+                    return
                 }
-            }
+            })
         } else {
             heroImageView.image = UIImage(named: "no_image")
         }
