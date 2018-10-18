@@ -44,14 +44,6 @@ class AdditionalDetailsTableDataSource: NSObject, UITableViewDataSource {
 
 // NSFetchedResultsControllerDelegate
 extension AdditionalDetailsTableDataSource: NSFetchedResultsControllerDelegate {
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates()
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()
-    }
-    
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:
@@ -59,9 +51,10 @@ extension AdditionalDetailsTableDataSource: NSFetchedResultsControllerDelegate {
                 tableView.insertRows(at: [indexPath], with: .automatic)
             }
         case .delete:
-            if let indexPath = indexPath {
-                tableView.deleteRows(at: [indexPath], with: .automatic)
-            }
+            tableView.reloadData()
+//            if let indexPath = indexPath {
+//                tableView.deleteRows(at: [indexPath], with: .automatic)
+//            }
         case .update: break
         case .move: break
         }

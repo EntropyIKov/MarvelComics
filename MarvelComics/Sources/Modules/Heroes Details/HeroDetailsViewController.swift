@@ -57,6 +57,8 @@ class HeroDetailsViewController: UIViewController {
     func setChildViewController() {
         additionalDetailsPageViewController = AdditionalDetailsPageViewController.storyboardInstance
         if let additionalDetailsPageViewController = additionalDetailsPageViewController {
+            self.pagesSegmentControl.selectedSegmentIndex = 0
+            
             additionalDetailsPageViewController.hero = hero
             additionalDetailsPageViewController.currentPage = pagesSegmentControl.selectedSegmentIndex
             additionalDetailsPageViewController.didFinishAnimationHandler = { [unowned self] index in

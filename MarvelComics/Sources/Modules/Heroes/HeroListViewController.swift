@@ -60,7 +60,7 @@ class HeroListViewController: UIViewController {
     }
     
     func setupView() {
-        isWorkIndicator(isAnimated: false)
+        setWorkIndicator(isAnimated: false)
         charactersCollectionView.delegate = self
         charactersCollectionView.dataSource = self
         charactersCollectionView.addSubview(refreshControl)
@@ -100,7 +100,7 @@ class HeroListViewController: UIViewController {
     func getListOfHeroes(from page: Int) {
         if canLoadNextData {
             canLoadNextData = false
-            isWorkIndicator(isAnimated: true)
+            setWorkIndicator(isAnimated: true)
             RequestManager.sharedInstance.getHeroes(page: page) { [unowned self] result in
                 switch result {
                 case .success(let heroes):
@@ -121,12 +121,12 @@ class HeroListViewController: UIViewController {
                     print(error)
                 }
                 self.canLoadNextData = true
-                self.refreshControl.endRefreshing()
+                self.setWorkIndicator(isAnimated: false)
             }
         }
     }
     
-    func isWorkIndicator(isAnimated: Bool) {
+    func setWorkIndicator(isAnimated: Bool) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = isAnimated
         if let fetchedObjects = fetchedResultsController.fetchedObjects, fetchedObjects.isEmpty && isAnimated && !refreshControl.isRefreshing {
             activityIndicator.startAnimating()

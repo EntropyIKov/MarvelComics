@@ -2,17 +2,11 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14315.18" systemVersion="18A391" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="AdditionalDetailsCDObject" representedClassName="AdditionalDetailsCDObject" isAbstract="YES" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="pathToImage" optional="YES" attributeType="String" defaultValueString="https://i.kym-cdn.com/entries/icons/original/000/000/091/TrollFace.jpg" syncable="YES"/>
-        <attribute name="title" optional="YES" attributeType="String" defaultValueString="CoreData Error. Check model" syncable="YES"/>
+        <attribute name="pathToImage" optional="YES" attributeType="String" defaultValueString="pathToImageDefault" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" defaultValueString="titleDefault" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
-            </uniquenessConstraint>
-            <uniquenessConstraint>
-                <constraint value="title"/>
-            </uniquenessConstraint>
-            <uniquenessConstraint>
-                <constraint value="pathToImage"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
@@ -28,6 +22,9 @@
     <entity name="EventCDObject" representedClassName="EventCDObject" parentEntity="AdditionalDetailsCDObject" syncable="YES" codeGenerationType="class">
         <attribute name="eventDescription" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="heroes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HeroCDObject" inverseName="events" inverseEntity="HeroCDObject" syncable="YES"/>
+        <fetchedProperty name="fetchedProperty" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="EventCDObject"/>
+        </fetchedProperty>
     </entity>
     <entity name="HeroCDObject" representedClassName="HeroCDObject" syncable="YES" codeGenerationType="class">
         <attribute name="heroDescription" optional="YES" attributeType="String" syncable="YES"/>
@@ -60,11 +57,11 @@
         <relationship name="heroes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HeroCDObject" inverseName="stories" inverseEntity="HeroCDObject" syncable="YES"/>
     </entity>
     <elements>
-        <element name="AdditionalDetailsCDObject" positionX="-45" positionY="0" width="128" height="90"/>
-        <element name="ComicCDObject" positionX="-18" positionY="54" width="128" height="105"/>
-        <element name="EventCDObject" positionX="27" positionY="81" width="128" height="75"/>
-        <element name="HeroCDObject" positionX="9" positionY="63" width="128" height="165"/>
-        <element name="SeriesCDObject" positionX="45" positionY="99" width="128" height="75"/>
-        <element name="StoryCDObject" positionX="0" positionY="54" width="128" height="75"/>
+        <element name="AdditionalDetailsCDObject" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="ComicCDObject" positionX="-54" positionY="18" width="128" height="105"/>
+        <element name="HeroCDObject" positionX="-36" positionY="45" width="128" height="165"/>
+        <element name="EventCDObject" positionX="-18" positionY="99" width="128" height="104"/>
+        <element name="SeriesCDObject" positionX="0" positionY="108" width="128" height="75"/>
+        <element name="StoryCDObject" positionX="18" positionY="117" width="128" height="75"/>
     </elements>
 </model>

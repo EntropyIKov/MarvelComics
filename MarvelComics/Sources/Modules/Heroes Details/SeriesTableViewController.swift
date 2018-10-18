@@ -127,7 +127,6 @@ class SeriesTableViewController: UITableViewController {
                             seriesCD.title = series.title
                             
                             hero?.addToSeries(seriesCD)
-                            
                             self.storageManagerInstance.saveContext()
                         }
                     } catch {

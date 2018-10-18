@@ -110,9 +110,12 @@ extension AdditionalDetailsPageViewController: UIPageViewControllerDelegate, UIP
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        let index = childrenTableViewsContollers.index(of: pageViewController.viewControllers![0] as! UITableViewController)!
-        currentPage = index
-        didFinishAnimationHandler(index)
+        if let viewController = pageViewController.viewControllers![0] as? UITableViewController {
+            if let index = childrenTableViewsContollers.index(of:  viewController) {
+                currentPage = index
+                didFinishAnimationHandler(index)
+            }
+        }
     }
     
 }

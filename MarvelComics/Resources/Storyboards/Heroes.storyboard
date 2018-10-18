@@ -34,7 +34,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="117" height="132"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dfq-iZ-a7b">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_image" translatesAutoresizingMaskIntoConstraints="NO" id="Dfq-iZ-a7b">
                                                     <rect key="frame" x="14" y="4" width="89" height="90"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="89" id="7dE-9V-ANn"/>
@@ -153,7 +153,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image=" " translatesAutoresizingMaskIntoConstraints="NO" id="SZe-aL-41d" customClass="no_image">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_image" translatesAutoresizingMaskIntoConstraints="NO" id="SZe-aL-41d">
                                 <rect key="frame" x="123.5" y="28" width="128" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="128" id="WSh-ha-1LS"/>
@@ -224,6 +224,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name=" " width="16" height="16"/>
+        <image name="no_image" width="1024" height="1024"/>
     </resources>
 </document>

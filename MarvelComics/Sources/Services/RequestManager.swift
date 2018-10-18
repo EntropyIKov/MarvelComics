@@ -62,29 +62,31 @@ class RequestManager {
     
     private func getDetails<Type: EntityWithTitleAndMarvelImageProtocol>(for heroId: Int, from page: Int, with link: String, complection: @escaping (DResult<Type>) -> (Void)) {
         let requestParameters = makeRequestParams(with: page)
+        
         Alamofire.request(link,
                           method: .get,
                           parameters: requestParameters.parameters,
                           headers: requestParameters.headers).responseJSON { responseJSON in
-                            let result: DResult<Type>
-                            do {
-                                guard let data = responseJSON.data else {
-                                    throw RequestManagerError.parsingError
-                                }
-                                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves) as! [String: Any]
-                                let wrapper = ResponseDataWrapper<Type>.init(JSON: jsonResult)
-                                
-                                guard let objects = wrapper?.data?.results else {
-                                    throw RequestManagerError.parsingError
-                                }
-                                
-                                result = .success(objects)
-                                
-                            } catch {
-                                result = DResult.failure(error)
-                            }
-                            complection(result)
+            let result: DResult<Type>
+            do {
+                guard let data = responseJSON.data else {
+                    throw RequestManagerError.parsingError
+                }
+                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves) as! [String: Any]
+                let wrapper = ResponseDataWrapper<Type>.init(JSON: jsonResult)
+                
+                guard let objects = wrapper?.data?.results else {
+                    throw RequestManagerError.parsingError
+                }
+                
+                result = .success(objects)
+                
+            } catch {
+                result = DResult.failure(error)
+            }
+            complection(result)
         }
+        
     }
     
     private func doRequest(for entityType: EntityType, page: Int, complection: @escaping (DataResponse<Any>) -> ()) {
