@@ -181,6 +181,7 @@
                                     <segment title="Events"/>
                                     <segment title="Series"/>
                                 </segments>
+                                <color key="tintColor" red="0.84799009560000005" green="0.23292639849999999" blue="0.2038879693" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <action selector="segmentControlValueChanged:" destination="1fH-F0-GCB" eventType="valueChanged" id="ty8-zc-ME6"/>
                                 </connections>

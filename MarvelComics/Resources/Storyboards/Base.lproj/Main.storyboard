@@ -27,8 +27,11 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4wV-H6-Luj">
-                                <rect key="frame" x="136.5" y="243" width="47" height="30"/>
-                                <state key="normal" title="Sign In"/>
+                                <rect key="frame" x="112" y="259" width="96" height="30"/>
+                                <color key="backgroundColor" red="0.84799009560000005" green="0.23292639849999999" blue="0.2038879693" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Sign In">
+                                    <color key="titleColor" red="0.91280009390000005" green="0.91280009390000005" blue="0.91280009390000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
                                 <connections>
                                     <action selector="signInButtonDidTaped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nbx-ia-dHo"/>
                                 </connections>
@@ -49,10 +52,11 @@
                             <constraint firstItem="lqk-NK-JeF" firstAttribute="leading" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="80" id="GbN-hC-CAm"/>
                             <constraint firstItem="1ot-mG-Xgy" firstAttribute="top" secondItem="lqk-NK-JeF" secondAttribute="bottom" constant="17" id="KEb-YW-UrN"/>
                             <constraint firstItem="lqk-NK-JeF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="55" id="KcU-FH-UI9"/>
+                            <constraint firstItem="4wV-H6-Luj" firstAttribute="width" secondItem="1ot-mG-Xgy" secondAttribute="width" multiplier="0.6" id="MDV-yL-ue7"/>
                             <constraint firstItem="1ot-mG-Xgy" firstAttribute="width" secondItem="lqk-NK-JeF" secondAttribute="width" id="O96-3x-hhZ"/>
                             <constraint firstItem="1ot-mG-Xgy" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="OXS-5N-dkQ"/>
                             <constraint firstItem="lqk-NK-JeF" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="RHb-Ix-IY9"/>
-                            <constraint firstItem="4wV-H6-Luj" firstAttribute="top" secondItem="1ot-mG-Xgy" secondAttribute="bottom" constant="8" id="fVt-vN-5f7"/>
+                            <constraint firstItem="4wV-H6-Luj" firstAttribute="top" secondItem="1ot-mG-Xgy" secondAttribute="bottom" constant="24" id="fVt-vN-5f7"/>
                             <constraint firstItem="lqk-NK-JeF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="138" id="pyT-qQ-i1W"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
