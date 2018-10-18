@@ -147,7 +147,7 @@ class HeroListViewController: UIViewController {
 extension HeroListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellHeigh: CGFloat = 132
+        let cellHeigh: CGFloat = 140
         let cellWidth: CGFloat = view.frame.width / 2 - 5
         let cellSize = CGSize(width: cellWidth, height: cellHeigh)
         return cellSize

@@ -26,13 +26,16 @@ class MainScreenTabBarController: UITabBarController {
         let heroListViewController = HeroListViewController.storyboardInstance
         heroListViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log out", style: .plain, target: LogOutService.self, action: #selector(LogOutService.logOut))
         let firstNavigationController = UINavigationController(rootViewController: heroListViewController)
-        firstNavigationController.tabBarItem = UITabBarItem(title: "Heroes", image: nil, tag: 0)
+        firstNavigationController.tabBarItem = UITabBarItem(title: "Heroes", image: #imageLiteral(resourceName: "HeroIcon"), tag: 0)
         
         let aboutAppViewController = AboutAppViewController.storyboardInstance
         aboutAppViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log out", style: .plain, target: LogOutService.self, action: #selector(LogOutService.logOut))
         let secondNavigationController = UINavigationController(rootViewController: aboutAppViewController)
-        secondNavigationController.tabBarItem = UITabBarItem(title: "About App", image: nil, tag: 1)
+        secondNavigationController.tabBarItem = UITabBarItem(title: "About App", image: #imageLiteral(resourceName: "AboutIcon"), tag: 1)
         
+        view.tintColor = #colorLiteral(red: 0.9227598906, green: 0.1393100321, blue: 0.1546708345, alpha: 1)
+        tabBar.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        tabBar.barTintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         
         let tabBarList = [firstNavigationController, secondNavigationController]
         viewControllers = tabBarList

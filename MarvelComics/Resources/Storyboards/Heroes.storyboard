@@ -35,7 +35,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_image" translatesAutoresizingMaskIntoConstraints="NO" id="Dfq-iZ-a7b">
-                                                    <rect key="frame" x="14" y="4" width="89" height="90"/>
+                                                    <rect key="frame" x="14" y="8" width="89" height="90"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="89" id="7dE-9V-ANn"/>
                                                         <constraint firstAttribute="width" secondItem="Dfq-iZ-a7b" secondAttribute="height" multiplier="89:90" id="K5w-28-cIY"/>
@@ -43,7 +43,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sdfdsffsdfsfsdfsdfdsfsdfsdfsdf" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsq-fq-dnG">
-                                                    <rect key="frame" x="0.0" y="98" width="117" height="30"/>
+                                                    <rect key="frame" x="0.0" y="102" width="117" height="26"/>
                                                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -52,7 +52,7 @@
                                         </view>
                                         <constraints>
                                             <constraint firstItem="Dfq-iZ-a7b" firstAttribute="centerX" secondItem="ZCc-pt-jIe" secondAttribute="centerX" id="8hR-lE-PwI"/>
-                                            <constraint firstItem="Dfq-iZ-a7b" firstAttribute="top" secondItem="ZCc-pt-jIe" secondAttribute="top" constant="4" id="Aqk-Oe-DTg"/>
+                                            <constraint firstItem="Dfq-iZ-a7b" firstAttribute="top" secondItem="ZCc-pt-jIe" secondAttribute="top" constant="8" id="Aqk-Oe-DTg"/>
                                             <constraint firstItem="lsq-fq-dnG" firstAttribute="leading" secondItem="ZCc-pt-jIe" secondAttribute="leading" id="CVf-iE-1jm"/>
                                             <constraint firstItem="lsq-fq-dnG" firstAttribute="top" secondItem="Dfq-iZ-a7b" secondAttribute="bottom" constant="4" id="OEn-n9-ahS"/>
                                             <constraint firstAttribute="bottom" secondItem="lsq-fq-dnG" secondAttribute="bottom" constant="4" id="YCJ-wi-TiI"/>
