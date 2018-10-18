@@ -12,7 +12,7 @@ import CoreData
 class StorageManager {
     static let sharedInstance = StorageManager()
     
-    lazy var backgroundContext: NSManagedObjectContext = {
+    lazy var heroBackgroundContext: NSManagedObjectContext = {
         let context = persistentContainer.newBackgroundContext()
         context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         return context
@@ -88,9 +88,9 @@ class StorageManager {
             }
         }
         
-        if backgroundContext.hasChanges {
+        if heroBackgroundContext.hasChanges {
             do {
-                try backgroundContext.save()
+                try heroBackgroundContext.save()
                 NotificationCenter.default.post(name: .NSManagedObjectContextDidSave, object: self)
             } catch {
                 let nserror = error as NSError

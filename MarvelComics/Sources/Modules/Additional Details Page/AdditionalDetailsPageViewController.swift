@@ -16,13 +16,13 @@ class AdditionalDetailsPageViewController: UIPageViewController {
     var currentPage = 0
     let titles = ["Comics", "Stories", "Events", "Series"]
     
-    static weak var storyboardInstance: AdditionalDetailsPageViewController? = {
+    static weak var storyboardInstance: AdditionalDetailsPageViewController? {
         let storyboard = UIStoryboard(name: "Heroes", bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: "AdditionalDetailsPageViewController") as? AdditionalDetailsPageViewController
-    }()
+    }
     
     lazy var heroFetchedResultsController: NSFetchedResultsController<HeroCDObject> = {
-        let context = storageManagerInstance.backgroundContext
+        let context = storageManagerInstance.heroBackgroundContext
         
         let fetchRequest: NSFetchRequest<HeroCDObject> = HeroCDObject.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
@@ -33,7 +33,7 @@ class AdditionalDetailsPageViewController: UIPageViewController {
     }()
     
     let backgroundContext: NSManagedObjectContext = {
-        let context = StorageManager.sharedInstance.backgroundContext
+        let context = StorageManager.sharedInstance.heroBackgroundContext
         return context
     }()
     
@@ -84,6 +84,10 @@ class AdditionalDetailsPageViewController: UIPageViewController {
 
 // UIPageViewControllerDelegate, UIPageViewControllerDataSource
 extension AdditionalDetailsPageViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
+    
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        print(pendingViewControllers)
+    }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let viewController = viewController as? UITableViewController else { return nil }

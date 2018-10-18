@@ -21,10 +21,10 @@ class HeroDetailsViewController: UIViewController {
     //MAKR: - Variables
     var hero: Hero!
     
-    static var storyboardInstance: HeroDetailsViewController = {
+    static var storyboardInstance: HeroDetailsViewController {
         let storyboard = UIStoryboard(name: "Heroes", bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: "HeroDetailsViewController") as! HeroDetailsViewController
-    }()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +32,14 @@ class HeroDetailsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setupViews()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        if let child = additionalDetailsPageViewController {
+            child.willMove(toParent: nil)
+            child.view.removeFromSuperview()
+            child.removeFromParent()
+        }
     }
     
     func setupViews() {

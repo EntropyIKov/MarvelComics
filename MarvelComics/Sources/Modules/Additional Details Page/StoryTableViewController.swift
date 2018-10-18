@@ -21,12 +21,12 @@ class StoryTableViewController: UITableViewController {
     let myDataSource = AdditionalDetailsStoryTableDataSource()
     
     lazy var fetchedResultsController: NSFetchedResultsController<StoryCDObject> = {
-        
         let fetchRequest: NSFetchRequest<StoryCDObject> = StoryCDObject.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         fetchRequest.predicate = NSPredicate(format: "ANY heroes.id = %@", argumentArray: [self.heroId])
         
         let context = storageManagerInstance.persistentContainer.viewContext
+        
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = myDataSource
         

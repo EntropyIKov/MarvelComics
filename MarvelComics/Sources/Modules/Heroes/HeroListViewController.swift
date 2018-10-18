@@ -43,7 +43,7 @@ class HeroListViewController: UIViewController {
     }()
     
     let backgroundContext: NSManagedObjectContext = {
-        let context = StorageManager.sharedInstance.backgroundContext
+        let context = StorageManager.sharedInstance.heroBackgroundContext
         return context
     }()
     

@@ -19,10 +19,10 @@ class AuthorizationViewController: UIViewController {
     //MARK: - Variables
     private var isEmailValid = false
     private var isPasswordValid = false
-    static var storyboardInstance: AuthorizationViewController = {
+    static var storyboardInstance: AuthorizationViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         return storyboard.instantiateInitialViewController() as! AuthorizationViewController
-    }()
+    }
     
     //MARK: - Actions
     override func viewDidLoad() {

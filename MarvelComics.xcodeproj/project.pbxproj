@@ -158,6 +158,22 @@
 			path = MarvelComics;
 			sourceTree = "<group>";
 		};
+		993372632178729C00AFB01F /* Additional Details Page */ = {
+			isa = PBXGroup;
+			children = (
+				992316E8216B954F00344902 /* AdditionalDetailsPageViewController.swift */,
+				99C526E8217861CE00903553 /* AdditionalDetailsComicTableDataSource.swift */,
+				99C526EA2178639B00903553 /* AdditionalDetailsStoryTableDataSource.swift */,
+				99C526EC217863C200903553 /* AdditionalDetailsEventTableDataSource.swift */,
+				99C526EE217863ED00903553 /* AdditionalDetailsSeriesTableDataSource.swift */,
+				99B85F292170CB710054D741 /* ComicTableViewController.swift */,
+				99B85F2B2170DC5C0054D741 /* StoryTableViewController.swift */,
+				99B85F2D2170DEDE0054D741 /* EventTableViewController.swift */,
+				99B85F2F2170E1970054D741 /* SeriesTableViewController.swift */,
+			);
+			path = "Additional Details Page";
+			sourceTree = "<group>";
+		};
 		9963479E216B403C00716ED6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +206,7 @@
 				996347B0216B498A00716ED6 /* Authorization */,
 				996347A5216B41BF00716ED6 /* Heroes */,
 				99F11601216F36BB00FED80F /* Heroes Details */,
+				993372632178729C00AFB01F /* Additional Details Page */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -286,15 +303,6 @@
 			isa = PBXGroup;
 			children = (
 				996347B9216B6A6500716ED6 /* HeroDetailsViewController.swift */,
-				992316E8216B954F00344902 /* AdditionalDetailsPageViewController.swift */,
-				99C526E8217861CE00903553 /* AdditionalDetailsComicTableDataSource.swift */,
-				99C526EA2178639B00903553 /* AdditionalDetailsStoryTableDataSource.swift */,
-				99C526EC217863C200903553 /* AdditionalDetailsEventTableDataSource.swift */,
-				99C526EE217863ED00903553 /* AdditionalDetailsSeriesTableDataSource.swift */,
-				99B85F292170CB710054D741 /* ComicTableViewController.swift */,
-				99B85F2B2170DC5C0054D741 /* StoryTableViewController.swift */,
-				99B85F2D2170DEDE0054D741 /* EventTableViewController.swift */,
-				99B85F2F2170E1970054D741 /* SeriesTableViewController.swift */,
 			);
 			path = "Heroes Details";
 			sourceTree = "<group>";

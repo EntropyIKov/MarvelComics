@@ -1,5 +1,5 @@
 //
-//  AdditionalDetailsSeriesTableDataSource.swift
+//  AdditionalDetailsEventTableDataSource.swift
 //  MarvelComics
 //
 //  Created by Kovalenko Ilia on 18/10/2018.
@@ -10,9 +10,9 @@ import UIKit
 import Kingfisher
 import CoreData
 
-class AdditionalDetailsSeriesTableDataSource: NSObject, UITableViewDataSource {
+class AdditionalDetailsEventTableDataSource: NSObject, UITableViewDataSource {
     
-    weak var fetchedResultsController: NSFetchedResultsController<SeriesCDObject>!
+    weak var fetchedResultsController: NSFetchedResultsController<EventCDObject>!
     weak var tableView: UITableView!
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -43,20 +43,18 @@ class AdditionalDetailsSeriesTableDataSource: NSObject, UITableViewDataSource {
 }
 
 // NSFetchedResultsControllerDelegate
-extension AdditionalDetailsSeriesTableDataSource: NSFetchedResultsControllerDelegate {
+extension AdditionalDetailsEventTableDataSource: NSFetchedResultsControllerDelegate {
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:
             if let indexPath = newIndexPath {
-                tableView.insertRows(at: [indexPath], with: .automatic)
+                tableView.insertRows(at: [indexPath], with: .left)
             }
         case .delete:
             tableView.reloadData()
-            //            if let indexPath = indexPath {
-            //                tableView.deleteRows(at: [indexPath], with: .automatic)
-        //            }
         case .update: break
         case .move: break
         }
     }
 }
+
