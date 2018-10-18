@@ -135,6 +135,10 @@ class HeroListViewController: UIViewController {
             activityIndicator.stopAnimating()
             activityIndicator.isHidden = true
         }
+        
+        if !isAnimated {
+            refreshControl.endRefreshing()
+        }
     }
     
 }

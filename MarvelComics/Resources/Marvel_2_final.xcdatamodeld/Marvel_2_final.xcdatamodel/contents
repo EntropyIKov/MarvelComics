@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14315.18" systemVersion="18A391" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="AdditionalDetailsCDObject" representedClassName="AdditionalDetailsCDObject" isAbstract="YES" syncable="YES" codeGenerationType="class">
+    <entity name="ComicCDObject" representedClassName="ComicCDObject" syncable="YES" codeGenerationType="class">
+        <attribute name="comicDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="format" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="pathToImage" optional="YES" attributeType="String" defaultValueString="pathToImageDefault" syncable="YES"/>
-        <attribute name="title" optional="YES" attributeType="String" defaultValueString="titleDefault" syncable="YES"/>
+        <attribute name="pageCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="pathToImage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="heroes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HeroCDObject" inverseName="comics" inverseEntity="HeroCDObject" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="ComicCDObject" representedClassName="ComicCDObject" parentEntity="AdditionalDetailsCDObject" syncable="YES" codeGenerationType="class">
-        <attribute name="comicDescription" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="format" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="pageCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="heroes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HeroCDObject" inverseName="comics" inverseEntity="HeroCDObject" syncable="YES"/>
-        <uniquenessConstraints>
-            <uniquenessConstraint/>
-        </uniquenessConstraints>
-    </entity>
-    <entity name="EventCDObject" representedClassName="EventCDObject" parentEntity="AdditionalDetailsCDObject" syncable="YES" codeGenerationType="class">
+    <entity name="EventCDObject" representedClassName="EventCDObject" syncable="YES" codeGenerationType="class">
         <attribute name="eventDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="pathToImage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="heroes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HeroCDObject" inverseName="events" inverseEntity="HeroCDObject" syncable="YES"/>
-        <fetchedProperty name="fetchedProperty" optional="YES" syncable="YES">
-            <fetchRequest name="fetchedPropertyFetchRequest" entity="EventCDObject"/>
-        </fetchedProperty>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="HeroCDObject" representedClassName="HeroCDObject" syncable="YES" codeGenerationType="class">
         <attribute name="heroDescription" optional="YES" attributeType="String" syncable="YES"/>
@@ -44,24 +44,36 @@
                 <constraint value="id"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
-        <userInfo>
-            <entry key="key" value="id"/>
-        </userInfo>
     </entity>
-    <entity name="SeriesCDObject" representedClassName="SeriesCDObject" parentEntity="AdditionalDetailsCDObject" syncable="YES" codeGenerationType="class">
+    <entity name="SeriesCDObject" representedClassName="SeriesCDObject" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="pathToImage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="seriesDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="heroes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HeroCDObject" inverseName="series" inverseEntity="HeroCDObject" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
-    <entity name="StoryCDObject" representedClassName="StoryCDObject" parentEntity="AdditionalDetailsCDObject" syncable="YES" codeGenerationType="class">
+    <entity name="StoryCDObject" representedClassName="StoryCDObject" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="pathToImage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="storyDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="heroes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HeroCDObject" inverseName="stories" inverseEntity="HeroCDObject" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="AdditionalDetailsCDObject" positionX="-63" positionY="-18" width="128" height="90"/>
-        <element name="ComicCDObject" positionX="-54" positionY="18" width="128" height="105"/>
-        <element name="HeroCDObject" positionX="-36" positionY="45" width="128" height="165"/>
-        <element name="EventCDObject" positionX="-18" positionY="99" width="128" height="104"/>
-        <element name="SeriesCDObject" positionX="0" positionY="108" width="128" height="75"/>
-        <element name="StoryCDObject" positionX="18" positionY="117" width="128" height="75"/>
+        <element name="ComicCDObject" positionX="-48.76171875" positionY="-181.828125" width="128" height="148"/>
+        <element name="EventCDObject" positionX="117" positionY="-54" width="128" height="120"/>
+        <element name="HeroCDObject" positionX="259.5625" positionY="-54.41015625" width="128" height="163"/>
+        <element name="SeriesCDObject" positionX="126" positionY="-45" width="128" height="120"/>
+        <element name="StoryCDObject" positionX="108" positionY="-63" width="128" height="120"/>
     </elements>
 </model>

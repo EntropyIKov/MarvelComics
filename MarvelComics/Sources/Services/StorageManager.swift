@@ -18,8 +18,36 @@ class StorageManager {
         return context
     }()
     
+    lazy var comicBackgroundContext: NSManagedObjectContext = {
+        let context = persistentContainer.newBackgroundContext()
+        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        return context
+    }()
+    
+    lazy var storyBackgroundContext: NSManagedObjectContext = {
+        let context = persistentContainer.newBackgroundContext()
+        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        return context
+    }()
+    
+    lazy var eventBackgroundContext: NSManagedObjectContext = {
+        let context = persistentContainer.newBackgroundContext()
+        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        return context
+    }()
+    
+    lazy var seriesBackgroundContext: NSManagedObjectContext = {
+        let context = persistentContainer.newBackgroundContext()
+        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        return context
+    }()
+    
+    lazy var backgroundContextArray: [NSManagedObjectContext] = {
+        return [comicBackgroundContext, storyBackgroundContext, eventBackgroundContext, seriesBackgroundContext]
+    }()
+    
     let persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "Marvel_1")
+        let container = NSPersistentContainer(name: "Marvel_2_final")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -47,15 +75,26 @@ class StorageManager {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
-        if backgroundContext.hasChanges {
-            backgroundContext.persistentStoreCoordinator?.performAndWait {
+        
+        for context in backgroundContextArray {
+            if context.hasChanges {
                 do {
-                    try backgroundContext.save()
+                    try context.save()
                     NotificationCenter.default.post(name: .NSManagedObjectContextDidSave, object: self)
                 } catch {
                     let nserror = error as NSError
                     print("Unresolved error \(nserror), \(nserror.userInfo)")
                 }
+            }
+        }
+        
+        if backgroundContext.hasChanges {
+            do {
+                try backgroundContext.save()
+                NotificationCenter.default.post(name: .NSManagedObjectContextDidSave, object: self)
+            } catch {
+                let nserror = error as NSError
+                print("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
     }

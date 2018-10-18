@@ -16,9 +16,9 @@ class StoryTableViewController: UITableViewController {
     var heroId: Int!
     var canLoadNextData = true
     var nextPage = 0
-    let backgroundContext = StorageManager.sharedInstance.backgroundContext
+    let backgroundContext = StorageManager.sharedInstance.storyBackgroundContext
     let storageManagerInstance = StorageManager.sharedInstance
-    let myDataSource = AdditionalDetailsTableDataSource()
+    let myDataSource = AdditionalDetailsStoryTableDataSource()
     
     lazy var fetchedResultsController: NSFetchedResultsController<StoryCDObject> = {
         
@@ -85,7 +85,7 @@ class StoryTableViewController: UITableViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellWithImageAndLabel")
         
         myDataSource.tableView = tableView
-        myDataSource.fetchedResultsController = (fetchedResultsController as! NSFetchedResultsController<AdditionalDetailsCDObject>)
+        myDataSource.fetchedResultsController = fetchedResultsController
         
         view.addSubview(activityIndicator)
         refreshControl = UIRefreshControl()

@@ -16,9 +16,9 @@ class SeriesTableViewController: UITableViewController {
     var heroId: Int!
     var canLoadNextData = true
     var nextPage = 0
-    let backgroundContext = StorageManager.sharedInstance.backgroundContext
+    let backgroundContext = StorageManager.sharedInstance.seriesBackgroundContext
     let storageManagerInstance = StorageManager.sharedInstance
-    let myDataSource = AdditionalDetailsTableDataSource()
+    let myDataSource = AdditionalDetailsSeriesTableDataSource()
     
     lazy var fetchedResultsController: NSFetchedResultsController<SeriesCDObject> = {
         let fetchRequest: NSFetchRequest<SeriesCDObject> = SeriesCDObject.fetchRequest()
@@ -86,7 +86,7 @@ class SeriesTableViewController: UITableViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellWithImageAndLabel")
         
         myDataSource.tableView = tableView
-        myDataSource.fetchedResultsController = (fetchedResultsController as! NSFetchedResultsController<AdditionalDetailsCDObject>)
+        myDataSource.fetchedResultsController = fetchedResultsController
         
         view.addSubview(activityIndicator)
         refreshControl = UIRefreshControl()
