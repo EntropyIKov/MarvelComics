@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1XC-h6-wUd">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Fake Launch Screen View Controller-->
+        <scene sceneID="J2p-ZX-b52">
+            <objects>
+                <viewController storyboardIdentifier="FakeLaunchScreenViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1XC-h6-wUd" customClass="FakeLaunchScreenViewController" customModule="MarvelComics" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6Dg-YT-mBV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MarvelLogo" translatesAutoresizingMaskIntoConstraints="NO" id="EfI-M4-nWP">
+                                <rect key="frame" x="16" y="199" width="343" height="226"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="EfI-M4-nWP" firstAttribute="leading" secondItem="Y7S-hl-0b8" secondAttribute="leading" constant="16" id="cck-Up-Ksq"/>
+                            <constraint firstItem="Y7S-hl-0b8" firstAttribute="bottom" secondItem="EfI-M4-nWP" secondAttribute="bottom" constant="242" id="f3T-Zw-7nB"/>
+                            <constraint firstItem="EfI-M4-nWP" firstAttribute="top" secondItem="Y7S-hl-0b8" secondAttribute="top" constant="179" id="i8A-8h-OS1"/>
+                            <constraint firstItem="Y7S-hl-0b8" firstAttribute="trailing" secondItem="EfI-M4-nWP" secondAttribute="trailing" constant="16" id="rDL-ln-JXI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Y7S-hl-0b8"/>
+                    </view>
+                    <connections>
+                        <outlet property="logoImageView" destination="EfI-M4-nWP" id="eiK-cb-uGo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kpS-R5-xwB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="MarvelLogo" width="1200" height="482"/>
+    </resources>
+</document>

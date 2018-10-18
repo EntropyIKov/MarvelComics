@@ -25,14 +25,6 @@ class AuthorizationViewController: UIViewController {
     }
     
     //MARK: - Actions
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        let defaults = UserDefaults.standard
-        if let _ = defaults.string(forKey: DefaultsKeys.keyEmail) {
-            transitToMainScreen()
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -44,9 +36,8 @@ class AuthorizationViewController: UIViewController {
         signInButton.isEnabled = false
     }
     
-    @IBAction func signInButtonDidTaped(_ sender: UIButton) {
-        let defaults = UserDefaults.standard
-        defaults.set(emailTextField.text, forKey: DefaultsKeys.keyEmail)
+    @IBAction func signInButtonDidTaped(_ sender: UIButton) {        
+        KeyChainService.shared["email"] = emailTextField.text        
         transitToMainScreen()
         
 //        if let mainScreenTabBarViewController = MainScreenTabBarController.storyboardInstance {
