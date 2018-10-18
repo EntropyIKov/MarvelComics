@@ -11,6 +11,8 @@ import UIKit
 
 class LogOutService {
     @objc static func logOut() {
+        let defaults = UserDefaults.standard
+        defaults.set(nil, forKey: DefaultsKeys.keyEmail)
         let authorizationViewController = AuthorizationViewController.storyboardInstance
         UIApplication.shared.keyWindow?.rootViewController = authorizationViewController
     }

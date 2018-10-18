@@ -26,6 +26,7 @@
 		99293689216614360008DD48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99293688216614360008DD48 /* Assets.xcassets */; };
 		9929368C216614360008DD48 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9929368A216614360008DD48 /* LaunchScreen.storyboard */; };
 		99293698216614E20008DD48 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99293697216614E20008DD48 /* Hero.swift */; };
+		99337265217887A400AFB01F /* DefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99337264217887A400AFB01F /* DefaultsKeys.swift */; };
 		996347A7216B41DE00716ED6 /* HeroCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996347A6216B41DE00716ED6 /* HeroCollectionViewCell.swift */; };
 		996347AF216B463D00716ED6 /* Heroes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 996347AE216B463D00716ED6 /* Heroes.storyboard */; };
 		996347B8216B64CF00716ED6 /* LogOutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996347B7216B64CF00716ED6 /* LogOutService.swift */; };
@@ -83,6 +84,7 @@
 		9929368B216614360008DD48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9929368D216614360008DD48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99293697216614E20008DD48 /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
+		99337264217887A400AFB01F /* DefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsKeys.swift; sourceTree = "<group>"; };
 		996347A6216B41DE00716ED6 /* HeroCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroCollectionViewCell.swift; sourceTree = "<group>"; };
 		996347AE216B463D00716ED6 /* Heroes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Heroes.storyboard; sourceTree = "<group>"; };
 		996347B7216B64CF00716ED6 /* LogOutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutService.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				996347B7216B64CF00716ED6 /* LogOutService.swift */,
 				992683192166341900E8CE04 /* RequestManager.swift */,
 				99F11605216F37DF00FED80F /* StorageManager.swift */,
+				99337264217887A400AFB01F /* DefaultsKeys.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				99268318216633A000E8CE04 /* HeroListViewController.swift in Sources */,
 				99B85F2E2170DEDE0054D741 /* EventTableViewController.swift in Sources */,
 				99EEF5F12173608C009F91C9 /* EmailValidator.swift in Sources */,
+				99337265217887A400AFB01F /* DefaultsKeys.swift in Sources */,
 				996347B8216B64CF00716ED6 /* LogOutService.swift in Sources */,
 				992683162166319500E8CE04 /* ResponseDataWrapper.swift in Sources */,
 				99EEF6142174BE0B009F91C9 /* AboutAppViewController.swift in Sources */,

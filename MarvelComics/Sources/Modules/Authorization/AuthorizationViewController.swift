@@ -25,19 +25,29 @@ class AuthorizationViewController: UIViewController {
     }
     
     //MARK: - Actions
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let defaults = UserDefaults.standard
+        if let _ = defaults.string(forKey: DefaultsKeys.keyEmail) {
+            transitToMainScreen()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
     }
     
     func setupViews() {
+        signInButton.titleLabel?.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        signInButton.backgroundColor = #colorLiteral(red: 0.6247377992, green: 0.002765463199, blue: 0.0718748793, alpha: 1)
         signInButton.isEnabled = false
     }
     
     @IBAction func signInButtonDidTaped(_ sender: UIButton) {
-        let mainScreenTabBarViewController = MainScreenTabBarController.storyboardInstance
-        UIApplication.shared.keyWindow?.rootViewController = mainScreenTabBarViewController
-        UIApplication.shared.keyWindow?.makeKeyAndVisible()
+        let defaults = UserDefaults.standard
+        defaults.set(emailTextField.text, forKey: DefaultsKeys.keyEmail)
+        transitToMainScreen()
         
 //        if let mainScreenTabBarViewController = MainScreenTabBarController.storyboardInstance {
 //
@@ -63,5 +73,18 @@ private extension AuthorizationViewController {
     
     private func changeSignInButtonState() {
         signInButton.isEnabled = isEmailValid && isPasswordValid
+        if signInButton.isEnabled {
+            signInButton.titleLabel?.textColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
+            signInButton.backgroundColor = #colorLiteral(red: 0.9227598906, green: 0.1393100321, blue: 0.1546708345, alpha: 1)
+        } else {
+            signInButton.titleLabel?.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            signInButton.backgroundColor = #colorLiteral(red: 0.6247377992, green: 0.002765463199, blue: 0.0718748793, alpha: 1)
+        }
+    }
+    
+    private func transitToMainScreen() {
+        let mainScreenTabBarViewController = MainScreenTabBarController.storyboardInstance
+        UIApplication.shared.keyWindow?.rootViewController = mainScreenTabBarViewController
+        UIApplication.shared.keyWindow?.makeKeyAndVisible()
     }
 }
