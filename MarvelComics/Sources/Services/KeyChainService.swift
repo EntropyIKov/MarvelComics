@@ -12,6 +12,8 @@ import Foundation
 
 class KeyChainService {
     
+    private static let queue = DispatchQueue(label: "KeyChainQueue")
+    
     let loggingEnabled = false
     
     private init() {}
@@ -24,7 +26,7 @@ class KeyChainService {
         get {
             return load(with: key)
         } set {
-            DispatchQueue.global().sync(flags: .barrier) {
+            KeyChainService.queue.sync(flags: .barrier) {
                 self.save(newValue, for: key)
             }
         }
