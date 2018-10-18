@@ -113,7 +113,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7vf-0L-Aad">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7vf-0L-Aad">
                                 <rect key="frame" x="0.0" y="265" width="375" height="157"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -124,8 +124,9 @@
 //  MarvelComics
 //
 //  Created by Kovalenko Ilia on 05/10/2018.
-//  Copyright © 2018 Kovalenko Ilia. All rights reserved.
-//</string>
+//  Copyright © 2018 Kovalenko Ilia. 
+//  All rights reserved.
+//  </string>
                                 <color key="textColor" red="0.42676401139999998" green="0.73926323650000003" blue="0.38816595079999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
