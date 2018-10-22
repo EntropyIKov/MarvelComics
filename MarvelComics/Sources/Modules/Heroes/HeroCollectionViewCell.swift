@@ -41,4 +41,12 @@ extension HeroCollectionViewCell {
     func getImageViewCenter() -> CGPoint {
         return heroImageView.center
     }
+    
+    func getImageViewSize() -> CGSize {
+        return heroImageView.frame.size
+    }
+    
+    func hideImage(_ needHide: Bool) {
+        heroImageView.isHidden = needHide
+    }
 }

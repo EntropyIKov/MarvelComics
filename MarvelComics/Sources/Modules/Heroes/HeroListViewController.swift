@@ -16,7 +16,7 @@ class HeroListViewController: UIViewController {
     @IBOutlet private weak var charactersCollectionView: UICollectionView!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
-    //MARK: - Variables
+    //MARK: - Properties
     static var storyboardInstance: HeroListViewController {
         let storyboard = UIStoryboard(name: "Heroes", bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: "HeroListViewController") as! HeroListViewController
@@ -60,6 +60,16 @@ class HeroListViewController: UIViewController {
         getHeroesFromCoreData()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        let selectedCell = getSelectedCollectionCell()
+        selectedCell?.hideImage(false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        let selectedCell = getSelectedCollectionCell()
+        selectedCell?.hideImage(true)
+    }
+    
     func setupView() {
         setWorkIndicator(isAnimated: false)
         charactersCollectionView.delegate = self
@@ -84,6 +94,44 @@ class HeroListViewController: UIViewController {
     }
     
     // Methods
+    func getSelectedCellCenter() -> CGPoint?{
+        guard let selectedCell = getSelectedCollectionCell() else {
+            return nil
+        }
+        
+        var imageCenter = selectedCell.center
+        let yScrollOffset = charactersCollectionView.contentOffset.y
+        imageCenter.y -= yScrollOffset
+        
+        return imageCenter
+    }
+    
+    func getSelectedCellRect() -> CGRect? {
+        guard let selectedCell = getSelectedCollectionCell() else {
+            return nil
+        }
+        let yScrollOffset = charactersCollectionView.contentOffset.y
+        let imageCenter = selectedCell.getImageViewCenter()
+        let imageCenterWithOffset = CGPoint(x: selectedCell.center.x, y: selectedCell.center.y + imageCenter.y - 8 - yScrollOffset)
+        
+        let imageSize = selectedCell.getImageViewSize()
+        let imageFrame = CGRect(x: imageCenterWithOffset.x - imageSize.width / 2,
+                                y: imageCenterWithOffset.y - imageSize.height,
+                                width: imageSize.width,
+                                height: imageSize.height)
+        
+        return imageFrame
+    }
+    
+    func getSelectedCollectionCell() -> HeroCollectionViewCell? {
+        guard let selectedIndexPath = charactersCollectionView.indexPathsForSelectedItems?.first else {
+            return nil
+        }
+        
+        let selectedCell = charactersCollectionView.cellForItem(at: selectedIndexPath) as! HeroCollectionViewCell
+        return selectedCell
+    }
+    
     func getHeroesFromCoreData() {
         do {
             try fetchedResultsController.performFetch()
@@ -144,10 +192,9 @@ class HeroListViewController: UIViewController {
     }
     
 }
-
-// UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 extension HeroListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    //MARK: - UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellHeigh: CGFloat = 140
         let cellWidth: CGFloat = view.frame.width / 2 - 5
@@ -178,6 +225,7 @@ extension HeroListViewController: UICollectionViewDelegate, UICollectionViewData
         
     }
     
+    //MARK: - UICollectionViewDelegateFlowLayout
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let maxOffset = scrollView.contentSize.height - scrollView.frame.height
         let currentOffset = scrollView.contentOffset.y
@@ -187,17 +235,19 @@ extension HeroListViewController: UICollectionViewDelegate, UICollectionViewData
         }
     }
     
+    //MARK: - UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedHero = Hero(by: fetchedResultsController.object(at: indexPath))
         let heroDetailsViewController = HeroDetailsViewController.storyboardInstance 
         heroDetailsViewController.hero = selectedHero
+        heroDetailsViewController.heroListViewController = self
 //        heroDetailsViewController.transitioningDelegate = self
 //        navigationController?.present(heroDetailsViewController, animated: true, completion: nil)
         navigationController?.pushViewController(heroDetailsViewController, animated: true)
     }
 }
 
-// NSFetchedResultsControllerDelegate
+//MARK: - NSFetchedResultsControllerDelegate
 extension HeroListViewController: NSFetchedResultsControllerDelegate {
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
@@ -218,6 +268,7 @@ extension HeroListViewController {
     }
 }
 
+// MARK: - UINavigationControllerDelegate
 extension HeroListViewController: UINavigationControllerDelegate {
     
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {

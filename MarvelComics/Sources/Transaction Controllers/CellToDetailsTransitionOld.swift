@@ -78,7 +78,10 @@ extension CellToDetailsTransitionOld: UIViewControllerAnimatedTransitioning {
                 containerView.addSubview(circle)
             }
             
-            presentedView.alpha = 0
+//            presentedView.alpha = 0
+            presentedView.alpha = 1
+            presentedView.backgroundColor = UIColor(white: 1.0, alpha: 0.0)
+            
             containerView.addSubview(presentedView)
             let duration = transitionDuration(using: transitionContext)
             
@@ -87,21 +90,23 @@ extension CellToDetailsTransitionOld: UIViewControllerAnimatedTransitioning {
             
             animator.addAnimations { [weak self] in
                 UIView.animateKeyframes(withDuration: duration, delay: 0, animations:{
-        
+                    
                     UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.75) {
                         self?.circle?.transform = CGAffineTransform.identity
-                        presentedView.alpha = 0.3
+                        presentedView.backgroundColor = UIColor(white: 1.0, alpha: 0.3)
                     }
                     
                     UIView.addKeyframe(withRelativeStartTime: 0.75, relativeDuration: 0.25) {
                         self?.circle?.transform = CGAffineTransform.identity
                         presentedView.alpha = 1
+                        presentedView.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
                     }
                 })
             }
             
             animator.addCompletion { [weak self] _ in
                 presentedView.alpha = 1
+                presentedView.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
                 self?.circle?.transform = CGAffineTransform.identity
                 self?.animatorForCurrentTransition = nil
                 transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
@@ -123,6 +128,7 @@ extension CellToDetailsTransitionOld: UIViewControllerAnimatedTransitioning {
             
             let viewCenter = returningView.center
             returningView.alpha = 1.0
+            fromView.backgroundColor = UIColor(white: 1.0, alpha: 0.0)
             
             let duration = transitionDuration(using: transitionContext)
             let parameters = UICubicTimingParameters(animationCurve: .easeInOut)
@@ -134,7 +140,6 @@ extension CellToDetailsTransitionOld: UIViewControllerAnimatedTransitioning {
                     
                     UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.75) {
                         self?.circle?.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-                        fromView.alpha = 0.0
                     }
                     
                     UIView.addKeyframe(withRelativeStartTime: 0.75, relativeDuration: 0.25) {

@@ -16,10 +16,12 @@ class HeroDetailsViewController: UIViewController {
     @IBOutlet private weak var heroNameLabel: UILabel!
     @IBOutlet private weak var viewContainer: UIView!
     @IBOutlet private weak var pagesSegmentControl: UISegmentedControl!
+    weak var heroListViewController: HeroListViewController?
     weak var additionalDetailsPageViewController: AdditionalDetailsPageViewController?
     
     //MAKR: - Variables
     var hero: Hero!
+    var selectedCellCenter: CGPoint?
     
     static var storyboardInstance: HeroDetailsViewController {
         let storyboard = UIStoryboard(name: "Heroes", bundle: nil)
@@ -28,10 +30,59 @@ class HeroDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.bringSubviewToFront(heroImageView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setupViews()
+        if let selectedCellFrame = heroListViewController?.getSelectedCellRect(),
+            var selectedCellCenter = heroListViewController?.getSelectedCellCenter(){
+            for subview in view.subviews {
+                if subview is UIImageView { continue }
+                subview.transform = CGAffineTransform(translationX: 400, y: 0)
+            }
+            let errorOffset: CGFloat = 3 // Без него view дергается
+            
+            selectedCellCenter.y += errorOffset
+            let originCenter = heroImageView.center
+            let originFrame = heroImageView.frame
+            
+            let xScale = selectedCellFrame.width / originFrame.width
+            let yScale = selectedCellFrame.height / originFrame.height
+            
+            heroImageView.center = selectedCellCenter
+            heroImageView.transform = CGAffineTransform(scaleX: xScale, y: yScale)
+
+            transitionCoordinator?.animateAlongsideTransition(in: view, animation: { [unowned self] context in
+                self.heroImageView.center = originCenter
+                for subview in self.view.subviews {
+                    subview.transform = CGAffineTransform.identity
+                }
+            })
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if let selectedCellFrame = heroListViewController?.getSelectedCellRect(),
+            var selectedCellCenter = heroListViewController?.getSelectedCellCenter(){
+            let originFrame = heroImageView.frame
+            
+            let xScale = selectedCellFrame.width / originFrame.width
+            let yScale = selectedCellFrame.height / originFrame.height
+            
+            let errorOffset: CGFloat = 2 // Без него view дергается
+            selectedCellCenter.y += selectedCellFrame.height / 2 + errorOffset
+            transitionCoordinator?.animateAlongsideTransition(in: view, animation: { [unowned self] context in
+                self.heroImageView.center = selectedCellCenter
+                for subview in self.view.subviews {
+                    if subview is UIImageView {
+                        subview.transform = CGAffineTransform(scaleX: xScale, y: yScale)
+                        continue
+                    }
+                    subview.transform = CGAffineTransform(translationX: 400, y: 0)
+                }
+            })
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
