@@ -36,3 +36,9 @@ class HeroCollectionViewCell: UICollectionViewCell {
     }
     
 }
+
+extension HeroCollectionViewCell {
+    func getImageViewCenter() -> CGPoint {
+        return heroImageView.center
+    }
+}

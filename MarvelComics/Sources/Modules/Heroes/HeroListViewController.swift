@@ -47,6 +47,7 @@ class HeroListViewController: UIViewController {
         return context
     }()
     
+    let navigationAnimationController = CellToDetailsTransitionOld()
     let storageManagerInstance = StorageManager.sharedInstance
     var nextPage = 0
     var canLoadNextData = true
@@ -64,6 +65,7 @@ class HeroListViewController: UIViewController {
         charactersCollectionView.delegate = self
         charactersCollectionView.dataSource = self
         charactersCollectionView.addSubview(refreshControl)
+        navigationController?.delegate = self
     }
     
     @objc func myDismiss() {
@@ -189,7 +191,9 @@ extension HeroListViewController: UICollectionViewDelegate, UICollectionViewData
         let selectedHero = Hero(by: fetchedResultsController.object(at: indexPath))
         let heroDetailsViewController = HeroDetailsViewController.storyboardInstance 
         heroDetailsViewController.hero = selectedHero
-        navigationController?.show(heroDetailsViewController, sender: self)
+//        heroDetailsViewController.transitioningDelegate = self
+//        navigationController?.present(heroDetailsViewController, animated: true, completion: nil)
+        navigationController?.pushViewController(heroDetailsViewController, animated: true)
     }
 }
 
@@ -213,3 +217,62 @@ extension HeroListViewController {
         ImageCache.default.clearMemoryCache()
     }
 }
+
+extension HeroListViewController: UINavigationControllerDelegate {
+    
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+
+        guard let selectedIndexPath = charactersCollectionView.indexPathsForSelectedItems?.first else {
+            return nil
+        }
+
+        let selectedCell = charactersCollectionView.cellForItem(at: selectedIndexPath) as! HeroCollectionViewCell
+        
+        let imageCenter = selectedCell.getImageViewCenter()
+        let yScrollOffset = charactersCollectionView.contentOffset.y
+        let startingPoint = CGPoint(x: selectedCell.center.x, y: selectedCell.center.y + imageCenter.y - 8 - yScrollOffset)
+        
+        navigationAnimationController.startingPoint = startingPoint
+        navigationAnimationController.circleColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        
+        switch operation {
+        case .push:
+            navigationAnimationController.transitionMode = .present
+        default:
+            navigationAnimationController.transitionMode = .pop
+        }
+        
+        return navigationAnimationController
+    }
+}
+
+//extension HeroListViewController: UIViewControllerTransitioningDelegate {
+//    
+//    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        transition.transitionMode = .present
+//        
+//        guard let selectedIndexPath = charactersCollectionView.indexPathsForSelectedItems?.first else {
+//            return nil
+//        }
+//        
+//        let selectedCell = charactersCollectionView.cellForItem(at: selectedIndexPath) as! HeroCollectionViewCell
+//        transition.startingPoint = selectedCell.getImageViewCenter()
+//        transition.circleColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+//        
+//        return transition
+//    }
+//    
+//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        transition.transitionMode = .dismiss
+//        guard let selectedIndexPath = charactersCollectionView.indexPathsForSelectedItems?.first else {
+//            return nil
+//        }
+//        
+//        let selectedCell = charactersCollectionView.cellForItem(at: selectedIndexPath) as! HeroCollectionViewCell
+//        transition.startingPoint = selectedCell.getImageViewCenter()
+//        transition.circleColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+//        
+//        return transition
+//    }
+//    
+//}
