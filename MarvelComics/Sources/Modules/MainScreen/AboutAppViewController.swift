@@ -10,11 +10,13 @@ import UIKit
 
 class AboutAppViewController: UIViewController {
     
+    //MARK: - Property
     static var storyboardInstance: AboutAppViewController {
         let storyboard = UIStoryboard(name: "Heroes", bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: "AboutAppViewController") as! AboutAppViewController
     }
 
+    //MARK: - Action
     override func viewDidLoad() {
         super.viewDidLoad()
     }

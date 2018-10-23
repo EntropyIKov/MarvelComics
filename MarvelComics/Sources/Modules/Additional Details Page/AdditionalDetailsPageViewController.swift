@@ -11,6 +11,7 @@ import CoreData
 
 class AdditionalDetailsPageViewController: UIPageViewController {
 
+    //MARK: - Variable
     var didFinishAnimationHandler: ((Int) -> Void)!
     var hero: Hero!
     var currentPage = 0
@@ -44,7 +45,7 @@ class AdditionalDetailsPageViewController: UIPageViewController {
         return generateNewArrayOfViewController()
     }()
     
-    //MARK: - Actions
+    //MARK: - Action
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate = self
@@ -56,7 +57,7 @@ class AdditionalDetailsPageViewController: UIPageViewController {
         setViewControllers([childrenTableViewsContollers[currentPage]], direction: .forward, animated: true, completion: nil)
     }
     
-    //MARK: - Methods
+    //MARK: - Method
     func generateNewArrayOfViewController() -> [UITableViewController] {
         var array: [UITableViewController] = []
         

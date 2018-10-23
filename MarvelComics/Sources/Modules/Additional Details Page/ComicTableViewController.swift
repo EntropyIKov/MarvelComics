@@ -12,7 +12,7 @@ import CoreData
 
 class ComicTableViewController: UITableViewController {
     
-    // MARK: - Variables
+    // MARK: - Variable
     var heroId: Int!
     var canLoadNextData = true
     var nextPage = 0
@@ -47,7 +47,7 @@ class ComicTableViewController: UITableViewController {
         return activityIndicator
     }()
     
-    // MARK: - Actions
+    // MARK: - Action
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -81,7 +81,7 @@ class ComicTableViewController: UITableViewController {
         
     }
     
-    // MARK: - Methods
+    // MARK: - Method
     func setupView() {
         tableView.dataSource = myDataSource
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellWithImageAndLabel")

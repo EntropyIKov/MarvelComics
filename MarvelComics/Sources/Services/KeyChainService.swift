@@ -67,6 +67,7 @@ class KeyChainService {
                 logPrint("Load status: ", status)
                 return nil
         }
+        
         return String(data: resultsData, encoding: .utf8)
     }
     

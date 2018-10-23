@@ -11,7 +11,7 @@ import Kingfisher
 
 class HeroDetailsViewController: UIViewController {
     
-    //MARK: - Outlets
+    //MARK: - Outlet
     @IBOutlet private weak var heroImageView: UIImageView!
     @IBOutlet private weak var heroNameLabel: UILabel!
     @IBOutlet private weak var viewContainer: UIView!
@@ -19,7 +19,7 @@ class HeroDetailsViewController: UIViewController {
     weak var heroListViewController: HeroListViewController?
     weak var additionalDetailsPageViewController: AdditionalDetailsPageViewController?
     
-    //MAKR: - Variables
+    //MAKR: - Variable
     var hero: Hero!
     var selectedCellCenter: CGPoint?
     
@@ -28,61 +28,19 @@ class HeroDetailsViewController: UIViewController {
         return storyboard.instantiateViewController(withIdentifier: "HeroDetailsViewController") as! HeroDetailsViewController
     }
     
+    //MARK: - Action
     override func viewDidLoad() {
         super.viewDidLoad()
         view.bringSubviewToFront(heroImageView)
+        setupViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setupViews()
-        if let selectedCellFrame = heroListViewController?.getSelectedCellRect(),
-            var selectedCellCenter = heroListViewController?.getSelectedCellCenter(){
-            for subview in view.subviews {
-                if subview is UIImageView { continue }
-                subview.transform = CGAffineTransform(translationX: 400, y: 0)
-            }
-            let errorOffset: CGFloat = 3 // Без него view дергается
-            
-            selectedCellCenter.y += errorOffset
-            let originCenter = heroImageView.center
-            let originFrame = heroImageView.frame
-            
-            let xScale = selectedCellFrame.width / originFrame.width
-            let yScale = selectedCellFrame.height / originFrame.height
-            
-            heroImageView.center = selectedCellCenter
-            heroImageView.transform = CGAffineTransform(scaleX: xScale, y: yScale)
-
-            transitionCoordinator?.animateAlongsideTransition(in: view, animation: { [unowned self] context in
-                self.heroImageView.center = originCenter
-                for subview in self.view.subviews {
-                    subview.transform = CGAffineTransform.identity
-                }
-            })
-        }
+        performPushAnimation()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        if let selectedCellFrame = heroListViewController?.getSelectedCellRect(),
-            var selectedCellCenter = heroListViewController?.getSelectedCellCenter(){
-            let originFrame = heroImageView.frame
-            
-            let xScale = selectedCellFrame.width / originFrame.width
-            let yScale = selectedCellFrame.height / originFrame.height
-            
-            let errorOffset: CGFloat = 2 // Без него view дергается
-            selectedCellCenter.y += selectedCellFrame.height / 2 + errorOffset
-            transitionCoordinator?.animateAlongsideTransition(in: view, animation: { [unowned self] context in
-                self.heroImageView.center = selectedCellCenter
-                for subview in self.view.subviews {
-                    if subview is UIImageView {
-                        subview.transform = CGAffineTransform(scaleX: xScale, y: yScale)
-                        continue
-                    }
-                    subview.transform = CGAffineTransform(translationX: 400, y: 0)
-                }
-            })
-        }
+        performPopAnimation()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -93,6 +51,17 @@ class HeroDetailsViewController: UIViewController {
         }
     }
     
+    @IBAction func segmentControlValueChanged(_ sender: UISegmentedControl) {
+        let pageVC = children[0] as! AdditionalDetailsPageViewController
+        let pageTables = pageVC.childrenTableViewsContollers
+        let newPage = sender.selectedSegmentIndex
+        let oldPage = pageVC.currentPage
+        let direction = newPage > oldPage ? UIPageViewController.NavigationDirection.forward : .reverse
+        pageVC.setViewControllers([pageTables[newPage]], direction: direction, animated: true, completion: nil)
+        pageVC.currentPage = newPage
+    }
+    
+    //MARK: - Method
     func setupViews() {
         heroNameLabel.text = hero.name
         setImageView()
@@ -140,13 +109,71 @@ class HeroDetailsViewController: UIViewController {
         return tableView
     }
     
-    @IBAction func segmentControlValueChanged(_ sender: UISegmentedControl) {
-        let pageVC = children[0] as! AdditionalDetailsPageViewController
-        let pageTables = pageVC.childrenTableViewsContollers
-        let newPage = sender.selectedSegmentIndex
-        let oldPage = pageVC.currentPage
-        let direction = newPage > oldPage ? UIPageViewController.NavigationDirection.forward : .reverse
-        pageVC.setViewControllers([pageTables[newPage]], direction: direction, animated: true, completion: nil)
-        pageVC.currentPage = newPage
+    //MARK: Animation
+    func getSelectedCellFrameAndCenter() -> (frame: CGRect, center: CGPoint)?{
+        guard let selectedCellFrame = heroListViewController?.getSelectedCellRect(),
+            let selectedCellCenter = heroListViewController?.getSelectedCellCenter() else {
+                return nil
+        }
+        return (selectedCellFrame, selectedCellCenter)
     }
+    
+    func computeFrameScale(dividend: CGRect, divisor: CGRect) -> (xScale: CGFloat, yScale: CGFloat){
+        let xScale = dividend.width / divisor.width
+        let yScale = dividend.height / divisor.height
+        return (xScale, yScale)
+    }
+    
+    func performPushAnimation() {
+        
+        if let selectedCellAttrs = getSelectedCellFrameAndCenter() {
+            var selectedCellCenter = selectedCellAttrs.center
+            for subview in view.subviews {
+                if subview is UIImageView { continue }
+                subview.transform = CGAffineTransform(translationX: 400, y: 0)
+            }
+            let errorOffset: CGFloat = 3 // Без него view дергается
+            
+            selectedCellCenter.y += errorOffset
+            let originCenter = heroImageView.center
+            let originFrame = heroImageView.frame
+            
+            let scales = computeFrameScale(dividend: selectedCellAttrs.frame, divisor: originFrame)
+            
+            heroImageView.center = selectedCellCenter
+            heroImageView.transform = CGAffineTransform(scaleX: scales.xScale, y: scales.yScale)
+            
+            transitionCoordinator?.animateAlongsideTransition(in: view, animation: { [unowned self] context in
+                self.heroImageView.center = originCenter
+                for subview in self.view.subviews {
+                    subview.transform = CGAffineTransform.identity
+                }
+            })
+        }
+    }
+    
+    func performPopAnimation() {
+        
+        if let selectedCellAttrs = getSelectedCellFrameAndCenter() {
+            var selectedCellCenter = selectedCellAttrs.center
+            let originFrame = heroImageView.frame
+            
+            let scales = computeFrameScale(dividend: selectedCellAttrs.frame, divisor: originFrame)
+            
+            let errorOffset: CGFloat = 2 // Без него view дергается
+            selectedCellCenter.y += selectedCellAttrs.frame.height / 2 + errorOffset
+            
+            transitionCoordinator?.animateAlongsideTransition(in: view, animation: { [unowned self] context in
+                self.heroImageView.center = selectedCellCenter
+                for subview in self.view.subviews {
+                    if subview is UIImageView {
+                        subview.transform = CGAffineTransform(scaleX: scales.xScale, y: scales.yScale)
+                        continue
+                    }
+                    subview.transform = CGAffineTransform(translationX: 400, y: 0)
+                }
+            })
+        }
+    }
+    
 }

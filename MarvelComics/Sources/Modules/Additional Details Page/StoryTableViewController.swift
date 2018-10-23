@@ -12,7 +12,7 @@ import CoreData
 
 class StoryTableViewController: UITableViewController {
     
-    // MARK: - Variables
+    // MARK: - Variable
     var heroId: Int!
     var canLoadNextData = true
     var nextPage = 0
@@ -46,7 +46,7 @@ class StoryTableViewController: UITableViewController {
         return activityIndicator
     }()
     
-    // MARK: - Actions
+    // MARK: - Action
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -79,7 +79,7 @@ class StoryTableViewController: UITableViewController {
         }
     }
     
-    // MARK: - Methods
+    // MARK: - Method
     func setupView() {
         tableView.dataSource = myDataSource
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellWithImageAndLabel")

@@ -10,16 +10,19 @@ import UIKit
 
 class MainScreenTabBarController: UITabBarController {
     
+    //MARK: - Property
     static var storyboardInstance: MainScreenTabBarController {
         let storyboard = UIStoryboard(name: "Heroes", bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: "MainScreenTabBarController") as! MainScreenTabBarController
     }
 
+    //MARK: - Action
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
     
+    //MARK: - Method
     func setupView() {
         delegate = self
         

@@ -10,9 +10,10 @@ import UIKit
 
 class FakeLaunchScreenViewController: UIViewController {
 
-    
+    //MARK: - Outlet
     @IBOutlet weak var logoImageView: UIImageView!
     
+    //MARK: - Action
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -35,6 +36,7 @@ class FakeLaunchScreenViewController: UIViewController {
 //        }
     }
     
+    //MARK: - Method
     private func transitToMainScreen() {
         let mainScreenTabBarViewController = MainScreenTabBarController.storyboardInstance
         UIApplication.shared.keyWindow?.rootViewController = mainScreenTabBarViewController

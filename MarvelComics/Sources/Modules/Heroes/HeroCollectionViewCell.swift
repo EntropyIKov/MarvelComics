@@ -11,11 +11,11 @@ import Kingfisher
 
 class HeroCollectionViewCell: UICollectionViewCell {
     
-    //MARK: - Outlets
+    //MARK: - Outlet
     @IBOutlet private weak var heroImageView: UIImageView!
     @IBOutlet private weak var heroNameLabel: UILabel!
     
-    //MARK: - Actions
+    //MARK: - Action
     func populate(by hero: Hero) {
         if let pathToImage = hero.pathToImage, let url = URL(string: pathToImage) {
             heroImageView.kf.indicatorType = .activity
@@ -37,6 +37,7 @@ class HeroCollectionViewCell: UICollectionViewCell {
     
 }
 
+//MARK: - Support methods
 extension HeroCollectionViewCell {
     func getImageViewCenter() -> CGPoint {
         return heroImageView.center

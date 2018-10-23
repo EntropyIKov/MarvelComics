@@ -30,22 +30,9 @@ class AuthorizationViewController: UIViewController {
         setupViews()
     }
     
-    func setupViews() {
-        signInButton.titleLabel?.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        signInButton.backgroundColor = #colorLiteral(red: 0.6247377992, green: 0.002765463199, blue: 0.0718748793, alpha: 1)
-        signInButton.isEnabled = false
-    }
-    
     @IBAction func signInButtonDidTaped(_ sender: UIButton) {        
         KeyChainService.shared["email"] = emailTextField.text        
         transitToMainScreen()
-        
-//        if let mainScreenTabBarViewController = MainScreenTabBarController.storyboardInstance {
-//
-//            self.present(mainScreenTabBarViewController, animated: true) {
-//                UIApplication.shared.keyWindow?.rootViewController = mainScreenTabBarViewController
-//            }
-//        }
     }
     
     @IBAction func emailTextFieldEditingChangedHandler(_ sender: UITextField) {
@@ -57,6 +44,13 @@ class AuthorizationViewController: UIViewController {
     @IBAction func passwordTextFieldEditingChangedHandler(_ sender: UITextField) {
         isPasswordValid = PasswordValidator.validate(string: sender.text)
         changeSignInButtonState()
+    }
+    
+    //MARK: - Methods
+    func setupViews() {
+        signInButton.titleLabel?.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        signInButton.backgroundColor = #colorLiteral(red: 0.6247377992, green: 0.002765463199, blue: 0.0718748793, alpha: 1)
+        signInButton.isEnabled = false
     }
 }
 

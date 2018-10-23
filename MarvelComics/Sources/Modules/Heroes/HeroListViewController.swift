@@ -12,11 +12,11 @@ import Kingfisher
 
 class HeroListViewController: UIViewController {
     
-    //MARK: - Outlets
+    //MARK: - Outlet
     @IBOutlet private weak var charactersCollectionView: UICollectionView!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
-    //MARK: - Properties
+    //MARK: - Property
     static var storyboardInstance: HeroListViewController {
         let storyboard = UIStoryboard(name: "Heroes", bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: "HeroListViewController") as! HeroListViewController
@@ -49,11 +49,12 @@ class HeroListViewController: UIViewController {
     
     let navigationAnimationController = CellToDetailsTransitionAnimator()
     let storageManagerInstance = StorageManager.sharedInstance
+    let spaceBetweenCells: CGFloat = 10
     var nextPage = 0
     var canLoadNextData = true
     var isOffline = false
     
-    //MARK: - Actions
+    //MARK: - Action
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -61,22 +62,13 @@ class HeroListViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let selectedCell = getSelectedCollectionCell()
-        selectedCell?.hideImage(false)
+        performChildPopAnimation()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        let selectedCell = getSelectedCollectionCell()
-        selectedCell?.hideImage(true)
+        performChildPushAnimation()
     }
     
-    func setupView() {
-        setWorkIndicator(isAnimated: false)
-        charactersCollectionView.delegate = self
-        charactersCollectionView.dataSource = self
-        charactersCollectionView.addSubview(refreshControl)
-        navigationController?.delegate = self
-    }
     
     @objc func myDismiss() {
         navigationController?.popViewController(animated: true)
@@ -93,7 +85,15 @@ class HeroListViewController: UIViewController {
         getListOfHeroes(from: nextPage)
     }
     
-    // Methods
+    //MARK: - Method
+    func setupView() {
+        setWorkIndicator(isAnimated: false)
+        charactersCollectionView.delegate = self
+        charactersCollectionView.dataSource = self
+        charactersCollectionView.addSubview(refreshControl)
+        navigationController?.delegate = self
+    }
+    
     func getSelectedCellCenter() -> CGPoint?{
         guard let selectedCell = getSelectedCollectionCell() else {
             return nil
@@ -119,7 +119,6 @@ class HeroListViewController: UIViewController {
                                 y: imageCenterWithOffset.y - imageSize.height,
                                 width: imageSize.width,
                                 height: imageSize.height)
-        
         return imageFrame
     }
     
@@ -191,13 +190,24 @@ class HeroListViewController: UIViewController {
         }
     }
     
+    //MARK: Animation
+    func performChildPushAnimation() {
+        let selectedCell = getSelectedCollectionCell()
+        selectedCell?.hideImage(true)
+    }
+    
+    func performChildPopAnimation() {
+        let selectedCell = getSelectedCollectionCell()
+        selectedCell?.hideImage(false)
+    }
+    
 }
 extension HeroListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     //MARK: - UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellHeigh: CGFloat = 140
-        let cellWidth: CGFloat = view.frame.width / 2 - 5
+        let cellWidth: CGFloat = view.frame.width / 2 - spaceBetweenCells / 2
         let cellSize = CGSize(width: cellWidth, height: cellHeigh)
         return cellSize
     }
@@ -241,10 +251,9 @@ extension HeroListViewController: UICollectionViewDelegate, UICollectionViewData
         let heroDetailsViewController = HeroDetailsViewController.storyboardInstance 
         heroDetailsViewController.hero = selectedHero
         heroDetailsViewController.heroListViewController = self
-//        heroDetailsViewController.transitioningDelegate = self
-//        navigationController?.present(heroDetailsViewController, animated: true, completion: nil)
         navigationController?.pushViewController(heroDetailsViewController, animated: true)
     }
+    
 }
 
 //MARK: - NSFetchedResultsControllerDelegate
@@ -259,8 +268,10 @@ extension HeroListViewController: NSFetchedResultsControllerDelegate {
         case .move: break
         }
     }
+    
 }
 
+//MARK: - Did Receive Memory Warning Handler
 extension HeroListViewController {
     override func didReceiveMemoryWarning() {
         print("warning")
@@ -281,49 +292,20 @@ extension HeroListViewController: UINavigationControllerDelegate {
         
         let imageCenter = selectedCell.getImageViewCenter()
         let yScrollOffset = charactersCollectionView.contentOffset.y
-        let startingPoint = CGPoint(x: selectedCell.center.x, y: selectedCell.center.y + imageCenter.y - 8 - yScrollOffset)
+        let topOffsetConstraintValue: CGFloat = 8
+        let startingPoint = CGPoint(x: selectedCell.center.x, y: selectedCell.center.y + imageCenter.y - topOffsetConstraintValue - yScrollOffset)
         
         navigationAnimationController.startingPoint = startingPoint
         navigationAnimationController.circleColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         
         switch operation {
         case .push:
-            navigationAnimationController.transitionMode = .present
+            navigationAnimationController.transitionMode = .push
         default:
             navigationAnimationController.transitionMode = .pop
         }
         
         return navigationAnimationController
     }
+    
 }
-
-//extension HeroListViewController: UIViewControllerTransitioningDelegate {
-//    
-//    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        transition.transitionMode = .present
-//        
-//        guard let selectedIndexPath = charactersCollectionView.indexPathsForSelectedItems?.first else {
-//            return nil
-//        }
-//        
-//        let selectedCell = charactersCollectionView.cellForItem(at: selectedIndexPath) as! HeroCollectionViewCell
-//        transition.startingPoint = selectedCell.getImageViewCenter()
-//        transition.circleColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-//        
-//        return transition
-//    }
-//    
-//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        transition.transitionMode = .dismiss
-//        guard let selectedIndexPath = charactersCollectionView.indexPathsForSelectedItems?.first else {
-//            return nil
-//        }
-//        
-//        let selectedCell = charactersCollectionView.cellForItem(at: selectedIndexPath) as! HeroCollectionViewCell
-//        transition.startingPoint = selectedCell.getImageViewCenter()
-//        transition.circleColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-//        
-//        return transition
-//    }
-//    
-//}
