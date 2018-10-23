@@ -47,7 +47,7 @@ class HeroListViewController: UIViewController {
         return context
     }()
     
-    let navigationAnimationController = CellToDetailsTransitionOld()
+    let navigationAnimationController = CellToDetailsTransitionAnimator()
     let storageManagerInstance = StorageManager.sharedInstance
     var nextPage = 0
     var canLoadNextData = true

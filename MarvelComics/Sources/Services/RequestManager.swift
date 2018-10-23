@@ -104,6 +104,7 @@ class RequestManager {
             request = "\(Constants.apiEndPoint)\(Constants.pathToEvents)"
         }
         let requestParameters = makeRequestParams(with: page)
+        
         Alamofire.request(request,
                           method: .get,
                           parameters: requestParameters.parameters,
@@ -143,7 +144,7 @@ class RequestManager {
 extension RequestManager {
     private enum Constants {
         static let apiEndPoint      = "https://gateway.marvel.com"
-        static let pathToHeroes = "/v1/public/characters"
+        static let pathToHeroes     = "/v1/public/characters"
         static let pathToComics     = "/v1/public/comics"
         static let pathToEvents     = "/v1/public/events"
         static let pathToSeries     = "/v1/public/series"

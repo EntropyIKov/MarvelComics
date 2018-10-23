@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8803C449F806C1196EEEA15D /* Pods_MarvelComics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E0C918AD6050A120C06E2C /* Pods_MarvelComics.framework */; };
-		99066F78217DA560000EA46E /* CellToDetailsTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99066F77217DA560000EA46E /* CellToDetailsTransition.swift */; };
-		99066F7A217DAC0C000EA46E /* CellToDetails3DTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99066F79217DAC0C000EA46E /* CellToDetails3DTransition.swift */; };
-		99066F7C217DD19A000EA46E /* CellToDetailsAnimationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99066F7B217DD19A000EA46E /* CellToDetailsAnimationTransition.swift */; };
 		99184A3021677CC100F49D36 /* MarverlImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99184A2F21677CC100F49D36 /* MarverlImage.swift */; };
 		99184A4021679C9300F49D36 /* DataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99184A3F21679C9300F49D36 /* DataList.swift */; };
 		992316E9216B954F00344902 /* AdditionalDetailsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992316E8216B954F00344902 /* AdditionalDetailsPageViewController.swift */; };
@@ -29,7 +26,7 @@
 		99293689216614360008DD48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99293688216614360008DD48 /* Assets.xcassets */; };
 		9929368C216614360008DD48 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9929368A216614360008DD48 /* LaunchScreen.storyboard */; };
 		99293698216614E20008DD48 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99293697216614E20008DD48 /* Hero.swift */; };
-		992B54C7217A1DEC00B05BE6 /* CellToDetailsTransitionOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992B54C6217A1DEC00B05BE6 /* CellToDetailsTransitionOld.swift */; };
+		992B54C7217A1DEC00B05BE6 /* CellToDetailsTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992B54C6217A1DEC00B05BE6 /* CellToDetailsTransitionAnimator.swift */; };
 		99337265217887A400AFB01F /* DefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99337264217887A400AFB01F /* DefaultsKeys.swift */; };
 		993372682178AA7000AFB01F /* FakeLaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993372672178AA7000AFB01F /* FakeLaunchScreenViewController.swift */; };
 		9933726A2178AABB00AFB01F /* FakeLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 993372692178AABB00AFB01F /* FakeLaunchScreen.storyboard */; };
@@ -71,9 +68,6 @@
 /* Begin PBXFileReference section */
 		76E0C918AD6050A120C06E2C /* Pods_MarvelComics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelComics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8753238F3B0D5654BD6A1E8E /* Pods-MarvelComics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelComics.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarvelComics/Pods-MarvelComics.release.xcconfig"; sourceTree = "<group>"; };
-		99066F77217DA560000EA46E /* CellToDetailsTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellToDetailsTransition.swift; sourceTree = "<group>"; };
-		99066F79217DAC0C000EA46E /* CellToDetails3DTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellToDetails3DTransition.swift; sourceTree = "<group>"; };
-		99066F7B217DD19A000EA46E /* CellToDetailsAnimationTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellToDetailsAnimationTransition.swift; sourceTree = "<group>"; };
 		99184A2F21677CC100F49D36 /* MarverlImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarverlImage.swift; sourceTree = "<group>"; };
 		99184A3F21679C9300F49D36 /* DataList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataList.swift; sourceTree = "<group>"; };
 		992316E8216B954F00344902 /* AdditionalDetailsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalDetailsPageViewController.swift; sourceTree = "<group>"; };
@@ -94,7 +88,7 @@
 		9929368B216614360008DD48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9929368D216614360008DD48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99293697216614E20008DD48 /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
-		992B54C6217A1DEC00B05BE6 /* CellToDetailsTransitionOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellToDetailsTransitionOld.swift; sourceTree = "<group>"; };
+		992B54C6217A1DEC00B05BE6 /* CellToDetailsTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellToDetailsTransitionAnimator.swift; sourceTree = "<group>"; };
 		99337264217887A400AFB01F /* DefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsKeys.swift; sourceTree = "<group>"; };
 		993372672178AA7000AFB01F /* FakeLaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeLaunchScreenViewController.swift; sourceTree = "<group>"; };
 		993372692178AABB00AFB01F /* FakeLaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FakeLaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -177,10 +171,7 @@
 		992B54C5217A1D9700B05BE6 /* Transaction Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				992B54C6217A1DEC00B05BE6 /* CellToDetailsTransitionOld.swift */,
-				99066F77217DA560000EA46E /* CellToDetailsTransition.swift */,
-				99066F79217DAC0C000EA46E /* CellToDetails3DTransition.swift */,
-				99066F7B217DD19A000EA46E /* CellToDetailsAnimationTransition.swift */,
+				992B54C6217A1DEC00B05BE6 /* CellToDetailsTransitionAnimator.swift */,
 			);
 			path = "Transaction Controllers";
 			sourceTree = "<group>";
@@ -527,7 +518,6 @@
 				99C526EF217863ED00903553 /* AdditionalDetailsSeriesTableDataSource.swift in Sources */,
 				99C8D83121661CD100592F5E /* DataContainer.swift in Sources */,
 				99B85F2C2170DC5C0054D741 /* StoryTableViewController.swift in Sources */,
-				99066F78217DA560000EA46E /* CellToDetailsTransition.swift in Sources */,
 				99C526E9217861CE00903553 /* AdditionalDetailsComicTableDataSource.swift in Sources */,
 				9926832021668C3000E8CE04 /* MainScreenTabBarController.swift in Sources */,
 				9926831A2166341900E8CE04 /* RequestManager.swift in Sources */,
@@ -544,17 +534,15 @@
 				996347A7216B41DE00716ED6 /* HeroCollectionViewCell.swift in Sources */,
 				992316EF216C832600344902 /* EntityWithTitleAndMarvelImageProtocol.swift in Sources */,
 				99C526ED217863C200903553 /* AdditionalDetailsEventTableDataSource.swift in Sources */,
-				99066F7C217DD19A000EA46E /* CellToDetailsAnimationTransition.swift in Sources */,
 				992316E9216B954F00344902 /* AdditionalDetailsPageViewController.swift in Sources */,
 				992316F5216C88BC00344902 /* Event.swift in Sources */,
 				99B85F302170E1970054D741 /* SeriesTableViewController.swift in Sources */,
-				992B54C7217A1DEC00B05BE6 /* CellToDetailsTransitionOld.swift in Sources */,
+				992B54C7217A1DEC00B05BE6 /* CellToDetailsTransitionAnimator.swift in Sources */,
 				99184A4021679C9300F49D36 /* DataList.swift in Sources */,
 				99268318216633A000E8CE04 /* HeroListViewController.swift in Sources */,
 				99B85F2E2170DEDE0054D741 /* EventTableViewController.swift in Sources */,
 				99EEF5F12173608C009F91C9 /* EmailValidator.swift in Sources */,
 				99337265217887A400AFB01F /* DefaultsKeys.swift in Sources */,
-				99066F7A217DAC0C000EA46E /* CellToDetails3DTransition.swift in Sources */,
 				9933726C2178B15300AFB01F /* KeyChainService.swift in Sources */,
 				996347B8216B64CF00716ED6 /* LogOutService.swift in Sources */,
 				992683162166319500E8CE04 /* ResponseDataWrapper.swift in Sources */,
