@@ -47,7 +47,7 @@ extension CellToDetailsTransitionAnimator: UIViewControllerAnimatedTransitioning
         return duration
     }
     
-    func animateTransi1tion(using transitionContext: UIViewControllerContextTransitioning) {
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let animator = self.interruptibleAnimator(using: transitionContext)
         animator.startAnimation()
     }
